@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.4
+-- version 5.0.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Dec 29, 2020 at 05:29 PM
--- Server version: 5.7.24
--- PHP Version: 7.2.19
+-- Host: 127.0.0.1
+-- Generation Time: Dec 30, 2020 at 07:38 AM
+-- Server version: 10.4.11-MariaDB
+-- PHP Version: 7.4.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -46,14 +47,14 @@ CREATE TABLE `auth` (
 CREATE TABLE `member` (
   `member_id` int(11) NOT NULL,
   `member_name` varchar(60) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `member_gender` enum('male','female','others') COLLATE utf8mb4_unicode_ci NOT NULL,
-  `member_dob` varchar(25) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `member_address` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `member_mobile` varchar(11) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `member_photo` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `member_status` enum('0','1','2') COLLATE utf8mb4_unicode_ci NOT NULL,
+  `member_gender` enum('male','female','others') COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `member_dob` varchar(25) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `member_address` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `member_mobile` varchar(11) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `member_photo` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `member_status` enum('0','1','2') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0' COMMENT '0 = pending, 1 = Active, 2 = banned',
   `member_user_id` int(11) NOT NULL,
-  `member_joined_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `member_joined_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --

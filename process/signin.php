@@ -6,27 +6,22 @@
     }
     else
     {
-        // $_SESSION['email'] = $email = $_POST['email'];
-        // $_SESSION['pass'] = $pass = $_POST['password'];   
-        
-        $email = $_POST['email'];
-        $pass = $_POST['password'];   
-                  
+        $_SESSION['email'] = $email = $_POST['email'];
+        $_SESSION['pass'] = $pass = $_POST['password'];   
+
         $auth = new Member;
-
-
-        $auth->signin($email, $pass); 
-        
+        $status = $auth->signin($email, $pass); 
+                
                  
-        // if($status == 1)
-        // {
-        //     unset($_SESSION['email'], $_SESSION['pass']);
-        //     header("Location: ../dashboard.php");
-        // }
-        // else
-        // {
-        //     header("Location: ../signIn.php");
-        // }
+        if($status == 1)
+        {
+            unset($_SESSION['email'], $_SESSION['pass']);
+            header("Location: ../dashboard.php");
+        }
+        else
+        {
+            header("Location: ../signin.php");
+        }
         
              
     }

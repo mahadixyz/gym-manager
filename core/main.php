@@ -7,6 +7,7 @@
         private $pass ="";
         private $database = "crm4gym";
         protected $conn;
+        protected $errmsg;
 
         /**
          * Undocumented function

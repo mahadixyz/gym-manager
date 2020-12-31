@@ -23,7 +23,7 @@
             if($pass === $cPassword)
             {
                 $reg = new Member;
-                $pw = password_hash($conPass, PASSWORD_DEFAULT);
+                $pw = password_hash($cPassword, PASSWORD_DEFAULT);
 
                 $reg->signup($fullname, $email, $pw, $tokenCode);            
                 unset($_SESSION['fullname'], $_SESSION['email'], $_SESSION['password'], $_SESSION['cPassword']);

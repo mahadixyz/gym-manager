@@ -8,46 +8,7 @@
         public function __construct()
         {
             parent::__construct();          
-        }
-
-        /**
-         * Undocumented function
-         *
-         * @param [type] $em
-         * @param [type] $pw
-         * @return void
-         */
-        public function signin($em, $pw)
-        {
-            $this->sql = $this->conn->prepare("SELECT * FROM auth WHERE auth_email = :email");
-            $this->query = $this->sql->bindparam(':email', $em);
-
-            $this->query->execute();
-
-            if($this->query->rowCount() == 1)
-            {
-                $data = $this->query->fetch(PDO::FETCH_OBJ);
-                if(password_verify($pw, $data->auth_password))
-                {
-                    echo "Account exist";
-                    // $_SESSION['user_id'] = $data->auth_id;
-                    // $_SESSION['role'] = $data->auth_role; 
-                    // return 1;
-                }
-                else
-                {
-                    echo "Login Failed. Incorrect Username / Password";
-                    // $_SESSION['err'] = "Login Failed. Incorrect Username / Password";
-                    // return 0;
-                }
-            }
-            else
-            {
-                echo "Account does not exist";
-                // $_SESSION['err'] = "Account does not exist.";
-                // return 0;
-            }
-        }
+        }        
 
         /**
          * registerUser Method
@@ -75,7 +36,7 @@
                 $authQuery->execute();
 
                 $uid = $this->conn->lastInsertId();
-                $memberQuery->bindParam(':userid',$uid);
+                $memberQuery->bindParam(':userid', $uid);
                 $memberQuery->execute();
 
                 $_SESSION['success']= "Registration Successfull, Please Check your email for verification link.";
@@ -88,5 +49,42 @@
                 return 0;
             }           
         }
+
+        /**
+         * signIn Method
+         *
+         * @param [string] $em
+         * @param [string] $pw
+         * @return int (1/0)
+         */
+        public function signin($em, $pw)
+        {
+            $Query = $this->conn->prepare('SELECT * FROM auth WHERE auth_email = :email LIMIT 1');
+            $Query->bindParam(':email', $em); 
+            $Query->execute();
+
+            if($Query->rowCount() > 0)
+            {
+                $data = $Query->fetch(PDO::FETCH_OBJ);
+                                
+                if(password_verify($pw, $data->auth_password))
+                {
+                    $_SESSION['user_id'] = $data->auth_id;
+                    $_SESSION['role'] = $data->auth_role; 
+                    return 1;
+                }
+                else
+                {
+                    $_SESSION['err'] = "Login Failed. Incorrect Username / Password";
+                    return 0;
+                }
+            }
+            else
+            {
+                $_SESSION['err'] = "Account does not exist.";
+                return 0;
+            }            
+        }
+
     }
 ?>

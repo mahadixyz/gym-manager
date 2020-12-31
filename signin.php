@@ -11,34 +11,65 @@
     </div>
 
     <div class="row">
+        <div class="col-6 mx-auto">
+            <?php
+                if(isset($_SESSION['success']) && $_SESSION['success'] != '')
+                {
+            ?>
+            <div class="alert alert-success py3">
+                <?=$_SESSION['success'];?>
+            </div>
+            <?php
+                }
+                else if(isset($_SESSION['err']) && $_SESSION['err'] != '')
+                {
+            ?>
+            <div class="alert alert-warning py3">
+                <?=$_SESSION['err'];?>
+            </div>
+            <?php
+                }
+            ?>
+        </div>
+    </div>
+
+
+    <div class="row">        
+
         <div class="col-6 mx-auto p-2">
-            <div class="mb-2">
-                <div class="form-floating mb-3">
-                    <input type="email" class="form-control rounded-0" name="email" id="email" placeholder="beth@mahadi.xyz">
-                    <label for="email">Email address</label>
+
+            <form action="process/signin.php" method="POST">
+
+                <div class="mb-2">
+                    <div class="form-floating mb-3">
+                        <input type="email" class="form-control rounded-0" name="email" id="email" placeholder="beth@mahadi.xyz">
+                        <label for="email">Email address</label>
+                    </div>
                 </div>
-            </div>
-            
-            <div class="mb-3">
-                <div class="form-floating">
-                    <input type="password" class="form-control rounded-0" name="password" id="password" placeholder="********">
-                    <label for="password">Password</label>
+                
+                <div class="mb-3">
+                    <div class="form-floating">
+                        <input type="password" class="form-control rounded-0" name="password" id="password" placeholder="********">
+                        <label for="password">Password</label>
+                    </div>
+                </div>            
+
+                <div class="mb-3 float-end">
+                    <a href="#">Forgot password?</a>
                 </div>
-            </div>            
+                <div class="clearfix"></div>
 
-            <div class="mb-3 float-end">
-                <a href="#">Forgot password?</a>
-            </div>
-            <div class="clearfix"></div>
+                <div class="mb-2">
+                    <button type="submit" class="btn btn-primary btn-lg rounded-0" name="signin">Sign in</button>
+                    <button type="reset" class="btn btn-danger btn-lg rounded-0">Clear</button>
+                </div>
 
-            <div class="mb-2">
-                <button type="submit" class="btn btn-primary btn-lg rounded-0" name="signin">Sign in</button>
-                <button type="reset" class="btn btn-danger btn-lg rounded-0">Clear</button>
-            </div>
+                <div class="mb-3">
+                    Don't have an account? <a href="signup.php">Sign up</a>
+                </div>
 
-            <div class="mb-3">
-                Don't have an account? <a href="signup.php">Sign up</a>
-            </div>
+            </form>
+
         </div><!-- col -->
 
     </div>

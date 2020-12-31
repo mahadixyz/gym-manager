@@ -58,12 +58,44 @@
                     </div>
                 </div> 
 
-                <div class="mb-3">
+                <div class="mb-2">
                     <div class="form-floating">
                         <input type="password" class="form-control rounded-0" name="cPassword" id="cPassword" placeholder="********">
                         <label for="cPassword">Confirm Password</label>
                     </div>
+                    <?php 
+                        if(isset($_SESSION['pwErr']))
+                        {
+                            echo "<span class='text-danger'>". $_SESSION['pwErr'] . "</span>";
+                        } 
+                        else
+                        {
+                            echo "<span class='text-danger'>&nbsp;</span>";
+                        }
+                    ?>
                 </div>  
+
+                <div>
+                    <div class="form-floating">                        
+                        <input type="text" class="form-control rounded-0" name="captcha" id="captcha" placeholder="captcha" >
+                        <label for="captcha">Enter the code shown Below</label>
+                    </div>
+
+                    <?php 
+                        if(isset($_SESSION['captchaErr']))
+                        {
+                            echo "<span class='text-danger'>". $_SESSION['captchaErr'] . "</span>";
+                        } 
+                        else
+                        {
+                            echo "<span class='text-danger'>&nbsp;</span>";
+                        }
+                    ?>
+                </div>
+
+                <div class="mb-3">
+                    <img src="_resources/images/captcha.php" alt="">
+                </div>
 
                 <div class="mb-2">
                     <button type="submit" class="btn btn-primary btn-lg rounded-0" name="signup">Sign up</button>

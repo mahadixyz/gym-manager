@@ -1,6 +1,12 @@
 <?php
     require_once "core/autoload.php";
+    if (isset($_SESSION['user_id'])) 
+    {
+        header("Location: backend/dashboard.php");
+    }
+    
     require_once "inc/header.php";
+    require_once "inc/nav.php";
 ?>
 
 <div class="container">

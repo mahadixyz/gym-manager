@@ -14,6 +14,7 @@
         <link rel="stylesheet" href="_resources/stylesheets/vendors/bootstrap.min.css">
         <link rel="stylesheet" href="_resources/stylesheets/vendors/animate.min.css">
         <link rel="stylesheet" href="_resources/stylesheets/vendors/aos.css">
+        <link rel="stylesheet" href="_resources/stylesheets/vendors/all.css">
         <link rel="stylesheet" href="_resources/stylesheets/style.css">
         <link rel="stylesheet" href="_resources/stylesheets/responsive.css">
 

@@ -1,0 +1,117 @@
+.dashLeftMenu
+{
+    background-color: #2c1338 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+#dashNav .accordion-body
+{
+    padding: 0!important;
+}
+
+#dashNav .accordion-button:active, 
+#dashNav .accordion-button:focus
+{
+    outline: none !important;
+    box-shadow: none !important;
+    border: none !important;
+}
+
+#dashNav .accordion-button
+{
+    background-color: #210c2a !important;
+    color: #f4f4f5 !important;   
+}
+
+#dashNav .accordion-button:hover,
+.dashNavItemSub:hover
+{
+    background-color: #180116 !important;
+    color: #ebebf3 !important;   
+}
+
+#dashNav .accordion-button:not(.collapsed)
+{
+    background-color: #180116 !important;
+    color: #e4eaf0 !important;   
+}
+
+#dashNav .accordion-button::after
+{
+    background-image: none !important;
+    font-family: "Font Awesome 5 Free";
+    content: "\f078";
+    display: inline-block;
+    padding-right: 3px;
+    vertical-align: middle;
+    font-weight: 900;
+ }
+
+.dashNavSingle
+{
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    color: #e7e7e7;
+    text-decoration: none;
+    background-color: transparent;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: 0;
+    overflow-anchor: none;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out,border-radius .15s ease;
+}
+
+.dashNavTitle
+{
+    font-size: 1.4rem;
+    color: #bfdbff;
+    padding: 1rem 1.25rem;
+}
+
+.dashNavTitle:hover
+{
+    background-color: #301f38;
+    color: #cbd2da;
+}
+
+.dashNavSignOut
+{
+    font-size: 1.2rem;
+    color: #ecf0f5;
+    padding: 1rem 1.25rem;
+}
+
+.dashNavSignOut:hover
+{
+    background-color: #25031b;;
+    color: #d4d4d4;
+}
+
+
+.dashNavItemSub
+{
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 0.6rem 0 0.50rem 3.5rem;
+    font-size: 1rem;
+    color: #d4d4d4;
+    text-decoration: none;
+    background-color: #25031b;
+    border-bottom: 1px solid #462846;
+    border-radius: 0;
+    overflow-anchor: none;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out,border-radius .15s ease;
+}
+
+#dashNav .no-border
+{
+    border:none !important;
+}
+
+
+
+

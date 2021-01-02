@@ -1,5 +1,6 @@
 <?php
     require_once "../core/autoload.php";
+    require_once "../core/dashboard.php";
     if (!isset($_SESSION['user_id'])) 
     {
         header("Location: ../signin.php");
@@ -9,152 +10,250 @@
 ?>
 <div class="container-fluid overflow-hidden">
     <div class="row gx-2 mt-3">
-        <div class="col-3">
-            <div class="dashLeftMenu">
-                <div class="accordion" id="dashNav">
-                    <!-- Dashboard Home -->
-                    <div class="accordion-item">
-                        <a class="dashNavSingle dashNavTitle" href="#">
-                            Dashboard
-                        </a>
-                    </div>
-
-                    <!-- Member -->
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="member">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseMember" aria-expanded="false" aria-controls="collapseMember">
-                                <i class="me-2" data-feather="user"></i> Member
-                            </button>
-                        </h2>
-                        <div id="collapseMember" class="accordion-collapse collapse" aria-labelledby="member" data-bs-parent="#dashNav">
-                            <div class="accordion-body">
-                                
-                                <a class="dashNavItemSub" href="#">
-                                    <i class="me-2" data-feather="user-plus"></i> add member
-                                </a>
-                                <a class="dashNavItemSub no-border" href="#">
-                                    <i class="me-2" data-feather="users"></i> view members
-                                </a>
-                               
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Payment -->
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="payment">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePayment" aria-expanded="false" aria-controls="collapsePayment">
-                                <i class="me-2" data-feather="dollar-sign"></i> Payment
-                            </button> 
-                        </h2>
-                        <div id="collapsePayment" class="accordion-collapse collapse" aria-labelledby="payment" data-bs-parent="#dashNav">
-                            <div class="accordion-body">
-                                <a class="dashNavItemSub" href="#">
-                                    <i class="me-2" data-feather="plus-circle"></i> add payment
-                                </a>
-                                <a class="dashNavItemSub no-border" href="#">
-                                    <i class="me-2" data-feather="dollar-sign"></i> view payment records
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Report -->
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="report">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseReport" aria-expanded="false" aria-controls="collapseReport">
-                                <i class="me-2" data-feather="file-text"></i> Report
-                            </button>
-                        </h2>
-                        <div id="collapseReport" class="accordion-collapse collapse" aria-labelledby="report" data-bs-parent="#dashNav">
-                            <div class="accordion-body">
-                                <a class="dashNavItemSub" href="#">
-                                    <i class="me-2" data-feather="file-plus"></i> add
-                                </a>
-                                <a class="dashNavItemSub no-border" href="#">
-                                    <i class="me-2" data-feather="file-text"></i> view 
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Notice -->
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="notice">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseNotice" aria-expanded="false" aria-controls="collapseNotice">
-                                <i class="me-2" data-feather="bell"></i> Notice
-                            </button>
-                        </h2>
-                        <div id="collapseNotice" class="accordion-collapse collapse" aria-labelledby="notice" data-bs-parent="#dashNav">
-                            <div class="accordion-body">
-                                <a class="dashNavItemSub" href="#">
-                                    <i class="me-2" data-feather="plus-circle"></i> add notice
-                                </a>
-                                <a class="dashNavItemSub no-border" href="#">
-                                    <i class="me-2" data-feather="bell"></i> view all notice
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Site Settings -->
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="site">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSite" aria-expanded="false" aria-controls="collapseSite">
-                                <i class="me-2" data-feather="sliders"></i> Site Settings
-                            </button>
-                        </h2>
-                        <div id="collapseSite" class="accordion-collapse collapse" aria-labelledby="site" data-bs-parent="#dashNav">
-                            <div class="accordion-body">
-                                <a class="dashNavItemSub" href="#">
-                                    <i class="me-2" data-feather="image"></i> Slider
-                                </a>
-                                <a class="dashNavItemSub" href="#">
-                                    <i class="me-2" data-feather="navigation"></i> Menu  
-                                </a>
-                                <a class="dashNavItemSub" href="#">
-                                    <i class="me-2" data-feather="alert-circle"></i> Offer
-                                </a>
-                                <a class="dashNavItemSub" href="#">
-                                    <i class="me-2" data-feather="info"></i> Mission 
-                                </a>
-                                <a class="dashNavItemSub no-border" href="#">
-                                    <i class="me-2" data-feather="phone"></i> Contact
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Signout -->
-                    <div class="accordion-item">
-                        <a class="dashNavSingle dashNavSignOut" href="../signout.php">
-                            <i class="me-2" data-feather="log-out"></i> Signout
-                        </a>
-                    </div>
-                    
-                </div>
-            </div>
-
-            
-
-        </div>
+        <?php require_once "inc/sidenav.php"; ?>
 
         <div class="col-md-9">
             <div class="border p-4">
                 <h2 class="display-5">Dashboard</h2>
-                <p class="lead">
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Obcaecati culpa deleniti velit repellendus qui placeat officia explicabo! Obcaecati sunt molestiae sequi, quae magnam at eum dolore. Harum quos ducimus error odio officiis, maxime laudantium eius accusantium at inventore odit enim libero tenetur tempora veritatis illum rerum! Voluptatem omnis laboriosam quidem ad adipisci accusamus nisi corrupti maxime quis. Repudiandae officia assumenda facilis quibusdam. Nemo iure repellat quo nostrum, quos consequuntur laudantium ab ut! Nisi, nam quae dignissimos illum natus quos dolorum ipsa tenetur vel voluptas repellendus fugiat quod. Unde alias optio molestiae! Voluptatibus nostrum, quos quibusdam debitis nemo veniam porro accusantium?
-                </p>
-                <p class="lead">
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Obcaecati culpa deleniti velit repellendus qui placeat officia explicabo! Obcaecati sunt molestiae sequi, quae magnam at eum dolore. Harum quos ducimus error odio officiis, maxime laudantium eius accusantium at inventore odit enim libero tenetur tempora veritatis illum rerum! Voluptatem omnis laboriosam quidem ad adipisci accusamus nisi corrupti maxime quis. Repudiandae officia assumenda facilis quibusdam. Nemo iure repellat quo nostrum, quos consequuntur laudantium ab ut! Nisi, nam quae dignissimos illum natus quos dolorum ipsa tenetur vel voluptas repellendus fugiat quod. Unde alias optio molestiae! Voluptatibus nostrum, quos quibusdam debitis nemo veniam porro accusantium?
-                </p>
-                <p class="lead">
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Obcaecati culpa deleniti velit repellendus qui placeat officia explicabo! Obcaecati sunt molestiae sequi, quae magnam at eum dolore. Harum quos ducimus error odio officiis, maxime laudantium eius accusantium at inventore odit enim libero tenetur tempora veritatis illum rerum! Voluptatem omnis laboriosam quidem ad adipisci accusamus nisi corrupti maxime quis. Repudiandae officia assumenda facilis quibusdam. Nemo iure repellat quo nostrum, quos consequuntur laudantium ab ut! Nisi, nam quae dignissimos illum natus quos dolorum ipsa tenetur vel voluptas repellendus fugiat quod. Unde alias optio molestiae! Voluptatibus nostrum, quos quibusdam debitis nemo veniam porro accusantium?
-                </p>
+
+                <div class="row g-2">
+
+                    <div class="col-4">
+                        <div class="border p-2">
+                            <div id="CurrMembers"></div>
+                        </div>                    
+                    </div>
+
+                    <div class="col-4">
+                        <div class="border p-2">
+                            <div id="cost"></div>
+                        </div>                    
+                    </div>
+
+                    <div class="col-4">
+                        <div class="border p-2">
+                            <div id="revenue"></div>
+                        </div>                    
+                    </div>
+
+                    <div class="col-6">
+                        <div class="border p-3">
+                            <h3 class="h3 text-primary">Earning</h2>
+                            <div id="earningChart"></div>
+                        </div>
+                    </div>
+
+                    <div class="col-6">
+                        <div class="border p-3">
+                            <h3 class="h3 text-primary">Member Status</h2>
+                            <div id="userChart"></div>
+                        </div>
+                    </div>
+
+                </div>
+                
+                
             </div>            
         </div>
     </div>
 </div>
+
+<script>
+
+    // Demo Data
+    // data for the sparklines that appear below header area
+    var sparklineData = [47, 45, 54, 38, 56, 24, 65, 31, 37, 39, 62, 51, 35, 41, 35, 27, 93, 53, 61, 27, 54, 43, 19, 46];
+
+    // Randomize Array
+    var randomizeArray = function (arg) 
+    {
+        var array = arg.slice();
+        var currentIndex = array.length, temporaryValue, randomIndex;
+
+        while (0 !== currentIndex) 
+        {
+
+            randomIndex = Math.floor(Math.random() * currentIndex);
+            currentIndex -= 1;
+
+            temporaryValue = array[currentIndex];
+            array[currentIndex] = array[randomIndex];
+            array[randomIndex] = temporaryValue;
+        }
+
+        return array;
+        }
+
+    // Summery
+    var optionsMember = {
+          series: [{
+          data: randomizeArray(sparklineData)
+        }],
+          chart: {
+          type: 'area',
+          height: 160,
+          sparkline: {
+            enabled: true
+          },
+        },
+        stroke: {
+          curve: 'straight'
+        },
+        fill: {
+          opacity: 0.3,
+        },
+        yaxis: {
+          min: 0
+        },
+        colors: ['#03A9F4'],
+        title: {
+          text: '1,256',
+          offsetX: 0,
+          style: {
+            fontSize: '24px',
+          }
+        },
+        subtitle: {
+          text: 'Member',
+          offsetX: 0,
+          style: {
+            fontSize: '14px',
+          }
+        }
+        };
+
+        var currentMember = new ApexCharts(document.querySelector("#CurrMembers"), optionsMember);
+        currentMember.render();
+      
+        var optionsSpark2 = {
+          series: [{
+          data: randomizeArray(sparklineData)
+        }],
+          chart: {
+          type: 'area',
+          height: 160,
+          sparkline: {
+            enabled: true
+          },
+        },
+        stroke: {
+          curve: 'straight'
+        },
+        fill: {
+          opacity: 0.3,
+        },
+        yaxis: {
+          min: 0
+        },
+        colors: ['#DC143C'],
+        title: {
+          text: 'BDT 23,50,312',
+          offsetX: 0,
+          style: {
+            fontSize: '24px',
+          }
+        },
+        subtitle: {
+          text: 'Expenses',
+          offsetX: 0,
+          style: {
+            fontSize: '14px',
+          }
+        }
+        };
+
+        var TotalCost = new ApexCharts(document.querySelector("#cost"), optionsSpark2);
+        TotalCost.render();
+      
+        var optionsSpark3 = {
+          series: [{
+          data: randomizeArray(sparklineData)
+        }],
+          chart: {
+          type: 'area',
+          height: 160,
+          sparkline: {
+            enabled: true
+          },
+        },
+        stroke: {
+          curve: 'straight'
+        },
+        fill: {
+          opacity: 0.3
+        },
+        xaxis: {
+          crosshairs: {
+            width: 1
+          },
+        },
+        yaxis: {
+          min: 0
+        },
+        colors:['#60CC0F'],
+        title: {
+          text: 'BDT 10,35,965',
+          offsetX: 0,
+          style: {
+            fontSize: '24px',
+          }
+        },
+        subtitle: {
+          text: 'Revenue',
+          offsetX: 0,
+          style: {
+            fontSize: '14px',
+          }
+        }
+        };
+
+        var revenue = new ApexCharts(document.querySelector("#revenue"), optionsSpark3);
+        revenue.render();
+      
+
+    // User Status
+    var options = 
+    {
+          series: [15, 55, 48],
+          chart: {
+          width: 380,
+          type: 'donut',
+        },
+        labels: ['Banned', 'Active', 'Pending'],
+        responsive: [{
+          breakpoint: 480,
+          options: {
+            chart: {
+              width: 200
+            },
+            legend: {
+              position: 'bottom'
+            }
+          }
+        }]
+    };
+    var chartUser = new ApexCharts(document.querySelector("#userChart"), options);
+    chartUser.render();
+
+    // Earning
+    var options = {
+        chart: {
+            type: 'line'
+        },
+        series: [{
+            name: 'Payment',
+            data: [30000,40000,35000,50000,49000,60000]
+        }],
+        xaxis: {
+            categories: ["January","February","March","April","June","July"]
+        }
+    }
+
+    var chartEarning = new ApexCharts(document.querySelector("#earningChart"), options);    
+    chartEarning.render();
+</script>
+
+
 </body>
 
 </html>

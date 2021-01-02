@@ -23,6 +23,7 @@
         <script src="../_resources/scripts/vendors/bootstrap.bundle.min.js"></script>
         <script src="../_resources/scripts/vendors/aos.js"></script>
         <script src="../_resources/scripts/vendors/feather.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
         <script src="../_resources/scripts/script.js"></script>
 
     </head>

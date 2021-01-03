@@ -55,8 +55,8 @@
                                 <td><?=$auth_email?></td>
                                 <td><?=$status?></td>
                                 <td>
-                                    <a href="#" class="text-primary me-2"> <i data-feather="eye"></i></a>
-                                    <a href="#" class="text-success"> <i data-feather="edit"></i></a>
+                                    <a href="view-member.php?id=<?=$member_id?>" class="text-primary me-2"> <i data-feather="eye"></i></a>
+                                    <a href="update-member.php?id=<?=$member_id?>" class="text-success"> <i data-feather="edit"></i></a>
                                 </td>
                             </tr>
                         <?php                                                            

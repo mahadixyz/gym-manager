@@ -21,7 +21,7 @@
                                 <a class="dashNavItemSub" href="#">
                                     <i class="me-2" data-feather="user-plus"></i> add member
                                 </a>
-                                <a class="dashNavItemSub no-border" href="viewmembers.php">
+                                <a class="dashNavItemSub no-border" href="members.php">
                                     <i class="me-2" data-feather="users"></i> view members
                                 </a>
                                

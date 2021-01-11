@@ -38,10 +38,10 @@
                         </h2>
                         <div id="collapsePayment" class="accordion-collapse collapse" aria-labelledby="payment" data-bs-parent="#dashNav">
                             <div class="accordion-body">
-                                <a class="dashNavItemSub" href="#">
+                                <a class="dashNavItemSub" href="add-payment.php">
                                     <i class="me-2" data-feather="plus-circle"></i> add payment
                                 </a>
-                                <a class="dashNavItemSub no-border" href="#">
+                                <a class="dashNavItemSub no-border" href="view-payment.php">
                                     <i class="me-2" data-feather="dollar-sign"></i> view payment records
                                 </a>
                             </div>

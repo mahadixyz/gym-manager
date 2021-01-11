@@ -8,11 +8,13 @@
     require_once "inc/header.php";
     require_once "inc/nav.php";
 
+    $page = 1;
     if($_GET['page'])
     {
         $page = $_GET['page'];
     }
-    else
+    
+    if($_GET['page'] < 1)
     {
         $page = 1;
     }
@@ -89,15 +91,15 @@
                 </table>
                 <nav aria-label="Page navigation">
                     <ul class="pagination">
-                        <li class="page-item">
-                            <a class="page-link <?php if($i <= 0){ echo 'disabled'; } if($i == $page){echo 'active';} ?>" href="http://localhost/mahadi/crm/backend/members.php?page=<?=$page-1?>">Previous</a>
+                        <li class="page-item <?php if($page <= 1){ echo 'disabled'; }?>">
+                            <a class="page-link" href="members.php?page=<?=$page-1?>">Previous</a>
                         </li>
                         <?php
                             for($i = 1; $i <= $totalPage; $i++)
                             {
                                 ?>
                                 <li class="page-item <?php if($i == $page){echo 'active';}?>"> 
-                                    <a class="page-link" href="http://localhost/mahadi/crm/backend/members.php?page=<?=$i?>"><?=$i?></a>
+                                    <a class="page-link" href="members.php?page=<?=$i?>"><?=$i?></a>
                                 </li>
                                 <?php
                             }
@@ -105,7 +107,7 @@
                        
 
                         <li class="page-item <?php if($page >= $totalPage){ echo 'disabled'; } ?>"> 
-                            <a class="page-link" href="http://localhost/mahadi/crm/backend/members.php?page=<?=$page+1?>">Next</a>
+                            <a class="page-link" href="members.php?page=<?=$page+1?>">Next</a>
                         </li>
                     </ul>
                 </nav>

@@ -153,6 +153,82 @@
             }           
         }
 
+        public function getMember()
+        {
+            $this->sql = $this->conn->prepare('SELECT * FROM member ');
+            try
+            {
+                $this->sql->execute();
+
+                if($this->sql->rowCount() > 0)
+                {
+                    $data = $this->sql->fetchAll(PDO::FETCH_OBJ);
+                    return $data;
+                }
+                else
+                {
+                    return false;
+                }    
+            }
+            catch(PDOException $Exception)
+            {
+                $this->errmsg = $Exception->getMessage();
+                $_SESSION['err'] = "Unexpected Error Occured. Please try again Later.<br> Error: ".$this->errmsg;
+                return false;
+            }  
+
+        }
+
+        public function addPayment($month, $amount, $member)
+        {           
+            $authQuery = $this->conn->prepare('INSERT INTO payment(payment_month, payment_amount, payment_member) VALUES(:pmonth, :amount, :member)');
+	
+            $authQuery->bindParam(':pmonth',$month); 
+            $authQuery->bindParam(':amount',$amount);
+            $authQuery->bindParam(':member',$member);
+            
+            try
+            {                
+                $authQuery->execute();                
+
+                $_SESSION['success']= "Payment Successfull";
+                return true;
+            }
+            catch(PDOException $Exception)
+            {
+                $this->errmsg = $Exception->getMessage();
+                $_SESSION['err'] = "Unexpected Error Occured. Please try again Later.<br> Error: ".$this->errmsg;
+                return false;
+            }           
+        }
+        
+        public function viewPayment()
+        {           
+            // $this->sql = $this->conn->prepare("SELECT * FROM payment");
+            $this->sql = $this->conn->prepare("SELECT payment.*, member.member_name FROM payment INNER JOIN member ON payment.payment_member = member.member_id");
+            
+            try
+            {
+                $this->sql->execute();
+
+                if($this->sql->rowCount() > 0)
+                {
+                    $data = $this->sql->fetchAll(PDO::FETCH_OBJ);
+                    return $data;
+                }
+                else
+                {
+                    return false;
+                }    
+            }
+            catch(PDOException $Exception)
+            {
+                $this->errmsg = $Exception->getMessage();
+                $_SESSION['err'] = "Unexpected Error Occured. Please try again Later.<br> Error: ".$this->errmsg;
+                return false;
+            }  
+        }
+
 
     }
 ?>

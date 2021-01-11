@@ -15,8 +15,11 @@
         <link rel="stylesheet" href="../_resources/stylesheets/vendors/animate.min.css">
         <link rel="stylesheet" href="../_resources/stylesheets/vendors/aos.css">
         <link rel="stylesheet" href="../_resources/stylesheets/vendors/all.css">
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.23/datatables.min.css"/> 
         <link rel="stylesheet" href="../_resources/stylesheets/style.css">
-        <link rel="stylesheet" href="../_resources/stylesheets/responsive.css">
+        <link rel="stylesheet" href="../_resources/stylesheets/responsive.css">        
+ 
+
 
         <!-- Scripts -->
         <script src="../_resources/scripts/vendors/jquery.min.js"></script>
@@ -24,6 +27,7 @@
         <script src="../_resources/scripts/vendors/aos.js"></script>
         <script src="../_resources/scripts/vendors/feather.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.23/datatables.min.js"></script>
         <script src="../_resources/scripts/script.js"></script>
 
     </head>

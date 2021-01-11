@@ -1,6 +1,19 @@
 <?php
     require_once "../core/autoload.php";
     require_once "../core/dashboard.php";
+
+    $dbdata = new Dashboard;
+    $raw = $dbdata->countMember();
+
+    $pending = $dbdata->countStatus(0);
+    $active = $dbdata->countStatus(1);
+    $banned = $dbdata->countStatus(2);
+
+    $memberStatus = "[".$banned.", ".$active.", ".$pending."]";
+  
+    $memberCount = $raw['member_id'];
+    
+
     if (!isset($_SESSION['user_id'])) 
     {
         header("Location: ../signin.php");
@@ -107,7 +120,7 @@
         },
         colors: ['#03A9F4'],
         title: {
-          text: '1,256',
+          text: '<?=$memberCount;?>',
           offsetX: 0,
           style: {
             fontSize: '24px',
@@ -193,7 +206,7 @@
         colors:['#60CC0F'],
         title: {
           text: 'BDT 10,35,965',
-          offsetX: 0,
+          offsetX: -1,
           style: {
             fontSize: '24px',
           }
@@ -214,7 +227,7 @@
     // User Status
     var options = 
     {
-          series: [15, 55, 48],
+          series: <?=$memberStatus;?>,
           chart: {
           width: 380,
           type: 'donut',

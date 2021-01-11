@@ -11,7 +11,7 @@
         }        
 
         /**
-         * registerUser Method
+         * SignUp Method
          *
          * @param [string] $fullname
          * @param [string] $email

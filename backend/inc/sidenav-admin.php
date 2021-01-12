@@ -76,10 +76,10 @@
                         </h2>
                         <div id="collapseNotice" class="accordion-collapse collapse" aria-labelledby="notice" data-bs-parent="#dashNav">
                             <div class="accordion-body">
-                                <a class="dashNavItemSub" href="#">
+                                <a class="dashNavItemSub" href="add-notice.php">
                                     <i class="me-2" data-feather="plus-circle"></i> add notice
                                 </a>
-                                <a class="dashNavItemSub no-border" href="#">
+                                <a class="dashNavItemSub no-border" href="view-notice.php">
                                     <i class="me-2" data-feather="bell"></i> view all notice
                                 </a>
                             </div>

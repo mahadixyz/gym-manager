@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.4
+-- version 5.0.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Jan 11, 2021 at 08:50 PM
--- Server version: 5.7.24
--- PHP Version: 7.2.19
+-- Host: 127.0.0.1
+-- Generation Time: Jan 12, 2021 at 07:42 AM
+-- Server version: 10.4.11-MariaDB
+-- PHP Version: 7.4.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -70,7 +71,7 @@ CREATE TABLE `member` (
   `member_photo` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `member_status` enum('0','1','2') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0' COMMENT '0 = pending, 1 = Active, 2 = banned',
   `member_user_id` int(11) NOT NULL,
-  `member_joined_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `member_joined_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -95,6 +96,31 @@ INSERT INTO `member` (`member_id`, `member_name`, `member_gender`, `member_dob`,
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `notice`
+--
+
+CREATE TABLE `notice` (
+  `notice_id` int(11) NOT NULL,
+  `notice_title` varchar(100) NOT NULL,
+  `notice_body` text NOT NULL,
+  `notice_for` int(11) NOT NULL DEFAULT 0,
+  `notice_isuued_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `notice`
+--
+
+INSERT INTO `notice` (`notice_id`, `notice_title`, `notice_body`, `notice_for`, `notice_isuued_at`) VALUES
+(1, 'Covid-19 Safety', 'Wear Mask, Use Hand Sanitizer, Maintain Social Distance', 0, '2021-01-12 03:48:58'),
+(2, 'Entry Time Violation', 'Maintain entry Time ', 13, '2021-01-12 03:51:59'),
+(3, 'Payment Notice', 'Please Pay the fee of December, 2020', 6, '2021-01-12 03:54:16'),
+(4, 'Happy New Year', '<p>Wish you all a very <strong>Happy New Year 2021</strong></p>', 0, '2021-01-12 04:00:24'),
+(5, 'Payment Notice', '<p>Payment Done for <strong>Billy Owen</strong></p>', 5, '2021-01-12 05:16:15');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `payment`
 --
 
@@ -103,7 +129,7 @@ CREATE TABLE `payment` (
   `payment_amount` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
   `payment_month` varchar(25) COLLATE utf8mb4_unicode_ci NOT NULL,
   `payment_member` varchar(25) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `payment_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `payment_date` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -111,10 +137,14 @@ CREATE TABLE `payment` (
 --
 
 INSERT INTO `payment` (`payment_id`, `payment_amount`, `payment_month`, `payment_member`, `payment_date`) VALUES
-(1, '500', '2021-03', '12', '2021-01-11 20:37:34'),
-(2, '655', '2021-07', '6', '2021-01-11 20:38:04'),
-(3, '900', '2021-08', '11', '2021-01-11 20:38:12'),
-(4, '666', '2021-04', '10', '2021-01-11 20:38:21');
+(1, '500', '2021-01', '12', '2021-01-11 20:37:34'),
+(2, '655', '2021-01', '6', '2021-01-11 20:38:04'),
+(3, '900', '2020-08', '11', '2021-01-11 20:38:12'),
+(4, '666', '2020-04', '10', '2021-01-11 20:38:21'),
+(5, '1000', '2020-07', '2', '2021-01-12 03:14:29'),
+(6, '346', '2020-11', '10', '2021-01-12 03:19:49'),
+(7, '1500', '2020-11', '13', '2021-01-12 03:20:16'),
+(8, '1750', '2020-06', '8', '2021-01-12 05:13:45');
 
 --
 -- Indexes for dumped tables
@@ -132,6 +162,12 @@ ALTER TABLE `auth`
 ALTER TABLE `member`
   ADD PRIMARY KEY (`member_id`),
   ADD KEY `userID` (`member_user_id`);
+
+--
+-- Indexes for table `notice`
+--
+ALTER TABLE `notice`
+  ADD PRIMARY KEY (`notice_id`);
 
 --
 -- Indexes for table `payment`
@@ -156,10 +192,16 @@ ALTER TABLE `member`
   MODIFY `member_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
+-- AUTO_INCREMENT for table `notice`
+--
+ALTER TABLE `notice`
+  MODIFY `notice_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
 -- AUTO_INCREMENT for table `payment`
 --
 ALTER TABLE `payment`
-  MODIFY `payment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `payment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Constraints for dumped tables

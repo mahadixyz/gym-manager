@@ -28,7 +28,22 @@
 
         <div class="col-md-9">
             <div class="border p-4">
-                <h2 class="display-5">Dashboard</h2>
+
+                <h2 class="display-5 mb-4">Payment History</h2>
+                <?php
+                    if(isset($_SESSION['success']) && $_SESSION['success'] != '')
+                    {
+                ?>
+                <div class="alert alert-success py3">
+                    <?php
+                        echo $_SESSION['success'];
+                        unset($_SESSION['success']);
+                    ?>
+                </div>
+                <?php
+                    }                    
+                ?>
+                
 
                 <table class="table table-striped">
                     <thead>
@@ -49,13 +64,15 @@
                             if($result != false)
                             {
                                 foreach($result as $data)
-                                {        
+                                { 
+                                    $pay_month = date("M, Y", strtotime($data->payment_month));   
+                                    $amount = "<span class='bdt'>&#2547; </span>".number_format($data->payment_amount, 2);     
                                     
                         ?>
                             <tr>
                                 <th scope="row"><?=$payment_id?></th>
-                                <td><?=$data->payment_month?></td>
-                                <td><?=$data->payment_amount?></td>
+                                <td><?=$pay_month?></td>
+                                <td><?=$amount?></td>
                                 <td><?=$data->member_name?></td>                               
                             </tr>
                         <?php                                                            

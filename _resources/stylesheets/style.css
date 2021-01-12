@@ -5,11 +5,22 @@
     padding-right: 0 !important;
 }
 
+.dashLeftMenuUser
+{
+    background-color: #3345e9 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+
+#dashNavUser .accordion-body,
 #dashNav .accordion-body
 {
     padding: 0!important;
 }
 
+#dashNavUser .accordion-button:active, 
+#dashNavUser .accordion-button:focus,
 #dashNav .accordion-button:active, 
 #dashNav .accordion-button:focus
 {
@@ -18,17 +29,36 @@
     border: none !important;
 }
 
+#dashNavUser .accordion-button
+{
+    background-color: #3345e9 !important;
+    color: #f4f4f5 !important;   
+}
+
 #dashNav .accordion-button
 {
     background-color: #210c2a !important;
     color: #f4f4f5 !important;   
 }
 
+#dashNavUser .accordion-button:hover,
+#dashNavUser .dashNavItemSub:hover
+{
+    background-color: #495bff !important;
+    color: #ebebf3 !important;   
+}
+
 #dashNav .accordion-button:hover,
-.dashNavItemSub:hover
+#dashNav .dashNavItemSub:hover
 {
     background-color: #180116 !important;
     color: #ebebf3 !important;   
+}
+
+#dashNavUser .accordion-button:not(.collapsed)
+{
+    background-color: #3345e9 !important;
+    color: #e4eaf0 !important;   
 }
 
 #dashNav .accordion-button:not(.collapsed)
@@ -37,6 +67,7 @@
     color: #e4eaf0 !important;   
 }
 
+#dashNavUser .accordion-button::after,
 #dashNav .accordion-button::after
 {
     background-image: none !important;
@@ -107,6 +138,27 @@
     transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out,border-radius .15s ease;
 }
 
+
+#dashNavUser .dashNavItemSub
+{
+    color: #d4d4d4;
+    text-decoration: none;
+    background-color: #4759fc;
+    border-bottom: 1px solid #0e21ce;
+}
+
+#dashNavUser .dashNavTitle:hover
+{
+    background-color: #4759fc;
+    color: #cbd2da;
+}
+
+#dashNavUser .dashNavSignOut:hover
+{
+    background-color: #4759fc;;
+    color: #d4d4d4;
+}
+
 #dashNav .no-border
 {
     border:none !important;
@@ -114,4 +166,7 @@
 
 
 
-
+.bdt
+{
+    font-size: 24px!important;
+}

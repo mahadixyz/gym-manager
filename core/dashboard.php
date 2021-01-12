@@ -230,5 +230,57 @@
         }
 
 
+        public function addNotice($title, $for, $body)
+        {           
+            $authQuery = $this->conn->prepare('INSERT INTO notice(notice_title, notice_body, notice_for) VALUES(:ntitle, :nbody, :nfor)');
+	
+            $authQuery->bindParam(':ntitle',$title); 
+            $authQuery->bindParam(':nbody',$body);
+            $authQuery->bindParam(':nfor',$for);
+            
+            try
+            {                
+                $authQuery->execute();                
+
+                $_SESSION['success']= "Notice Added";
+                return true;
+            }
+            catch(PDOException $Exception)
+            {
+                $this->errmsg = $Exception->getMessage();
+                $_SESSION['err'] = "Unexpected Error Occured. Please try again Later.<br> Error: ".$this->errmsg;
+                return false;
+            }           
+        }
+
+        public function viewNotice()
+        {           
+            // $this->sql = $this->conn->prepare("SELECT * FROM payment");
+            $this->sql = $this->conn->prepare("SELECT notice.*, member.member_name FROM notice LEFT JOIN member ON notice.notice_for = member.member_id");
+            // $this->sql = $this->conn->prepare("SELECT * FROM notice");
+            
+            try
+            {
+                $this->sql->execute();
+
+                if($this->sql->rowCount() > 0)
+                {
+                    $data = $this->sql->fetchAll(PDO::FETCH_OBJ);
+                    return $data;
+                }
+                else
+                {
+                    return false;
+                }    
+            }
+            catch(PDOException $Exception)
+            {
+                $this->errmsg = $Exception->getMessage();
+                $_SESSION['err'] = "Unexpected Error Occured. Please try again Later.<br> Error: ".$this->errmsg;
+                return false;
+            }  
+        }
+
+
     }
 ?>

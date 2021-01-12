@@ -25,11 +25,11 @@
 
     if($status == true)
     {
-        header("Location: ../add-payment.php");
+        header("Location: ../view-payment.php");
     }
     else
     {
-        echo "Error";
+        header("Location: ../add-payment.php");
     }
    
 

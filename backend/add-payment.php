@@ -18,19 +18,9 @@
         <?php require_once "inc/sidenav.php"; ?>
 
         <div class="col-md-9">
-            <?php
-                if(isset($_SESSION['success']) && $_SESSION['success'] != '')
-                {
-            ?>
-            <div class="alert alert-success py3">
-                <?php
-                    echo $_SESSION['success'];
-                    unset($_SESSION['success']);
-                ?>
-            </div>
-            <?php
-                }
-                else if(isset($_SESSION['err']) && $_SESSION['err'] != '')
+           
+            <?php                
+                if(isset($_SESSION['err']) && $_SESSION['err'] != '')
                 {
             ?>
             <div class="alert alert-warning py3">

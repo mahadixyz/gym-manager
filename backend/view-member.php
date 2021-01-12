@@ -10,7 +10,16 @@
 ?>
 <div class="container-fluid overflow-hidden">
     <div class="row gx-2 mt-3">
-        <?php require_once "inc/sidenav.php"; ?>
+    <?php
+        if(isset( $_SESSION['role']) &&  $_SESSION['role'] == 'admin' )
+        {
+          require_once "inc/sidenav-admin.php";
+        }
+        else
+        {
+          require_once "inc/sidenav-user.php";
+        }
+    ?>
 
         <div class="col-md-9">
 

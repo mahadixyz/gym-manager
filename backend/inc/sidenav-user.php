@@ -17,10 +17,10 @@
                         </h2>
                         <div id="collapseProfile" class="accordion-collapse collapse" aria-labelledby="profile" data-bs-parent="#dashNavUser">
                             <div class="accordion-body">
-                                <a class="dashNavItemSub" href="view-profile.php">
+                                <a class="dashNavItemSub" href="user-profile.php">
                                     <i class="me-2" data-feather="info"></i> View Profile
                                 </a>
-                                <a class="dashNavItemSub no-border" href="update-profile.php">
+                                <a class="dashNavItemSub no-border" href="user-update-profile.php">
                                     <i class="me-2" data-feather="rotate-ccw"></i> update profile
                                 </a>
                             </div>

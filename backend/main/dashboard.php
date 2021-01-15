@@ -1,6 +1,6 @@
 <?php
-    require_once "../core/autoload.php";
-    require_once(BASE_URL."\core\dashboard.php");
+    require_once "../../core/autoload.php";
+    require_once "../../core/dashboard.php";
 
     $dbdata = new Dashboard;
     $raw = $dbdata->countMember();
@@ -16,21 +16,22 @@
 
     if (!isset($_SESSION['user_id'])) 
     {
-        header("Location: ../signin.php");
+        header("Location: ../../signin.php");
     }
-    require_once "inc/be-header.php";
-    require_once "inc/be-nav.php";
+    require_once "../inc/be-header.php";
+    require_once "../inc/be-nav.php";
 ?>
+
 <div class="container-fluid overflow-hidden mb-5">
     <div class="row gx-2 mt-3">
       <?php
         if(isset( $_SESSION['role']) &&  $_SESSION['role'] == 'admin' )
         {
-          require_once "inc/be-sidenav-admin.php";
+          require_once "../inc/be-sidenav-admin.php";
         }
         else
         {
-          require_once "inc/be-sidenav-user.php";
+          require_once "../inc/be-sidenav-user.php";
         }
       ?>
 
@@ -276,5 +277,5 @@
 </script>
 
 <?php
-    require_once BASE_URL."\backend\inc\be-footer.php";
+    require_once "../inc/be-footer.php"
 ?>

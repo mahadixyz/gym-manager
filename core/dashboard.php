@@ -31,7 +31,7 @@
             catch(PDOException $Exception)
             {
                 $this->errmsg = $Exception->getMessage();
-                $_SESSION['err'] = "Unexpected Error Occured. Please try again Later.<br> Error: ".$this->errmsg;
+                $_SESSION['error'] = "Unexpected Error Occured. Please try again Later.<br> Error: ".$this->errmsg;
                 return false;
             } 
         }
@@ -40,7 +40,7 @@
         {
             $offset = (int) ($pageNum-1) * $this->perPage;
             // $this->sql = $this->conn->prepare('SELECT * FROM member INNER JOIN auth ON auth.auth_id=member.member_user_id LIMIT :offset, :perpage');
-            $this->sql = $this->conn->prepare("SELECT * FROM member LIMIT $offset, $this->perPage");
+            $this->sql = $this->conn->prepare("SELECT * FROM member LEFT JOIN auth ON member.member_user_id=auth.auth_id LIMIT $offset, $this->perPage");
 
             try
             {
@@ -63,7 +63,7 @@
             {
                 echo "error: ".$Exception->getMessage();
                 // $this->errmsg = $Exception->getMessage();
-                // $_SESSION['err'] = "Unexpected Error Occured. Please try again Later.<br> Error: ".$this->errmsg;
+                // $_SESSION['error'] = "Unexpected Error Occured. Please try again Later.<br> Error: ".$this->errmsg;
                 // return false;
             }  
         }
@@ -88,7 +88,7 @@
             catch(PDOException $Exception)
             {
                 $this->errmsg = $Exception->getMessage();
-                $_SESSION['err'] = "Unexpected Error Occured. Please try again Later.<br> Error: ".$this->errmsg;
+                $_SESSION['error'] = "Unexpected Error Occured. Please try again Later.<br> Error: ".$this->errmsg;
                 return false;
             }  
 
@@ -110,7 +110,7 @@
             {
                 // return 101;
                 $this->errmsg = $Exception->getMessage();
-                $_SESSION['err'] = "Unexpected Error Occured. Please try again Later.<br> Error: ".$this->errmsg;
+                $_SESSION['error'] = "Unexpected Error Occured. Please try again Later.<br> Error: ".$this->errmsg;
                 return false;
             }  
 
@@ -151,7 +151,7 @@
             catch(PDOException $Exception)
             {
                 $this->errmsg = $Exception->getMessage();
-                $_SESSION['err'] = "Unexpected Error Occured. Please try again Later.<br> Error: ".$this->errmsg;
+                $_SESSION['error'] = "Unexpected Error Occured. Please try again Later.<br> Error: ".$this->errmsg;
                 return 0;
             }           
         }
@@ -176,7 +176,7 @@
             catch(PDOException $Exception)
             {
                 $this->errmsg = $Exception->getMessage();
-                $_SESSION['err'] = "Unexpected Error Occured. Please try again Later.<br> Error: ".$this->errmsg;
+                $_SESSION['error'] = "Unexpected Error Occured. Please try again Later.<br> Error: ".$this->errmsg;
                 return false;
             }  
 
@@ -200,7 +200,7 @@
             catch(PDOException $Exception)
             {
                 $this->errmsg = $Exception->getMessage();
-                $_SESSION['err'] = "Unexpected Error Occured. Please try again Later.<br> Error: ".$this->errmsg;
+                $_SESSION['error'] = "Unexpected Error Occured. Please try again Later.<br> Error: ".$this->errmsg;
                 return false;
             }           
         }
@@ -227,7 +227,7 @@
             catch(PDOException $Exception)
             {
                 $this->errmsg = $Exception->getMessage();
-                $_SESSION['err'] = "Unexpected Error Occured. Please try again Later.<br> Error: ".$this->errmsg;
+                $_SESSION['error'] = "Unexpected Error Occured. Please try again Later.<br> Error: ".$this->errmsg;
                 return false;
             }  
         }
@@ -251,7 +251,7 @@
             catch(PDOException $Exception)
             {
                 $this->errmsg = $Exception->getMessage();
-                $_SESSION['err'] = "Unexpected Error Occured. Please try again Later.<br> Error: ".$this->errmsg;
+                $_SESSION['error'] = "Unexpected Error Occured. Please try again Later.<br> Error: ".$this->errmsg;
                 return false;
             }           
         }
@@ -279,7 +279,7 @@
             catch(PDOException $Exception)
             {
                 $this->errmsg = $Exception->getMessage();
-                $_SESSION['err'] = "Unexpected Error Occured. Please try again Later.<br> Error: ".$this->errmsg;
+                $_SESSION['error'] = "Unexpected Error Occured. Please try again Later.<br> Error: ".$this->errmsg;
                 return false;
             }  
         }

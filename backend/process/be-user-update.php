@@ -9,7 +9,7 @@
 
     if(!isset($_POST['update-user']))
     {
-        header("Location: ../user-update-profile.php");
+        header("Location: ../user/user-update-profile.php");
     }
 
     $notice = new Member;
@@ -26,11 +26,11 @@
 
     if($status == true)
     {
-        header("Location: ../user-profile.php");
+        header("Location: ../user/user-profile.php");
     }
     else
     {
-        header("Location: ../user-update-profile.php");
+        header("Location: ../user/user-update-profile.php");
     }
    
 

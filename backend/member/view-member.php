@@ -1,23 +1,23 @@
 <?php
     require_once "../core/autoload.php";
-    require_once "../core/dashboard.php";
+    require_once BASE_URL."/core/dashboard.php";
     if (!isset($_SESSION['user_id'])) 
     {
         header("Location: ../signin.php");
     }
-    require_once "inc/header.php";
-    require_once "inc/nav.php";
+    require_once BASE_URL."inc/header.php";
+    require_once BASE_URL."inc/nav.php";
 ?>
 <div class="container-fluid overflow-hidden">
     <div class="row gx-2 mt-3">
     <?php
         if(isset( $_SESSION['role']) &&  $_SESSION['role'] == 'admin' )
         {
-          require_once "inc/sidenav-admin.php";
+          require_once BASE_URL."inc/sidenav-admin.php";
         }
         else
         {
-          require_once "inc/sidenav-user.php";
+          require_once BASE_URL."inc/sidenav-user.php";
         }
     ?>
 
@@ -35,5 +35,5 @@
 
 </html>
 <?php
-    require_once "inc/footer.php";
+    require_once BASE_URL."inc/footer.php";
 ?>

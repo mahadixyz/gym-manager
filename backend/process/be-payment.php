@@ -9,7 +9,7 @@
 
     if(!isset($_POST['amount']))
     {
-        header("Location: ../add-payment.php");
+        header("Location: ../payment/add-payment.php");
     }
 
     $payment = new Dashboard;
@@ -25,11 +25,11 @@
 
     if($status == true)
     {
-        header("Location: ../view-payment.php");
+        header("Location: ../payment/view-payment.php");
     }
     else
     {
-        header("Location: ../add-payment.php");
+        header("Location: ../payment/add-payment.php");
     }
    
 

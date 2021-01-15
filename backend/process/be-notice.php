@@ -9,7 +9,7 @@
 
     if(!isset($_POST['amount']))
     {
-        header("Location: ../add-notice.php");
+        header("Location: ../notice/add-notice.php");
     }
 
     $notice = new Dashboard;
@@ -25,11 +25,11 @@
 
     if($status == true)
     {
-        header("Location: ../view-notice.php");
+        header("Location: ../notice/view-notice.php");
     }
     else
     {
-        header("Location: ../add-notice.php");
+        header("Location: ../notice/add-notice.php");
     }
    
 

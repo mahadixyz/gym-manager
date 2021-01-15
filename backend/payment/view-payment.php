@@ -1,20 +1,20 @@
 <?php
-    require_once "../core/autoload.php";
-    require_once "../core/dashboard.php";
+    require_once "../../core/autoload.php";
+    require_once "../../core/dashboard.php";
     if (!isset($_SESSION['user_id'])) 
     {
-        header("Location: ../signin.php");
+        header("Location: ../../signin.php");
     }
-    require_once "inc/header.php";
-    require_once "inc/nav.php";
+    require_once "../inc/be-header.php";
+    require_once "../inc/be-nav.php";
 
     $page = 1;
-    if($_GET['page'])
+    if(isset($_GET['page']))
     {
         $page = $_GET['page'];
     }
     
-    if($_GET['page'] < 1)
+    if(isset($_GET['page']) && $_GET['page'] < 1)
     {
         $page = 1;
     }
@@ -22,16 +22,16 @@
 
 
 ?>
-<div class="container-fluid overflow-hidden">
+<div class="container-fluid overflow-hidden mb-5">
     <div class="row gx-2 mt-3">
     <?php
         if(isset( $_SESSION['role']) &&  $_SESSION['role'] == 'admin' )
         {
-          require_once "inc/sidenav-admin.php";
+          require_once "../inc/be-sidenav-admin.php";
         }
         else
         {
-          require_once "inc/sidenav-user.php";
+          require_once "../inc/be-sidenav-user.php";
         }
     ?>
 
@@ -79,7 +79,7 @@
                                     
                         ?>
                             <tr>
-                                <th scope="row"><?=$payment_id?></th>
+                                <th scope="row"><?=$data->payment_id?></th>
                                 <td><?=$pay_month?></td>
                                 <td><?=$amount?></td>
                                 <td><?=$data->member_name?></td>                               
@@ -103,9 +103,6 @@
         </div>
     </div>
 </div>
-</body>
-
-</html>
 <?php
-    require_once "inc/footer.php";
+    require_once "../inc/be-footer.php";
 ?>

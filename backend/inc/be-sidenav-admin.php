@@ -3,7 +3,7 @@
                 <div class="accordion" id="dashNav">
                     <!-- Dashboard Home -->
                     <div class="accordion-item">
-                        <a class="dashNavSingle dashNavTitle" href="dashboard.php">
+                        <a class="dashNavSingle dashNavTitle" href="../main/dashboard.php">
                             Dashboard
                         </a>
                     </div>
@@ -21,7 +21,7 @@
                                 <a class="dashNavItemSub" href="#">
                                     <i class="me-2" data-feather="user-plus"></i> add member
                                 </a>
-                                <a class="dashNavItemSub no-border" href="members.php">
+                                <a class="dashNavItemSub no-border" href="../member/members.php">
                                     <i class="me-2" data-feather="users"></i> view members
                                 </a>
                                
@@ -38,10 +38,10 @@
                         </h2>
                         <div id="collapsePayment" class="accordion-collapse collapse" aria-labelledby="payment" data-bs-parent="#dashNav">
                             <div class="accordion-body">
-                                <a class="dashNavItemSub" href="add-payment.php">
+                                <a class="dashNavItemSub" href="../payment/add-payment.php">
                                     <i class="me-2" data-feather="plus-circle"></i> add payment
                                 </a>
-                                <a class="dashNavItemSub no-border" href="view-payment.php">
+                                <a class="dashNavItemSub no-border" href="../payment/view-payment.php">
                                     <i class="me-2" data-feather="dollar-sign"></i> view payment records
                                 </a>
                             </div>
@@ -76,10 +76,10 @@
                         </h2>
                         <div id="collapseNotice" class="accordion-collapse collapse" aria-labelledby="notice" data-bs-parent="#dashNav">
                             <div class="accordion-body">
-                                <a class="dashNavItemSub" href="add-notice.php">
+                                <a class="dashNavItemSub" href="../notice/add-notice.php">
                                     <i class="me-2" data-feather="plus-circle"></i> add notice
                                 </a>
-                                <a class="dashNavItemSub no-border" href="view-notice.php">
+                                <a class="dashNavItemSub no-border" href="../notice/view-notice.php">
                                     <i class="me-2" data-feather="bell"></i> view all notice
                                 </a>
                             </div>
@@ -116,7 +116,7 @@
 
                     <!-- Signout -->
                     <div class="accordion-item">
-                        <a class="dashNavSingle dashNavSignOut" href="../signout.php?signout=true">
+                        <a class="dashNavSingle dashNavSignOut" href="../../signout.php?signout=true">
                             <i class="me-2" data-feather="log-out"></i> Signout
                         </a>
                     </div>

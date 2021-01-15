@@ -3,7 +3,7 @@
                 <div class="accordion" id="dashNavUser">
                     <!-- Dashboard Home -->
                     <div class="accordion-item">
-                        <a class="dashNavSingle dashNavTitle" href="dashboard.php">
+                        <a class="dashNavSingle dashNavTitle" href="../main/dashboard.php">
                             Dashboard
                         </a>
                     </div>                   
@@ -17,10 +17,10 @@
                         </h2>
                         <div id="collapseProfile" class="accordion-collapse collapse" aria-labelledby="profile" data-bs-parent="#dashNavUser">
                             <div class="accordion-body">
-                                <a class="dashNavItemSub" href="user-profile.php">
+                                <a class="dashNavItemSub" href="../user/user-profile.php">
                                     <i class="me-2" data-feather="info"></i> View Profile
                                 </a>
-                                <a class="dashNavItemSub no-border" href="user-update-profile.php">
+                                <a class="dashNavItemSub no-border" href="../user/user-update-profile.php">
                                     <i class="me-2" data-feather="rotate-ccw"></i> update profile
                                 </a>
                             </div>
@@ -46,7 +46,7 @@
 
                     <!-- Signout -->
                     <div class="accordion-item">
-                        <a class="dashNavSingle dashNavSignOut" href="../signout.php?signout=true">
+                        <a class="dashNavSingle dashNavSignOut" href="../../signout.php?signout=true">
                             <i class="me-2" data-feather="log-out"></i> Signout
                         </a>
                     </div>

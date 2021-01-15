@@ -133,7 +133,7 @@
             catch(PDOException $Exception)
             {
                 $this->errmsg = $Exception->getMessage();
-                $_SESSION['err'] = "Unexpected Error Occured. Please try again Later.<br> Error: ".$this->errmsg;
+                $_SESSION['error'] = "Unexpected Error Occured. Please try again Later.<br> Error: ".$this->errmsg;
                 return 0;
             }           
         }

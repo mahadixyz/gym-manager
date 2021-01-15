@@ -17,7 +17,7 @@
         {
             unset($_SESSION['email'], $_SESSION['pass']);
             
-            header("Location: ../backend/dashboard.php");
+            header("Location: ../backend/main/dashboard.php");
         }
         else
         {

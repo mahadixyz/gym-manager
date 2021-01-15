@@ -1,12 +1,12 @@
 <?php
-    require_once "../core/autoload.php";
-    require_once "../core/member.php";
+    require_once "../../core/autoload.php";
+    require_once "../../core/member.php";
     if (!isset($_SESSION['user_id'])) 
     {
-        header("Location: ../signin.php");
+        header("Location: ../../signin.php");
     }
-    require_once "inc/header.php";
-    require_once "inc/nav.php";
+    require_once "../inc/be-header.php";
+    require_once "../inc/be-nav.php";
 
     $user = new Member;
     $result = $user->getProfileData($_SESSION['user_id']);  
@@ -34,24 +34,24 @@
     <?php
         if(isset( $_SESSION['role']) &&  $_SESSION['role'] == 'admin' )
         {
-          require_once "inc/sidenav-admin.php";
+          require_once "../inc/be-sidenav-admin.php";
         }
         else
         {
-          require_once "inc/sidenav-user.php";
+          require_once "../inc/be-sidenav-user.php";
         }
     ?>
 
         <div class="col-md-9">
            
             <?php                
-                if(isset($_SESSION['err']) && $_SESSION['err'] != '')
+                if(isset($_SESSION['error']) && $_SESSION['error'] != '')
                 {
             ?>
             <div class="alert alert-warning py3">
                 <?php
-                    echo $_SESSION['err'];
-                    unset($_SESSION['err']);
+                    echo $_SESSION['error'];
+                    unset($_SESSION['error']);
                 ?>
             </div>
             <?php
@@ -66,11 +66,11 @@
                     <?php
                         if(isset($pic))
                         {
-                            echo '<img src="../_resources/images/'.$pic.'" alt="" class="img-thumbnail img-fluid w-25">';
+                            echo '<img src="../../_resources/images/'.$pic.'" alt="" class="img-thumbnail img-fluid w-25">';
                         }
                         else
                         {
-                            echo '<img src="../_resources/images/default.jpg" alt="" class="img-thumbnail img-fluid w-25">';
+                            echo '<img src="../../_resources/images/default.jpg" alt="" class="img-thumbnail img-fluid w-25">';
                         }
                     ?>                    
                     
@@ -92,9 +92,7 @@
         </div>
     </div>
 </div>
-</body>
 
-</html>
 <?php
-    require_once "inc/footer.php";
+    require_once "../inc/be-footer.php";
 ?>

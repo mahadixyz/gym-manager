@@ -6,17 +6,23 @@
         private $user = "root";
         private $pass ="";
         private $database = "crm4gym";
+        
         protected $conn;
         protected $errmsg;
 
         /**
-         * Undocumented function
+         * Class Constructor
          */
         public function __construct()
         {
             $this->dbConnect();            
         }
 
+        /**
+         * dbconnect() Method
+         * Uses: establishing connection with database
+         * @return void
+         */
         private function dbConnect()
         {
             try

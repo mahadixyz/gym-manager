@@ -4,7 +4,7 @@
     {
         header("Location: backend/dashboard.php");
     }
-    
+    $_SESSION['pageTitle'] = "Sign Up for a new Account | CRM";
     require_once "inc/header.php";
     require_once "inc/nav.php";
 ?>
@@ -23,16 +23,22 @@
                 if(isset($_SESSION['success']) && $_SESSION['success'] != '')
                 {
             ?>
-            <div class="alert alert-success py3">
-                <?=$_SESSION['success'];?>
+            <div class="alert alert-success py3">                
+                <?php
+                    echo $_SESSION['success'];
+                    unset($_SESSION['success']);
+                ?>
             </div>
             <?php
                 }
-                else if(isset($_SESSION['err']) && $_SESSION['err'] != '')
+                else if(isset($_SESSION['error']) && $_SESSION['error'] != '')
                 {
             ?>
             <div class="alert alert-warning py3">
-                <?=$_SESSION['err'];?>
+                <?php
+                    echo $_SESSION['error'];
+                    unset($_SESSION['error']);
+                ?>
             </div>
             <?php
                 }
@@ -43,36 +49,48 @@
     <div class="row">
         <div class="col-6 mx-auto p-2">
             <form action="process/signup.php" method="POST">
+            <?php
+                if(isset($_SESSION['fullname'], $_SESSION['email'], $_SESSION['password'], $_SESSION['cPassword']))
+                {
+                    $prev_fullname = $_SESSION['fullname'];
+                    $prev_email = $_SESSION['email'];
+                    $prev_password = $_SESSION['password'];
+                    $prev_cPassword = $_SESSION['cPassword'];
+
+                    unset($_SESSION['fullname'], $_SESSION['email'], $_SESSION['password'], $_SESSION['cPassword']);
+                }
+            ?>
                 <div class="mb-2">
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control rounded-0" name="fullname" id="fullname" placeholder="Beth harmon">
+                        <input type="text" class="form-control rounded-0" name="fullname" id="fullname" placeholder="Beth harmon" <?php if(isset($prev_fullname)){echo 'value="'.$prev_fullname.'"';} ?>>
                         <label for="fullname">Your Name</label>
                     </div>
                 </div>
 
                 <div class="mb-2">
                     <div class="form-floating mb-3">
-                        <input type="email" class="form-control rounded-0" name="email" id="email" placeholder="beth@mahadi.xyz">
+                        <input type="email" class="form-control rounded-0" name="email" id="email" placeholder="beth@mahadi.xyz" <?php if(isset($prev_email)){echo 'value="'.$prev_email.'"';} ?>>
                         <label for="email">Email address</label>
                     </div>
                 </div>
                 
                 <div class="mb-3">
                     <div class="form-floating">
-                        <input type="password" class="form-control rounded-0" name="password" id="password" placeholder="********">
+                        <input type="password" class="form-control rounded-0" name="password" id="password" placeholder="********" <?php if(isset($prev_password)){echo 'value="'.$prev_password.'"';} ?>>
                         <label for="password">Password</label>
                     </div>
                 </div> 
 
                 <div class="mb-2">
                     <div class="form-floating">
-                        <input type="password" class="form-control rounded-0" name="cPassword" id="cPassword" placeholder="********">
+                        <input type="password" class="form-control rounded-0" name="cPassword" id="cPassword" placeholder="********" <?php if(isset($prev_cPassword)){echo 'value="'.$prev_cPassword.'"';} ?>>
                         <label for="cPassword">Confirm Password</label>
                     </div>
                     <?php 
                         if(isset($_SESSION['pwErr']))
                         {
                             echo "<span class='text-danger'>". $_SESSION['pwErr'] . "</span>";
+                            unset($_SESSION['pwErr']);
                         } 
                         else
                         {
@@ -91,6 +109,7 @@
                         if(isset($_SESSION['captchaErr']))
                         {
                             echo "<span class='text-danger'>". $_SESSION['captchaErr'] . "</span>";
+                            unset($_SESSION['captchaErr']);
                         } 
                         else
                         {
@@ -120,6 +139,5 @@
 </div>
 
 <?php
-    session_destroy();
     require_once "inc/footer.php";
 ?>

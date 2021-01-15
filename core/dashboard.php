@@ -5,7 +5,10 @@
         private $sql;
         private $query;
         private $perPage = 5;
-
+        
+        /**
+         * Class Constructor
+         */
         public function __construct()
         {
             parent::__construct();          

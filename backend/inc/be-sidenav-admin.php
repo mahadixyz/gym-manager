@@ -116,7 +116,7 @@
 
                     <!-- Signout -->
                     <div class="accordion-item">
-                        <a class="dashNavSingle dashNavSignOut" href="../signout.php">
+                        <a class="dashNavSingle dashNavSignOut" href="../signout.php?signout=true">
                             <i class="me-2" data-feather="log-out"></i> Signout
                         </a>
                     </div>

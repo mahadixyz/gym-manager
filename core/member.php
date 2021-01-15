@@ -45,7 +45,7 @@
             catch(PDOException $Exception)
             {
                 $this->errmsg = $Exception->getMessage();
-                $_SESSION['err'] = "Unexpected Error Occured. Please try again Later.<br> Error: ".$this->errmsg;
+                $_SESSION['error'] = "Unexpected Error Occured. Please try again Later.<br> Error: ".$this->errmsg;
                 return 0;
             }           
         }
@@ -75,13 +75,13 @@
                 }
                 else
                 {
-                    $_SESSION['err'] = "Login Failed. Incorrect Username / Password";
+                    $_SESSION['error'] = "Login Failed. Incorrect Username / Password";
                     return 0;
                 }
             }
             else
             {
-                $_SESSION['err'] = "Account does not exist.";
+                $_SESSION['error'] = "Account does not exist.";
                 return 0;
             }            
         }
@@ -107,7 +107,7 @@
             catch(PDOException $Exception)
             {
                 $this->errmsg = $Exception->getMessage();
-                $_SESSION['err'] = "Unexpected Error Occured. Please try again Later.<br> Error: ".$this->errmsg;
+                $_SESSION['error'] = "Unexpected Error Occured. Please try again Later.<br> Error: ".$this->errmsg;
                 return false;
             }  
 

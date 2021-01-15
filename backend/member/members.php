@@ -1,6 +1,6 @@
 <?php
-    require_once "../core/autoload.php";
-    require_once "../core/dashboard.php";
+    require_once "../../core/autoload.php";
+    require_once BASE_URL."core/dashboard.php";
     if (!isset($_SESSION['user_id'])) 
     {
         header("Location: ../signin.php");

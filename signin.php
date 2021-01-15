@@ -1,9 +1,10 @@
 <?php
-    session_start();
+    require_once "core/autoload.php";
     if (isset($_SESSION['user_id'])) 
     {
         header("Location: backend/dashboard.php");
     }
+    $_SESSION['pageTitle'] = "Sign In | CRM";
     require_once "inc/header.php";
     require_once "inc/nav.php";
 ?>
@@ -23,15 +24,21 @@
                 {
             ?>
             <div class="alert alert-success py3">
-                <?=$_SESSION['success'];?>
+                <?php
+                    echo $_SESSION['success'];
+                    unset($_SESSION['success']);
+                ?>
             </div>
             <?php
                 }
-                else if(isset($_SESSION['err']) && $_SESSION['err'] != '')
+                else if(isset($_SESSION['error']) && $_SESSION['error'] != '')
                 {
             ?>
             <div class="alert alert-warning py3">
-                <?=$_SESSION['err'];?>
+                <?php
+                    echo $_SESSION['error'];
+                    unset($_SESSION['error']);
+                ?>
             </div>
             <?php
                 }
@@ -45,17 +52,25 @@
         <div class="col-6 mx-auto p-2">
 
             <form action="process/signin.php" method="POST">
+            <?php
+                if(isset($_SESSION['email'], $_SESSION['pass']))
+                {
+                    $prev_email = $_SESSION['email'];
+                    $prev_pass = $_SESSION['pass'];
+                    unset($_SESSION['email'], $_SESSION['pass']);
+                }
+            ?>
 
                 <div class="mb-2">
                     <div class="form-floating mb-3">
-                        <input type="email" class="form-control rounded-0" name="email" id="email" placeholder="beth@mahadi.xyz">
+                        <input type="email" class="form-control rounded-0" name="email" id="email" placeholder="beth@mahadi.xyz" <?php if(isset($prev_email)){echo 'value="'.$prev_email.'"';}?>>
                         <label for="email">Email address</label>
                     </div>
                 </div>
                 
                 <div class="mb-3">
                     <div class="form-floating">
-                        <input type="password" class="form-control rounded-0" name="password" id="password" placeholder="********">
+                        <input type="password" class="form-control rounded-0" name="password" id="password" placeholder="********" <?php if(isset($prev_pass)){echo 'value="'.$prev_pass.'"';}?>>
                         <label for="password">Password</label>
                     </div>
                 </div>            

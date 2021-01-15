@@ -4,7 +4,8 @@
     {
         header("Location: signin.php");
     }
-    else
+
+    if(isset($_GET['signout']) && $_GET['signout'] == true)
     {
         session_unset();
         session_destroy();

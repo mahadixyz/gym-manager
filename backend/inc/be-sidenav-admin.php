@@ -57,11 +57,11 @@
                         </h2>
                         <div id="collapseReport" class="accordion-collapse collapse" aria-labelledby="report" data-bs-parent="#dashNav">
                             <div class="accordion-body">
-                                <a class="dashNavItemSub" href="#">
-                                    <i class="me-2" data-feather="file-plus"></i> add
+                                <a class="dashNavItemSub" href="../report/add-report.php">
+                                    <i class="me-2" data-feather="file-plus"></i> add report
                                 </a>
-                                <a class="dashNavItemSub no-border" href="#">
-                                    <i class="me-2" data-feather="file-text"></i> view 
+                                <a class="dashNavItemSub no-border" href="../report/view-reports-all.php">
+                                    <i class="me-2" data-feather="file-text"></i> view all reports
                                 </a>
                             </div>
                         </div>

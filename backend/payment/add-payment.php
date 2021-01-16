@@ -45,7 +45,7 @@
             <div class="border p-4">
                 <h2 class="display-5">Add Payment</h2>
 
-                <form action="../process/payment.php" method="POST">
+                <form action="../process/be-payment.php" method="POST">
 
                     <div class="mb-3">
                         <label for="month" class="form-label">Payment Month</label>
@@ -62,21 +62,22 @@
                         <select class="form-select rounded-0" id="member" name="member">
                             <option value="" selected>Select Member</option>
 
-                <?php
-                    if($result != false)
-                    {
-                        foreach($result as $data)
-                        {                             
-                ?>
-                            <option value="<?=$data->member_id?>"><?=$data->member_name?></option>
-                <?php
-                        }
-                    }
-                ?>
+                        <?php
+                            if($result != false)
+                            {
+                                foreach($result as $data)
+                                {                             
+                        ?>
+                                    <option value="<?=$data->member_id?>"><?=$data->member_name?></option>
+                        <?php
+                                }
+                            }
+                        ?>
+
                         </select>
                     </div>
                 
-                    <button type="submit" class="btn btn-primary rounded-0">Submit</button>
+                    <button type="submit" name="payment-form" class="btn btn-primary rounded-0">Submit</button>
 
                 </form>
 

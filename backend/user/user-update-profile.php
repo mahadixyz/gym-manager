@@ -78,7 +78,7 @@
 
                 <div class="border my-2 p-5">
 
-                    <form action="../process/user-update.php" method="POST">
+                    <form action="../process/be-user-update.php" method="POST">
                         <div class="form-floating mb-3">
                             <input type="email" class="form-control rounded-0" id="email" value="<?=$email?>" disabled>
                             <label for="email">Email address</label>
@@ -131,7 +131,7 @@
                         </div>                     
 
                         
-                        <button type="submit" name="update-user" class="btn btn-success rounded-0">Update</button>
+                        <button type="submit" name="update-user-rorm" class="btn btn-success rounded-0">Update</button>
                         <button type="reset" class="btn btn-dark rounded-0">Clear</button>
 
                     </form>

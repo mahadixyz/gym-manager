@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 12, 2021 at 07:42 AM
+-- Generation Time: Jan 16, 2021 at 08:00 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.2
 
@@ -79,8 +79,8 @@ CREATE TABLE `member` (
 --
 
 INSERT INTO `member` (`member_id`, `member_name`, `member_gender`, `member_dob`, `member_address`, `member_mobile`, `member_photo`, `member_status`, `member_user_id`, `member_joined_at`) VALUES
-(1, 'Charlene Cochran', NULL, NULL, NULL, NULL, NULL, '1', 1, '2021-01-11 19:42:43'),
-(2, 'Peter Shilton', NULL, NULL, NULL, NULL, NULL, '1', 2, '2021-01-11 19:44:13'),
+(1, 'Charlene Cochran', 'female', '2021-01-12', 'asff afasf', '0125555', NULL, '1', 1, '2021-01-11 19:42:43'),
+(2, 'Peter Shilton', 'others', '1990-01-01', 'House: 11/B, C Wing, 12/C East Birmingham Street, London. UK', '01555898989', 'peter.jpg', '1', 2, '2021-01-11 19:44:13'),
 (3, 'Ashley Cole', NULL, NULL, NULL, NULL, NULL, '2', 3, '2021-01-11 19:44:45'),
 (4, 'Frank Moore', NULL, NULL, NULL, NULL, NULL, '1', 4, '2021-01-11 19:45:25'),
 (5, 'Billy Owen', NULL, NULL, NULL, NULL, NULL, '0', 5, '2021-01-11 19:46:19'),
@@ -144,7 +144,33 @@ INSERT INTO `payment` (`payment_id`, `payment_amount`, `payment_month`, `payment
 (5, '1000', '2020-07', '2', '2021-01-12 03:14:29'),
 (6, '346', '2020-11', '10', '2021-01-12 03:19:49'),
 (7, '1500', '2020-11', '13', '2021-01-12 03:20:16'),
-(8, '1750', '2020-06', '8', '2021-01-12 05:13:45');
+(8, '1750', '2020-06', '8', '2021-01-12 05:13:45'),
+(9, '500', '2021-01', '12', '2021-01-14 06:35:12');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `report`
+--
+
+CREATE TABLE `report` (
+  `report_id` int(11) NOT NULL,
+  `report_member_id` int(11) NOT NULL,
+  `report_height` float NOT NULL,
+  `report_weight` float NOT NULL,
+  `report_waist` float NOT NULL,
+  `report_bmi` float NOT NULL,
+  `report_body_fat` float NOT NULL,
+  `report_generated` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `report`
+--
+
+INSERT INTO `report` (`report_id`, `report_member_id`, `report_height`, `report_weight`, `report_waist`, `report_bmi`, `report_body_fat`, `report_generated`) VALUES
+(1, 2, 1.65, 85, 45, 31.22, 28.39, '2021-01-16 06:13:01'),
+(2, 9, 1.65, 90, 55, 33.06, 35.2, '2021-01-16 06:13:23');
 
 --
 -- Indexes for dumped tables
@@ -176,6 +202,12 @@ ALTER TABLE `payment`
   ADD PRIMARY KEY (`payment_id`);
 
 --
+-- Indexes for table `report`
+--
+ALTER TABLE `report`
+  ADD PRIMARY KEY (`report_id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -201,7 +233,13 @@ ALTER TABLE `notice`
 -- AUTO_INCREMENT for table `payment`
 --
 ALTER TABLE `payment`
-  MODIFY `payment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `payment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT for table `report`
+--
+ALTER TABLE `report`
+  MODIFY `report_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables

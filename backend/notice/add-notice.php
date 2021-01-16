@@ -45,7 +45,7 @@
             <div class="border p-4">
                 <h2 class="display-5">Add Notice</h2>
 
-                <form action="../process/notice.php" method="POST">
+                <form action="../process/be-notice.php" method="POST">
 
                     <div class="mb-3">
                         <label for="title" class="form-label">Notice Title</label>
@@ -76,7 +76,7 @@
                         </select>
                     </div>
                 
-                    <button type="submit" class="btn btn-primary rounded-0">Submit</button>
+                    <button type="submit" name="notice-form" class="btn btn-primary rounded-0">Submit</button>
 
                 </form>
 
@@ -92,10 +92,6 @@
 	});
 </script>
 
-
-</body>
-
-</html>
 <?php
     require_once "../inc/be-footer.php";
 ?>

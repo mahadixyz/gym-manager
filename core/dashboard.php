@@ -284,6 +284,86 @@
             }  
         }
 
+        public function getMemberInfo($id)
+        {
+            try
+            {
+                $this->sql = $this->conn->prepare('SELECT member_dob, member_gender FROM member WHERE member_id = :member_id');
+                $this->sql->bindParam(':member_id', $id); 
+                $this->sql->execute();
+
+                if($this->sql->rowCount() > 0)
+                {
+                    $data = $this->sql->fetch(PDO::FETCH_OBJ);
+                    return $data;
+                }
+                else
+                {
+                    return false;
+                }    
+            }
+            catch(PDOException $Exception)
+            {
+                $this->errmsg = $Exception->getMessage();
+                $_SESSION['error'] = "Unexpected Error Occured. Please try again Later.<br> Error: ".$this->errmsg;
+                return false;
+            }  
+
+        }
+
+        public function addReport($mem_id, $height, $weight, $waist, $bmi, $bfat)
+        {           
+            $this->query = $this->conn->prepare('INSERT INTO report(report_member_id, report_height, report_weight, report_waist, report_bmi, report_body_fat) VALUES(:member, :height, :mem_weight, :waist, :bmi, :bfat)');
+	
+            $this->query->bindParam(':member',$mem_id); 
+            $this->query->bindParam(':height',$height);
+            $this->query->bindParam(':mem_weight',$weight);
+            $this->query->bindParam(':waist',$waist); 
+            $this->query->bindParam(':bmi',$bmi);
+            $this->query->bindParam(':bfat',$bfat);
+            
+            try
+            {                
+                $this->query->execute();                
+
+                $_SESSION['success']= "Report Added";
+                return true;
+            }
+            catch(PDOException $Exception)
+            {
+                $this->errmsg = $Exception->getMessage();
+                $_SESSION['error'] = "Unexpected Error Occured. Please try again Later.<br> Error: ".$this->errmsg;
+                return false;
+            }           
+        }
+
+        public function viewReport()
+        {           
+            // $this->sql = $this->conn->prepare("SELECT * FROM payment");
+            $this->sql = $this->conn->prepare("SELECT report.*, member.member_name FROM report LEFT JOIN member ON report.report_member_id = member.member_id");
+            // $this->sql = $this->conn->prepare("SELECT * FROM notice");
+            
+            try
+            {
+                $this->sql->execute();
+
+                if($this->sql->rowCount() > 0)
+                {
+                    $data = $this->sql->fetchAll(PDO::FETCH_OBJ);
+                    return $data;
+                }
+                else
+                {
+                    return false;
+                }    
+            }
+            catch(PDOException $Exception)
+            {
+                $this->errmsg = $Exception->getMessage();
+                $_SESSION['error'] = "Unexpected Error Occured. Please try again Later.<br> Error: ".$this->errmsg;
+                return false;
+            }  
+        }
 
     }
 ?>

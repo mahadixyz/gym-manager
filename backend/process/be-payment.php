@@ -7,7 +7,7 @@
         header("Location: ../../signin.php");
     }
 
-    if(!isset($_POST['amount']))
+    if(!isset($_POST['payment-form']))
     {
         header("Location: ../payment/add-payment.php");
     }

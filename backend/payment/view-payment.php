@@ -5,6 +5,8 @@
     {
         header("Location: ../../signin.php");
     }
+
+    $_SESSION['pageTitle'] = "View All Payments";
     require_once "../inc/be-header.php";
     require_once "../inc/be-nav.php";
 
@@ -18,8 +20,6 @@
     {
         $page = 1;
     }
-
-
 
 ?>
 <div class="container-fluid overflow-hidden mb-5">

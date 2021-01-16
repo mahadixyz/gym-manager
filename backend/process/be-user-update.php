@@ -7,7 +7,7 @@
         header("Location: ../../signin.php");
     }
 
-    if(!isset($_POST['update-user-rorm']))
+    if(!isset($_POST['update-user-form']))
     {
         header("Location: ../user/user-update-profile.php");
     }

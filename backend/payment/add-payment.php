@@ -5,6 +5,8 @@
     {
         header("Location: ../../signin.php");
     }
+
+    $_SESSION['pageTitle'] = "Add new Payment";
     require_once "../inc/be-header.php";
     require_once "../inc/be-nav.php";
 
@@ -29,13 +31,13 @@
         <div class="col-md-9">
            
             <?php                
-                if(isset($_SESSION['err']) && $_SESSION['err'] != '')
+                if(isset($_SESSION['error']) && $_SESSION['error'] != '')
                 {
             ?>
             <div class="alert alert-warning py3">
                 <?php
-                    echo $_SESSION['err'];
-                    unset($_SESSION['err']);
+                    echo $_SESSION['error'];
+                    unset($_SESSION['error']);
                 ?>
             </div>
             <?php
@@ -85,9 +87,7 @@
         </div>
     </div>
 </div>
-</body>
 
-</html>
 <?php
     require_once "../inc/be-footer.php";
 ?>

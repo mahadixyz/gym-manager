@@ -5,6 +5,7 @@
     {
         header("Location: ../../signin.php");
     }
+    $_SESSION['pageTitle'] = "Add new Notice";
     require_once "../inc/be-header.php";
     require_once "../inc/be-nav.php";
 

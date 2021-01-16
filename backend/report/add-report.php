@@ -11,6 +11,8 @@
     {
         header("Location: ../main/dashboard.php");
     }
+
+    $_SESSION['pageTitle'] = "Add new Report";
     require_once "../inc/be-header.php";
     require_once "../inc/be-nav.php";
 

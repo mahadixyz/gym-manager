@@ -5,6 +5,8 @@
     {
         header("Location: ../../signin.php");
     }
+
+    $_SESSION['pageTitle'] = "View All Report";
     require_once "../inc/be-header.php";
     require_once "../inc/be-nav.php";
 

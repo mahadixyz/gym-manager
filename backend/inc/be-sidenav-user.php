@@ -1,13 +1,7 @@
 <div class="col-3">
             <div class="dashLeftMenuUser">
                 <div class="accordion" id="dashNavUser">
-                    <!-- Dashboard Home -->
-                    <div class="accordion-item">
-                        <a class="dashNavSingle dashNavTitle" href="../main/dashboard.php">
-                            Dashboard
-                        </a>
-                    </div>                   
-
+                    
                     <!-- Profile -->
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="profile">

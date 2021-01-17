@@ -5,8 +5,18 @@
     {
         header("Location: ../signin.php");
     }
+
+    $_SESSION['pageTitle'] = "Update Member data";
     require_once BASE_URL."inc/header.php";
-    require_once BASE_URL."inc/nav.php";
+
+    if(isset( $_SESSION['role']) &&  $_SESSION['role'] == 'admin' )
+    {
+      require_once "../inc/be-nav-admin.php";
+    }
+    else
+    {
+      require_once "../inc/be-nav-user.php";
+    }
 ?>
 <div class="container-fluid overflow-hidden">
     <div class="row gx-2 mt-3">

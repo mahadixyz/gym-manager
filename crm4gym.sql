@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.1
+-- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 16, 2021 at 08:00 AM
--- Server version: 10.4.11-MariaDB
--- PHP Version: 7.4.2
+-- Generation Time: Jan 17, 2021 at 07:54 AM
+-- Server version: 10.4.17-MariaDB
+-- PHP Version: 7.2.34
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -21,6 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `crm4gym`
 --
+CREATE DATABASE IF NOT EXISTS `crm4gym` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `crm4gym`;
 
 -- --------------------------------------------------------
 
@@ -83,7 +84,7 @@ INSERT INTO `member` (`member_id`, `member_name`, `member_gender`, `member_dob`,
 (2, 'Peter Shilton', 'others', '1990-01-01', 'House: 11/B, C Wing, 12/C East Birmingham Street, London. UK', '01555898989', 'peter.jpg', '1', 2, '2021-01-11 19:44:13'),
 (3, 'Ashley Cole', NULL, NULL, NULL, NULL, NULL, '2', 3, '2021-01-11 19:44:45'),
 (4, 'Frank Moore', NULL, NULL, NULL, NULL, NULL, '1', 4, '2021-01-11 19:45:25'),
-(5, 'Billy Owen', NULL, NULL, NULL, NULL, NULL, '0', 5, '2021-01-11 19:46:19'),
+(5, 'Billy Owen', NULL, NULL, NULL, NULL, NULL, '1', 5, '2021-01-11 19:46:19'),
 (6, 'Bryan Terry', NULL, NULL, NULL, NULL, NULL, '2', 6, '2021-01-11 19:46:48'),
 (7, 'Sandy Maclver', NULL, NULL, NULL, NULL, NULL, '1', 7, '2021-01-11 19:47:55'),
 (8, 'Lucy Morgan', NULL, NULL, NULL, NULL, NULL, '2', 8, '2021-01-11 19:48:39'),
@@ -117,6 +118,28 @@ INSERT INTO `notice` (`notice_id`, `notice_title`, `notice_body`, `notice_for`, 
 (3, 'Payment Notice', 'Please Pay the fee of December, 2020', 6, '2021-01-12 03:54:16'),
 (4, 'Happy New Year', '<p>Wish you all a very <strong>Happy New Year 2021</strong></p>', 0, '2021-01-12 04:00:24'),
 (5, 'Payment Notice', '<p>Payment Done for <strong>Billy Owen</strong></p>', 5, '2021-01-12 05:16:15');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `package`
+--
+
+CREATE TABLE `package` (
+  `package_id` int(11) NOT NULL,
+  `package_name` varchar(100) NOT NULL,
+  `package_details` text NOT NULL,
+  `package_fee` float NOT NULL,
+  `package_created` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `package`
+--
+
+INSERT INTO `package` (`package_id`, `package_name`, `package_details`, `package_fee`, `package_created`) VALUES
+(1, 'Gold', '<p>1. Diet Plan</p>\r\n<p>2. Gym facilites</p>\r\n<p>3. Protien Shacke</p>', 1500, '2021-01-17 05:31:52'),
+(2, 'Platinum', '<p>1. Diet Plan</p>\r\n<p>2. Breckfast</p>\r\n<p>3. Hot Yoga</p>\r\n<p>4. Cardio</p>\r\n<p>5. Weight Lifting</p>', 2500, '2021-01-17 05:32:47');
 
 -- --------------------------------------------------------
 
@@ -196,6 +219,12 @@ ALTER TABLE `notice`
   ADD PRIMARY KEY (`notice_id`);
 
 --
+-- Indexes for table `package`
+--
+ALTER TABLE `package`
+  ADD PRIMARY KEY (`package_id`);
+
+--
 -- Indexes for table `payment`
 --
 ALTER TABLE `payment`
@@ -228,6 +257,12 @@ ALTER TABLE `member`
 --
 ALTER TABLE `notice`
   MODIFY `notice_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `package`
+--
+ALTER TABLE `package`
+  MODIFY `package_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `payment`

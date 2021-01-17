@@ -235,15 +235,15 @@
 
         public function addNotice($title, $for, $body)
         {           
-            $authQuery = $this->conn->prepare('INSERT INTO notice(notice_title, notice_body, notice_for) VALUES(:ntitle, :nbody, :nfor)');
+            $this->query = $this->conn->prepare('INSERT INTO notice(notice_title, notice_body, notice_for) VALUES(:ntitle, :nbody, :nfor)');
 	
-            $authQuery->bindParam(':ntitle',$title); 
-            $authQuery->bindParam(':nbody',$body);
-            $authQuery->bindParam(':nfor',$for);
+            $this->query->bindParam(':ntitle',$title); 
+            $this->query->bindParam(':nbody',$body);
+            $this->query->bindParam(':nfor',$for);
             
             try
             {                
-                $authQuery->execute();                
+                $this->query->execute();                
 
                 $_SESSION['success']= "Notice Added";
                 return true;
@@ -338,10 +338,58 @@
         }
 
         public function viewReport()
-        {           
-            // $this->sql = $this->conn->prepare("SELECT * FROM payment");
+        {   
             $this->sql = $this->conn->prepare("SELECT report.*, member.member_name FROM report LEFT JOIN member ON report.report_member_id = member.member_id");
-            // $this->sql = $this->conn->prepare("SELECT * FROM notice");
+            
+            try
+            {
+                $this->sql->execute();
+
+                if($this->sql->rowCount() > 0)
+                {
+                    $data = $this->sql->fetchAll(PDO::FETCH_OBJ);
+                    return $data;
+                }
+                else
+                {
+                    return false;
+                }    
+            }
+            catch(PDOException $Exception)
+            {
+                $this->errmsg = $Exception->getMessage();
+                $_SESSION['error'] = "Unexpected Error Occured. Please try again Later.<br> Error: ".$this->errmsg;
+                return false;
+            }  
+        }
+
+
+        public function addPackage($name, $details, $fee)
+        {           
+            $this->query = $this->conn->prepare('INSERT INTO package(package_name, package_details, package_fee) VALUES(:pname, :pdetails, :pfee)');
+	
+            $this->query->bindParam(':pname',$name); 
+            $this->query->bindParam(':pdetails',$details);
+            $this->query->bindParam(':pfee',$fee);
+            
+            try
+            {                
+                $this->query->execute();                
+
+                $_SESSION['success']= "Package Added";
+                return true;
+            }
+            catch(PDOException $Exception)
+            {
+                $this->errmsg = $Exception->getMessage();
+                $_SESSION['error'] = "Unexpected Error Occured. Please try again Later.<br> Error: ".$this->errmsg;
+                return false;
+            }           
+        }
+
+        public function viewPackages()
+        {           
+            $this->sql = $this->conn->prepare("SELECT * FROM package");
             
             try
             {

@@ -8,7 +8,15 @@
 
     $_SESSION['pageTitle'] = "Add new Payment";
     require_once "../inc/be-header.php";
-    require_once "../inc/be-nav.php";
+    
+    if(isset( $_SESSION['role']) &&  $_SESSION['role'] == 'admin' )
+    {
+      require_once "../inc/be-nav-admin.php";
+    }
+    else
+    {
+      require_once "../inc/be-nav-user.php";
+    }
 
     $payment = new Dashboard;
     $result = $payment->getMember();    

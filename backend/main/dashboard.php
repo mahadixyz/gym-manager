@@ -19,7 +19,16 @@
         header("Location: ../../signin.php");
     }
     require_once "../inc/be-header.php";
-    require_once "../inc/be-nav.php";
+
+    if(isset( $_SESSION['role']) &&  $_SESSION['role'] == 'admin' )
+    {
+      require_once "../inc/be-nav-admin.php";
+    }
+    else
+    {
+      require_once "../inc/be-nav-user.php";
+    }
+    
 ?>
 
 <div class="container-fluid overflow-hidden mb-5">

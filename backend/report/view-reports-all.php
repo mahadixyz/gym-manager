@@ -8,7 +8,15 @@
 
     $_SESSION['pageTitle'] = "View All Report";
     require_once "../inc/be-header.php";
-    require_once "../inc/be-nav.php";
+    
+    if(isset( $_SESSION['role']) &&  $_SESSION['role'] == 'admin' )
+    {
+      require_once "../inc/be-nav-admin.php";
+    }
+    else
+    {
+      require_once "../inc/be-nav-user.php";
+    }
 
     $page = 1;
     if(isset($_GET['page']))

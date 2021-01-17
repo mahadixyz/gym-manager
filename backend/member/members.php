@@ -5,8 +5,18 @@
     {
         header("Location: ../../signin.php");
     }
+
+    $_SESSION['pageTitle'] = "View All Members";
     require_once "../inc/be-header.php";
-    require_once "../inc/be-nav.php";
+
+    if(isset( $_SESSION['role']) &&  $_SESSION['role'] == 'admin' )
+    {
+      require_once "../inc/be-nav-admin.php";
+    }
+    else
+    {
+      require_once "../inc/be-nav-user.php";
+    }
 
     $page = 1;
     if(isset($_GET['page']))

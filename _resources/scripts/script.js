@@ -2,5 +2,5 @@
 $(window).on('load', function () 
 {
     AOS.init();
-    feather.replace();
+    feather.replace({width: '1em', height: '1em'});
 });

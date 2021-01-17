@@ -1,12 +1,6 @@
 <div class="col-3">
             <div class="dashLeftMenu">
-                <div class="accordion" id="dashNav">
-                    <!-- Dashboard Home -->
-                    <div class="accordion-item">
-                        <a class="dashNavSingle dashNavTitle" href="../main/dashboard.php">
-                            Dashboard
-                        </a>
-                    </div>
+                <div class="accordion" id="dashNav">                 
 
                     <!-- Member -->
                     <div class="accordion-item">
@@ -44,6 +38,27 @@
                                 <a class="dashNavItemSub no-border" href="../payment/view-payment.php">
                                     <i class="me-2" data-feather="dollar-sign"></i> view payment records
                                 </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Packages -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="package">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePackage" aria-expanded="false" aria-controls="collapsePackage">
+                                <i class="me-2" data-feather="box"></i> Packages
+                            </button>
+                        </h2>
+                        <div id="collapsePackage" class="accordion-collapse collapse" aria-labelledby="package" data-bs-parent="#dashNav">
+                            <div class="accordion-body">
+                                
+                                <a class="dashNavItemSub" href="../package/add-package.php">
+                                    <i class="me-2" data-feather="plus"></i> add package
+                                </a>
+                                <a class="dashNavItemSub no-border" href="../package/view-packages.php">
+                                    <i class="me-2" data-feather="package"></i> view packages
+                                </a>
+                               
                             </div>
                         </div>
                     </div>

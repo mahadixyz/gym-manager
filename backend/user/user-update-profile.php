@@ -8,7 +8,15 @@
 
     $_SESSION['pageTitle'] = "Update Profile";
     require_once "../inc/be-header.php";
-    require_once "../inc/be-nav.php";
+    
+    if(isset( $_SESSION['role']) &&  $_SESSION['role'] == 'admin' )
+    {
+      require_once "../inc/be-nav-admin.php";
+    }
+    else
+    {
+      require_once "../inc/be-nav-user.php";
+    }
 
     $user = new Member;
     $result = $user->getProfileData($_SESSION['user_id']);  

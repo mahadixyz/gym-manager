@@ -34,6 +34,7 @@
             $email = ($data->auth_email)?$data->auth_email:"Not Set";
             $status = ($data->member_status)?'<span class="badge bg-success"><i data-feather="check"></i>verified</span>':'<span class="badge bg-danger"><i data-feather="info"></i>pending</span>';            
             $pic = $data->member_photo;  
+            $package = ($data->member_package)?$data->member_package:"Not Set"; 
         }
     }
 
@@ -93,6 +94,7 @@
                     <p class="lead"><strong>Date of Birth</strong>: <?=$dob?></p>
                     <p class="lead"><strong>Gender</strong>: <?=$gender?></p>
                     <p class="lead"><strong>Contact No</strong>: <?=$mobile?></p>
+                    <p class="lead"><strong>Package</strong>: <?=$package?></p>
                     <p class="lead"><strong>Address</strong>: <?=$address?></p>
 
                     <a href="user-update-profile.php" class="btn btn-primary rounded-0">Update Profile</a>

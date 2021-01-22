@@ -21,6 +21,8 @@
     $user = new Member;
     $result = $user->getProfileData($_SESSION['user_id']);  
 
+    $package = $user->getPackages();
+
     if($result != false)
     {
         foreach($result as $data)
@@ -129,6 +131,25 @@
                             <input type="date" class="form-control rounded-0" id="dob" name="dob" placeholder="Date of birth" <?php if($dob!=null){echo 'value="'.$dob.'"';}?>>
                             <label for="dob">Date of birth</label>
                         </div> 
+
+                        <div class="mb-3">
+                            <label for="package" class="form-label">Select Package</label>
+                            <select class="form-select rounded-0" id="package" name="package">
+                                <?php
+                                    if($package != false)
+                                    {
+                                        foreach($package as $data)
+                                        {                             
+                                ?>
+
+                                <option value="<?=$data->package_name?>"><?=$data->package_name?></option>
+
+                                <?php
+                                        }
+                                    }
+                                ?>
+                            </select>
+                        </div>
 
                         <div class="mb-3">
                             <label for="formFile" class="form-label">Profile Picture: </label>

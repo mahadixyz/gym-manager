@@ -3,7 +3,8 @@
     class Member extends Main
     {        
         private $sql;
-        private $query;
+        private $query;        
+		private $uploadedImg = null;
 
         public function __construct()
         {
@@ -113,15 +114,43 @@
 
         }
 
-        public function updateUserData($id, $contact, $gender, $dob, $address)
+        public function getPackages()
         {
-             
             try
-            {      
-                $memberQuery = $this->conn->prepare('UPDATE member SET member_mobile = :mobile, member_gender = :gender, member_dob = :dob, member_address = :mem_address WHERE member_user_id = :mem_id');	
+            {
+                $this->sql = $this->conn->prepare('SELECT * FROM package');
+                $this->sql->execute();
+
+                if($this->sql->rowCount() > 0)
+                {
+                    $data = $this->sql->fetchAll(PDO::FETCH_OBJ);
+                    return $data;
+                }
+                else
+                {
+                    return false;
+                }    
+            }
+            catch(PDOException $Exception)
+            {
+                $this->errmsg = $Exception->getMessage();
+                $_SESSION['error'] = "Unexpected Error Occured. Please try again Later.<br> Error: ".$this->errmsg;
+                return false;
+            }  
+
+        }
+
+        public function updateUserData($id, $contact, $gender, $dob, $package, $image, $address)
+        {            
+            try
+            {  
+                $this->uploadImg($image);    
+                $memberQuery = $this->conn->prepare('UPDATE member SET member_mobile = :mobile, member_gender = :gender, member_dob = :dob, member_address = :mem_address, member_photo = :mem_photo, member_package = :mem_package WHERE member_user_id = :mem_id');	
                 $memberQuery->bindParam(':mobile', $contact); 
                 $memberQuery->bindParam(':gender', $gender); 
-                $memberQuery->bindParam(':dob', $dob); 
+                $memberQuery->bindParam(':dob', $dob);
+                $memberQuery->bindParam(':mem_package', $package);
+                $memberQuery->bindParam(':mem_photo', $this->uploadedImg); 
                 $memberQuery->bindParam(':mem_address', $address); 
                 $memberQuery->bindParam(':mem_id', $id);          
                
@@ -137,6 +166,62 @@
                 return 0;
             }           
         }
+
+        /**
+		 * UploadImg Method
+		 * Used for Uploading Image
+		 * @param [file] $img
+		 * @return boolean
+		 */
+		private function uploadImg($img)
+		{
+			// Image Data
+			$pImage = $img['name'];
+			$tmp_location = $img['tmp_name'];
+			$imgSize = $img['size'];
+			
+			// Image Upload Directory
+            $upDir = '../../_resources/images/';
+            // echo '<img src="'.$upDir.$pImage.'">';
+            // die();
+	
+			// get image file type
+			$imgType = strtolower(pathinfo($pImage, PATHINFO_EXTENSION)); 
+	
+			// Accepted image types
+			$accFileTypes = array('jpeg', 'jpg', 'png', 'gif');
+	
+			// Change name of image
+			$this->uploadedImg = date('D')."-".rand(1000,9999).".".$imgType;
+				
+			// allow valid image file formats
+			if(in_array($imgType, $accFileTypes))
+			{			
+				// Check file size < '3MB'
+				if($imgSize < 3000000)				
+				{
+                    if(move_uploaded_file($tmp_location, $upDir.$this->uploadedImg))
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        $_SESSION['error'] = "Sorry, your file didn't upload.".$img['error'];
+                        return false;
+                    }
+				}
+				else
+				{
+					$_SESSION['error'] = "Sorry, your file is too large.";
+					return false;
+				}
+			}
+			else
+			{
+				$_SESSION['error'] = "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+				return false;	
+			}  
+		}
 
     }
 ?>

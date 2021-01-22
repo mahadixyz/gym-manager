@@ -18,11 +18,13 @@
     $contact = $_POST['contact'];
     $gender = $_POST['gender'];
     $dob = $_POST['dob'];
+    $package = $_POST['package'];
+    $image = $_FILES['picture'];
     $address = $_POST['address'];
 
     
 
-    $status = $notice->updateUserData($id, $contact, $gender, $dob, $address);
+    $status = $notice->updateUserData($id, $contact, $gender, $dob, $package, $image, $address);
 
     if($status == true)
     {

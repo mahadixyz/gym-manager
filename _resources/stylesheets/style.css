@@ -202,6 +202,35 @@
 
 /* Front End */
 
+.nav-frontend
+{
+    background-color: rgba(18, 0, 37, 0.50) !important;
+}
+
+.nav-frontend li a,
+.navbar-brand
+{
+    color: #e7e7e7;
+    font-size: 1.2rem;
+}
+
+.nav-frontend li a:hover,
+.navbar-brand:hover
+{
+    color: #c2f6ff;
+}
+
+.nav-frontend .fa-angle-down
+{
+    color: #fff !important;
+}
+
+.nav-frontend .navbar-toggler:focus
+{
+    border: none !important;
+    box-shadow: none !important;
+}
+
 .sliderLanding
 {
     padding-left: 0 !important;
@@ -253,10 +282,21 @@
     transform: scale(1.2);
 }
 
-
 .feature-box .feature-caption
 {
     position: absolute;
     top: 60%;
     left: 15%;
+}
+
+.register-block
+{
+    background: url(../images/k.jpg);
+    object-fit: contain;
+    object-position: top;
+}
+
+.register-block .reg-text
+{
+    background-color: hsla(240, 100%, 3%, 0.445);
 }

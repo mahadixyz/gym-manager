@@ -11,8 +11,8 @@
 
 <div class="container">
 
-    <div class="row mt-5">
-        <div class="col-6 mx-auto text-center">
+    <div class="row mt-5 mb-4">
+        <div class="col-6 mx-auto pt-5 text-center">
             <h2 class="display-5 text-primary">Sign Up for an account</h2>
         </div>
     </div>
@@ -47,7 +47,12 @@
     </div>
 
     <div class="row">
-        <div class="col-6 mx-auto p-2">
+    
+        <div class="col-md-6 col-sm-12 p-2">            
+            <img src="_resources/images/register.png" alt="" class="img-fluid w-50">
+        </div>     
+
+        <div class="col-md-6 col-sm-12 p-2">
             <form action="process/signup.php" method="POST">
             <?php
                 if(isset($_SESSION['fullname'], $_SESSION['email'], $_SESSION['password'], $_SESSION['cPassword']))
@@ -135,7 +140,21 @@
 
         </div><!-- col -->
 
+    </div> <!--row-->
+
+    <!-- row -->
+    <div class="container">
+        <div class="row my-3">
+            <div class="col-12 p-3">
+                <p class="fs-5">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta similique doloribus explicabo dolorem itaque omnis molestias ducimus perferendis odio sed quia, laboriosam eveniet dignissimos, alias doloremque. Dignissimos cumque modi itaque, provident reprehenderit facilis rem iste assumenda similique eveniet delectus dolorem? Ab, veniam distinctio maiores asperiores ipsa sunt dolorum vitae repellat.
+                </p>
+            </div>
+        </div>
     </div>
+    <!-- row Ends -->
+
+
 </div>
 
 <?php

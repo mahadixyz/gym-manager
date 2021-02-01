@@ -204,7 +204,15 @@
 
 .nav-frontend
 {
+    padding: 0.7rem !important;
     background-color: rgba(18, 0, 37, 0.50) !important;
+    transition: padding .5s ease;
+}
+
+.solidNav
+{
+    padding: 0.2rem !important;
+    background-color: #180116 !important;
 }
 
 .nav-frontend li a,

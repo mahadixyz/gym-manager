@@ -300,3 +300,9 @@
 {
     background-color: hsla(240, 100%, 3%, 0.445);
 }
+
+#map 
+{
+    height: 300px;
+    width: 100%;
+}

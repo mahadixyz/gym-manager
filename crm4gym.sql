@@ -2,10 +2,10 @@
 -- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Jan 17, 2021 at 07:54 AM
--- Server version: 10.4.17-MariaDB
--- PHP Version: 7.2.34
+-- Host: localhost
+-- Generation Time: Feb 02, 2021 at 08:17 PM
+-- Server version: 5.7.24
+-- PHP Version: 7.2.19
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,8 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `crm4gym`
 --
-CREATE DATABASE IF NOT EXISTS `crm4gym` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `crm4gym`;
 
 -- --------------------------------------------------------
 
@@ -59,6 +57,28 @@ INSERT INTO `auth` (`auth_id`, `auth_email`, `auth_password`, `auth_token`, `aut
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `feedback`
+--
+
+CREATE TABLE `feedback` (
+  `feedback_id` int(11) NOT NULL,
+  `feedback_name` varchar(50) NOT NULL,
+  `feedback_mail` varchar(60) NOT NULL,
+  `feedback_subject` varchar(50) NOT NULL,
+  `feedback_text` varchar(500) NOT NULL,
+  `feedback_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `feedback`
+--
+
+INSERT INTO `feedback` (`feedback_id`, `feedback_name`, `feedback_mail`, `feedback_subject`, `feedback_text`, `feedback_time`) VALUES
+(1, 'John Snow', 'assfa@afsre.hk', 'Inquiry', 'dsfdsf ds fsdf', '2021-02-02 20:17:04');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `member`
 --
 
@@ -72,27 +92,28 @@ CREATE TABLE `member` (
   `member_photo` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `member_status` enum('0','1','2') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0' COMMENT '0 = pending, 1 = Active, 2 = banned',
   `member_user_id` int(11) NOT NULL,
-  `member_joined_at` timestamp NOT NULL DEFAULT current_timestamp()
+  `member_package` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `member_joined_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `member`
 --
 
-INSERT INTO `member` (`member_id`, `member_name`, `member_gender`, `member_dob`, `member_address`, `member_mobile`, `member_photo`, `member_status`, `member_user_id`, `member_joined_at`) VALUES
-(1, 'Charlene Cochran', 'female', '2021-01-12', 'asff afasf', '0125555', NULL, '1', 1, '2021-01-11 19:42:43'),
-(2, 'Peter Shilton', 'others', '1990-01-01', 'House: 11/B, C Wing, 12/C East Birmingham Street, London. UK', '01555898989', 'peter.jpg', '1', 2, '2021-01-11 19:44:13'),
-(3, 'Ashley Cole', NULL, NULL, NULL, NULL, NULL, '2', 3, '2021-01-11 19:44:45'),
-(4, 'Frank Moore', NULL, NULL, NULL, NULL, NULL, '1', 4, '2021-01-11 19:45:25'),
-(5, 'Billy Owen', NULL, NULL, NULL, NULL, NULL, '1', 5, '2021-01-11 19:46:19'),
-(6, 'Bryan Terry', NULL, NULL, NULL, NULL, NULL, '2', 6, '2021-01-11 19:46:48'),
-(7, 'Sandy Maclver', NULL, NULL, NULL, NULL, NULL, '1', 7, '2021-01-11 19:47:55'),
-(8, 'Lucy Morgan', NULL, NULL, NULL, NULL, NULL, '2', 8, '2021-01-11 19:48:39'),
-(9, 'Keira Stainforth', NULL, NULL, NULL, NULL, NULL, '0', 9, '2021-01-11 19:49:26'),
-(10, 'Georgia Walsh', NULL, NULL, NULL, NULL, NULL, '1', 10, '2021-01-11 19:50:25'),
-(11, 'Ellen  Bright', NULL, NULL, NULL, NULL, NULL, '2', 11, '2021-01-11 19:51:32'),
-(12, 'Alessia Patten', NULL, NULL, NULL, NULL, NULL, '1', 12, '2021-01-11 19:52:02'),
-(13, 'Ashley Brimm', NULL, NULL, NULL, NULL, NULL, '0', 13, '2021-01-11 19:56:20');
+INSERT INTO `member` (`member_id`, `member_name`, `member_gender`, `member_dob`, `member_address`, `member_mobile`, `member_photo`, `member_status`, `member_user_id`, `member_package`, `member_joined_at`) VALUES
+(1, 'Charlene Cochran', 'female', '2021-01-12', 'asff afasf', '0125555', NULL, '1', 1, '0', '2021-01-11 19:42:43'),
+(2, 'Peter Shilton', 'others', '1990-01-01', 'House: 11/B, C Wing, 12/C East Birmingham Street, London. UK', '01555898989', 'peter.jpg', '1', 2, '0', '2021-01-11 19:44:13'),
+(3, 'Ashley Cole', NULL, NULL, NULL, NULL, NULL, '2', 3, '0', '2021-01-11 19:44:45'),
+(4, 'Frank Moore', NULL, NULL, NULL, NULL, NULL, '1', 4, '0', '2021-01-11 19:45:25'),
+(5, 'Billy Owen', NULL, NULL, NULL, NULL, NULL, '1', 5, '0', '2021-01-11 19:46:19'),
+(6, 'Bryan Terry', NULL, NULL, NULL, NULL, NULL, '2', 6, '0', '2021-01-11 19:46:48'),
+(7, 'Sandy Maclver', NULL, NULL, NULL, NULL, NULL, '1', 7, '0', '2021-01-11 19:47:55'),
+(8, 'Lucy Morgan', NULL, NULL, NULL, NULL, NULL, '2', 8, '0', '2021-01-11 19:48:39'),
+(9, 'Keira Stainforth', NULL, NULL, NULL, NULL, NULL, '0', 9, '0', '2021-01-11 19:49:26'),
+(10, 'Georgia Walsh', 'male', '1998-06-09', 'senpara, Dhaka', '01259656235', 'Fri-6827.jpg', '1', 10, 'Gold', '2021-01-11 19:50:25'),
+(11, 'Ellen  Bright', NULL, NULL, NULL, NULL, NULL, '2', 11, '0', '2021-01-11 19:51:32'),
+(12, 'Alessia Patten', NULL, NULL, NULL, NULL, NULL, '1', 12, '0', '2021-01-11 19:52:02'),
+(13, 'Ashley Brimm', NULL, NULL, NULL, NULL, NULL, '0', 13, '0', '2021-01-11 19:56:20');
 
 -- --------------------------------------------------------
 
@@ -104,8 +125,8 @@ CREATE TABLE `notice` (
   `notice_id` int(11) NOT NULL,
   `notice_title` varchar(100) NOT NULL,
   `notice_body` text NOT NULL,
-  `notice_for` int(11) NOT NULL DEFAULT 0,
-  `notice_isuued_at` timestamp NOT NULL DEFAULT current_timestamp()
+  `notice_for` int(11) NOT NULL DEFAULT '0',
+  `notice_isuued_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -130,7 +151,7 @@ CREATE TABLE `package` (
   `package_name` varchar(100) NOT NULL,
   `package_details` text NOT NULL,
   `package_fee` float NOT NULL,
-  `package_created` timestamp NOT NULL DEFAULT current_timestamp()
+  `package_created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -152,7 +173,7 @@ CREATE TABLE `payment` (
   `payment_amount` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
   `payment_month` varchar(25) COLLATE utf8mb4_unicode_ci NOT NULL,
   `payment_member` varchar(25) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `payment_date` timestamp NOT NULL DEFAULT current_timestamp()
+  `payment_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -184,7 +205,7 @@ CREATE TABLE `report` (
   `report_waist` float NOT NULL,
   `report_bmi` float NOT NULL,
   `report_body_fat` float NOT NULL,
-  `report_generated` timestamp NOT NULL DEFAULT current_timestamp()
+  `report_generated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -204,6 +225,12 @@ INSERT INTO `report` (`report_id`, `report_member_id`, `report_height`, `report_
 --
 ALTER TABLE `auth`
   ADD PRIMARY KEY (`auth_id`);
+
+--
+-- Indexes for table `feedback`
+--
+ALTER TABLE `feedback`
+  ADD PRIMARY KEY (`feedback_id`);
 
 --
 -- Indexes for table `member`
@@ -245,6 +272,12 @@ ALTER TABLE `report`
 --
 ALTER TABLE `auth`
   MODIFY `auth_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- AUTO_INCREMENT for table `feedback`
+--
+ALTER TABLE `feedback`
+  MODIFY `feedback_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `member`

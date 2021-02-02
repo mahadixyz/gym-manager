@@ -1,9 +1,9 @@
 <?php
     require_once "main.php";
+
     class Member extends Main
     {        
-        private $sql;
-        private $query;        
+        private $sql;       
 		private $uploadedImg = null;
 
         public function __construct()
@@ -20,6 +20,7 @@
          * @param [string] $code
          * @return int (1/0)
          */
+
         public function signUp($fullname, $email, $pass, $code)
         {
             $memberQuery = $this->conn->prepare('INSERT INTO member(member_name, member_user_id) VALUES(:fullname, :userid)');
@@ -48,6 +49,39 @@
                 $this->errmsg = $Exception->getMessage();
                 $_SESSION['error'] = "Unexpected Error Occured. Please try again Later.<br> Error: ".$this->errmsg;
                 return 0;
+            }           
+        }
+
+
+        /**
+         * storeFeedback function
+         *
+         * @param $fullname
+         * @param $email
+         * @param $subject
+         * @param $feedback
+         * @return bool
+         */
+        public function storeFeedback($fullname, $email, $subject, $feedback)
+        {             
+            $this->sql = $this->conn->prepare('INSERT INTO feedback(feedback_name, feedback_mail, feedback_subject, feedback_text) VALUES(:fullname, :email, :m_subject, :m_feedback)');
+	
+            $this->sql->bindParam(':fullname', $fullname); 	
+            $this->sql->bindParam(':email', $email); 
+            $this->sql->bindParam(':m_subject', $subject);
+            $this->sql->bindParam(':m_feedback', $feedback); 
+            
+            try
+            {    
+                $this->sql->execute();               
+                $_SESSION['success']= "Thank you. We will response to your feedback soon.";
+                return true;
+            }
+            catch(PDOException $Exception)
+            {
+                $this->errmsg = $Exception->getMessage();
+                $_SESSION['error'] = "Unexpected Error Occured. Please try again Later.<br> Error: ".$this->errmsg;
+                return false;
             }           
         }
 

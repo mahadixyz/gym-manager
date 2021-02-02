@@ -171,7 +171,7 @@
                     <p class="lead">
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus numquam explicabo fuga.
                     </p>
-                    <button class="btn btn-primary rounded-0">Register</button>
+                    <a href="signup.php" class="btn btn-primary rounded-0">Register</a>
                 </div>
                 
             </div>
@@ -196,13 +196,40 @@
 
             <div class="col-md-6 col-sm-12">   
                 <p class="fs-3 text-center">Send a message</p>
-                <form action="">
+
+                <?php
+                    if(isset($_SESSION['success']) && $_SESSION['success'] != '')
+                    {
+                ?>
+                <div class="alert alert-success py3">
+                    <?php
+                        echo $_SESSION['success'];
+                        unset($_SESSION['success']);
+                    ?>
+                </div>
+                <?php
+                    }
+                    else if(isset($_SESSION['error']) && $_SESSION['error'] != '')
+                    {
+                ?>
+                <div class="alert alert-warning py3">
+                    <?php
+                        echo $_SESSION['error'];
+                        unset($_SESSION['error']);
+                    ?>
+                </div>
+                <?php
+                    }
+                ?>
+
+
+                <form action="process/feedback.php" method="POST">
                     <div class="row mb-3">
                         
                         <div class="col">
 
                             <div class="form-floating">
-                                <input type="text" class="form-control rounded-0" id="fullName" placeholder="John Doe">
+                                <input type="text" class="form-control rounded-0" id="fullName" name="fname" placeholder="John Doe">
                                 <label for="fullName">Your Name</label>
                             </div>
                             
@@ -211,7 +238,7 @@
                         <div class="col">
 
                             <div class="form-floating">
-                                <input type="email" class="form-control rounded-0" id="emailAddress" placeholder="name@example.com">
+                                <input type="email" class="form-control rounded-0" id="emailAddress" name="mail" placeholder="name@example.com">
                                 <label for="emailAddress">Email address</label>
                             </div>
 
@@ -220,21 +247,21 @@
                     </div>
 
                     <div class="form-floating mb-3">
-                        <select class="form-select rounded-0" id="subject" aria-label="Floating label select">
-                            <option selected>Open this select menu</option>
-                            <option value="1">Inquiry</option>
-                            <option value="2">Complain</option>
-                            <option value="3">General</option>
+                        <select class="form-select rounded-0" id="subject" name="subject" aria-label="Floating label select">
+                            <option selected disabled>Select Subject</option>
+                            <option value="Inquiry">Inquiry</option>
+                            <option value="Complain">Complain</option>
+                            <option value="General">General</option>
                         </select>
                         <label for="subject">Subject</label>
                     </div>
 
                     <div class="form-floating mb-3">
-                        <textarea class="form-control rounded-0" placeholder="Leave a comment here" id="feedback" style="height: 100px"></textarea>
+                        <textarea class="form-control rounded-0" placeholder="Leave a comment here" id="feedback" name="feedback" style="height: 100px"></textarea>
                         <label for="feedback">Message</label>
                     </div>
 
-                    <button class="btn btn-primary rounded-0">Send</button>
+                    <button class="btn btn-primary rounded-0" name="feedbackBtn">Send</button>
 
                 </form>
             </div>

@@ -52,6 +52,47 @@
             }           
         }
 
+         /**
+         * addMember Method
+         *
+         * @param [string] $fullname
+         * @param [string] $email
+         * @param [string] $pass
+         * @param [string] $code
+         * @return int (1/0)
+         */
+
+        public function addMember($fullname, $email, $pass, $code)
+        {
+            $memberQuery = $this->conn->prepare('INSERT INTO member(member_name, member_user_id) VALUES(:fullname, :userid)');
+	
+            $memberQuery->bindParam(':fullname', $fullname); 
+
+            $authQuery = $this->conn->prepare('INSERT INTO auth(auth_email, auth_password, auth_token) VALUES(:email, :pass, :code)');
+	
+            $authQuery->bindParam(':email',$email); 
+            $authQuery->bindParam(':pass',$pass);
+            $authQuery->bindParam(':code',$code);
+            
+            try
+            {                
+                $authQuery->execute();
+
+                $uid = $this->conn->lastInsertId();
+                $memberQuery->bindParam(':userid', $uid);
+                $memberQuery->execute();
+
+                $_SESSION['success']= "Member added Successfully.";
+                return 1;
+            }
+            catch(PDOException $Exception)
+            {
+                $this->errmsg = $Exception->getMessage();
+                $_SESSION['error'] = "Unexpected Error Occured. Please try again Later.<br> Error: ".$this->errmsg;
+                return 0;
+            }           
+        }
+
 
         /**
          * storeFeedback function

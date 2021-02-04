@@ -41,9 +41,6 @@
     </div>
 </div>
 
-</body>
-
-</html>
 <?php
     require_once "../inc/be-footer.php";
 ?>

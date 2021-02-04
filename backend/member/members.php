@@ -28,9 +28,6 @@
     {
         $page = 1;
     }
-
-
-
 ?>
 <div class="container-fluid overflow-hidden">
     <div class="row gx-2 mt-3">
@@ -135,9 +132,7 @@
         </div>
     </div>
 </div>
-</body>
 
-</html>
 <?php
     require_once "../inc/be-footer.php";
 ?>

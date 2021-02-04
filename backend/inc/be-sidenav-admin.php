@@ -12,7 +12,7 @@
                         <div id="collapseMember" class="accordion-collapse collapse" aria-labelledby="member" data-bs-parent="#dashNav">
                             <div class="accordion-body">
                                 
-                                <a class="dashNavItemSub" href="#">
+                                <a class="dashNavItemSub" href="../member/add-member.php">
                                     <i class="me-2" data-feather="user-plus"></i> add member
                                 </a>
                                 <a class="dashNavItemSub no-border" href="../member/members.php">

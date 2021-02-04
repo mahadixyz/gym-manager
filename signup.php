@@ -2,7 +2,7 @@
     require_once "core/autoload.php";
     if (isset($_SESSION['user_id'])) 
     {
-        header("Location: backend/dashboard.php");
+        header("Location: backend/main/dashboard.php");
     }
     $_SESSION['pageTitle'] = "Sign Up for a new Account | CRM";
     require_once "inc/header.php";

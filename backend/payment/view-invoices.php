@@ -1,12 +1,19 @@
 <?php
     require_once "../../core/autoload.php";
     require_once "../../core/dashboard.php";
+
+    $invoice = new Dashboard;
+    $result = $invoice->viewInvoice();
+
+    $currMonth = date('F, Y'); 
+
+
     if (!isset($_SESSION['user_id'])) 
     {
         header("Location: ../../signin.php");
     }
 
-    $_SESSION['pageTitle'] = "View All Payments";
+    $_SESSION['pageTitle'] = "View Invoices";
     require_once "../inc/be-header.php";
     
     if(isset( $_SESSION['role']) &&  $_SESSION['role'] == 'admin' )
@@ -18,16 +25,6 @@
       require_once "../inc/be-nav-user.php";
     }
 
-    $page = 1;
-    if(isset($_GET['page']))
-    {
-        $page = $_GET['page'];
-    }
-    
-    if(isset($_GET['page']) && $_GET['page'] < 1)
-    {
-        $page = 1;
-    }
 
 ?>
 <div class="container-fluid overflow-hidden mb-5">
@@ -46,9 +43,21 @@
         <div class="col-md-9">
             <div class="border p-4">
 
-                <h2 class="display-5 mb-4">Payment History</h2>
+                <h2 class="display-5 mb-4">Unpaid Invoice</h2>
 
-                <?php
+                <a href="../process/be-invoice.php" class="btn btn-success rounded-0 d-block float-end me-3">Create Invoice</a>
+
+
+                <?php 
+                    // if($invoice->invoiceMonth == $currMonth)
+                    // {
+                    //     echo '<a href="#" type="button" class="btn btn-success rounded-0 d-block float-end me-3 disabled">Create Invoice</a>';
+                    // } 
+                    // else
+                    // {
+                    //     echo '<a href="../process/be-invoice.php" class="btn btn-success rounded-0 d-block float-end me-3">Create Invoice</a>';
+                    // }
+                    
                     if(isset($_SESSION['success']) && $_SESSION['success'] != '')
                     {
                 ?>
@@ -56,6 +65,17 @@
                     <?php
                         echo $_SESSION['success'];
                         unset($_SESSION['success']);
+                    ?>
+                </div>
+                <?php
+                    }
+                    else if(isset($_SESSION['error']) && $_SESSION['error'] != '')
+                    {
+                ?>
+                <div class="alert alert-danger py-3">
+                    <?php
+                        echo $_SESSION['error'];
+                        unset($_SESSION['error']);
                     ?>
                 </div>
                 <?php
@@ -70,28 +90,26 @@
                             <th scope="col">Month</th>
                             <th scope="col">Amount</th>
                             <th scope="col">Member</th>
+                            <th scope="col">Status</th>
                         </tr>
                     </thead>
                     <tbody>
 
                         <?php
-                            $payment = new Dashboard;
-                            $result = $payment->viewPayment();
 
-                            
                             if($result != false)
                             {
                                 foreach($result as $data)
-                                { 
-                                    $pay_month = date("M, Y", strtotime($data->payment_month));   
-                                    $amount = "<span class='bdt'>&#2547; </span>".number_format($data->payment_amount, 2);     
+                                {                                      
+                                    $amount = "<span class='bdt'>&#2547; </span>".number_format($data->invoice_amount, 2);     
                                     
                         ?>
                             <tr>
-                                <th scope="row"><?=$data->payment_id?></th>
-                                <td><?=$pay_month?></td>
+                                <th scope="row"><?=$data->invoice_id?></th>
+                                <td><?=$data->invoice_month?></td>
                                 <td><?=$amount?></td>
-                                <td><?=$data->member_name?></td>                               
+                                <td><?=$data->member_name?></td> 
+                                <td><strong class="text-danger"><?=$data->invoice_status?></strong></td>                               
                             </tr>
                         <?php                                                            
                                 }
@@ -100,7 +118,7 @@
                             {
                         ?>
                             <tr>
-                                <td colspan="4">No Data Found</td>
+                                <td colspan="5" class="text-danger text-center"> <strong>No Data Found</strong> </td>
                             </tr>
                         <?php
                             }

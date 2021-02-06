@@ -43,13 +43,28 @@
       ?>
 
         <div class="col-md-9">
+
+            <?php
+                if(isset($_SESSION['success']) && $_SESSION['success'] != '')
+                {
+            ?>
+            <div class="alert alert-success py-3 m-2">
+                <?php
+                    echo $_SESSION['success'];
+                    unset($_SESSION['success']);
+                ?>
+            </div>
+            <?php
+                }                    
+            ?>
+
             <div class="border p-4">
                 <h2 class="display-5">Dashboard</h2>
 
                 <table class="table table-striped">
                     <thead>
                         <tr>
-                            <th scope="col">#</th>
+                            <th scope="col">User id</th>
                             <th scope="col">Name</th>
                             <th scope="col">Email</th>
                             <th scope="col">Status</th>

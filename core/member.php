@@ -62,20 +62,24 @@
          * @return int (1/0)
          */
 
-        public function addMember($fullname, $email, $pass, $code)
+        public function addMember($fullname, $email, $pass, $package, $code)
         {
-            $memberQuery = $this->conn->prepare('INSERT INTO member(member_name, member_user_id) VALUES(:fullname, :userid)');
-	
-            $memberQuery->bindParam(':fullname', $fullname); 
-
-            $authQuery = $this->conn->prepare('INSERT INTO auth(auth_email, auth_password, auth_token) VALUES(:email, :pass, :code)');
-	
-            $authQuery->bindParam(':email',$email); 
-            $authQuery->bindParam(':pass',$pass);
-            $authQuery->bindParam(':code',$code);
+            
             
             try
-            {                
+            {  
+                $memberQuery = $this->conn->prepare('INSERT INTO member(member_name, member_user_id, member_package) VALUES(:fullname, :userid, :package)');
+	
+                $memberQuery->bindParam(':fullname', $fullname); 
+                $memberQuery->bindParam(':package', $package); 
+
+                $authQuery = $this->conn->prepare('INSERT INTO auth(auth_email, auth_password, auth_token) VALUES(:email, :pass, :code)');
+        
+                $authQuery->bindParam(':email',$email); 
+                $authQuery->bindParam(':pass',$pass);
+                $authQuery->bindParam(':code',$code);
+                
+                
                 $authQuery->execute();
 
                 $uid = $this->conn->lastInsertId();
@@ -215,16 +219,15 @@
 
         }
 
-        public function updateUserData($id, $contact, $gender, $dob, $package, $image, $address)
+        public function updateUserData($id, $contact, $gender, $dob, $image, $address)
         {            
             try
             {  
                 $this->uploadImg($image);    
-                $memberQuery = $this->conn->prepare('UPDATE member SET member_mobile = :mobile, member_gender = :gender, member_dob = :dob, member_address = :mem_address, member_photo = :mem_photo, member_package = :mem_package WHERE member_user_id = :mem_id');	
+                $memberQuery = $this->conn->prepare('UPDATE member SET member_mobile = :mobile, member_gender = :gender, member_dob = :dob, member_address = :mem_address, member_photo = :mem_photo WHERE member_user_id = :mem_id');	
                 $memberQuery->bindParam(':mobile', $contact); 
                 $memberQuery->bindParam(':gender', $gender); 
                 $memberQuery->bindParam(':dob', $dob);
-                $memberQuery->bindParam(':mem_package', $package);
                 $memberQuery->bindParam(':mem_photo', $this->uploadedImg); 
                 $memberQuery->bindParam(':mem_address', $address); 
                 $memberQuery->bindParam(':mem_id', $id);          

@@ -5,6 +5,9 @@
         private $sql;
         private $query;
         private $perPage = 5;
+
+        // Invoice Month
+        public $invoiceMonth;
         
         /**
          * Class Constructor
@@ -40,7 +43,7 @@
         {
             $offset = (int) ($pageNum-1) * $this->perPage;
             // $this->sql = $this->conn->prepare('SELECT * FROM member INNER JOIN auth ON auth.auth_id=member.member_user_id LIMIT :offset, :perpage');
-            $this->sql = $this->conn->prepare("SELECT * FROM member LEFT JOIN auth ON member.member_user_id=auth.auth_id LIMIT $offset, $this->perPage");
+            $this->sql = $this->conn->prepare("SELECT * FROM member LEFT JOIN auth ON member.member_user_id=auth.auth_id ORDER BY member.member_user_id DESC LIMIT $offset, $this->perPage");
 
             try
             {
@@ -56,15 +59,15 @@
                 else
                 {
                     // echo "No Data";
-                    // return false;
+                    return false;
                 }    
             }
             catch(PDOException $Exception)
             {
-                echo "error: ".$Exception->getMessage();
-                // $this->errmsg = $Exception->getMessage();
-                // $_SESSION['error'] = "Unexpected Error Occured. Please try again Later.<br> Error: ".$this->errmsg;
-                // return false;
+                
+                $this->errmsg = $Exception->getMessage();
+                $_SESSION['error'] = "Unexpected Error Occured. Please try again Later.<br> Error: ".$this->errmsg;
+                return false;
             }  
         }
 
@@ -181,6 +184,78 @@
             }  
 
         }
+
+
+        public function createInvoice()
+        {                  
+            try
+            {     
+                $in_month = date('F, Y');   
+                 
+                // Set invoice month to current month
+                $this->invoiceMonth = $in_month;            
+
+                $getInvoiceData = $this->conn->prepare('SELECT * FROM member INNER JOIN package ON package.package_name=member.member_package');
+                $getInvoiceData->execute();
+
+                if($getInvoiceData->rowCount() > 0)
+                {
+                    $invoiceData = $getInvoiceData->fetchAll(PDO::FETCH_OBJ);
+                    foreach($invoiceData as $data)
+                    {                                
+
+                        $this->sql = $this->conn->prepare('INSERT INTO invoice(invoice_member_id, invoice_amount, invoice_month, invoice_status) VALUES(:member_id, :amount, :in_month, "Unpaid")');
+	
+                        $this->sql->bindParam(':member_id', $data->member_id);
+                        $this->sql->bindParam(':amount', $data->package_fee);
+                        $this->sql->bindParam(':in_month', $in_month);
+                        $this->sql->execute();  
+                    }
+
+
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }   
+               
+            }
+            catch(PDOException $Exception)
+            {
+                $this->errmsg = $Exception->getMessage();
+                $_SESSION['error'] = "Unexpected Error Occured. Please try again Later.<br> Error: ".$this->errmsg;
+                return false;
+            }           
+        }
+
+
+        public function viewInvoice()
+        {       
+            
+            try
+            {    
+                $this->sql = $this->conn->prepare("SELECT * FROM member INNER JOIN invoice ON member.member_user_id=invoice.invoice_member_id");            
+                $this->sql->execute();
+
+                if($this->sql->rowCount() > 0)
+                {
+                    $data = $this->sql->fetchAll(PDO::FETCH_OBJ);                    
+                    return $data;
+                }
+                else
+                {
+                    return false;
+                }    
+            }
+            catch(PDOException $Exception)
+            {
+                $this->errmsg = $Exception->getMessage();
+                $_SESSION['error'] = "Unexpected Error Occured. Please try again Later.<br> Error: ".$this->errmsg;
+                return false;
+            }  
+        }
+        
 
         public function addPayment($month, $amount, $member)
         {           

@@ -1,12 +1,19 @@
 <?php
     require_once "../../core/autoload.php";
-    require_once "../../core/dashboard.php";
+    require_once "../../core/member.php";
+
+    $user = new Member;
+
+    $package = $user->getPackages();
+
+
     if (!isset($_SESSION['user_id'])) 
     {
         header("Location: ../../signin.php");
     }
 
     $_SESSION['pageTitle'] = "Add new Member";
+
     require_once "../inc/be-header.php";
 
     if(isset( $_SESSION['role']) &&  $_SESSION['role'] == 'admin' )
@@ -47,22 +54,44 @@
                 <h2 class="display-5">Add new Member</h2>
                 
                 <form action="../process/be-add-user.php" method="POST">
+
                     <?php
                         if(isset($_SESSION['fullname'], $_SESSION['email'], $_SESSION['password']))
                         {
                             $prev_fullname = $_SESSION['fullname'];
                             $prev_email = $_SESSION['email'];
                             $prev_password = $_SESSION['password'];
+                            $prev_package = $_SESSION['package'];
 
                             unset($_SESSION['fullname'], $_SESSION['email'], $_SESSION['password']);
                         }
                     ?>
+
+                    <div class="mb-2">
+                        <label for="package" class="form-label">Select Package</label>
+                        <select class="form-select rounded-0" id="package" name="package">
+                            <?php
+                                if($package != false)
+                                {
+                                    foreach($package as $data)
+                                    {                             
+                            ?>
+
+                            <option value="<?=$data->package_name?>" <?php if(isset($prev_package) && $prev_package == $data->package_name ){echo 'selected';} ?> ><?=$data->package_name?></option>
+
+                            <?php
+                                    }
+                                }
+                            ?>
+                        </select>
+                    </div>
+
                     <div class="mb-2">
                         <div class="form-floating mb-3">
                             <input type="text" class="form-control rounded-0" name="fullname" id="fullname" placeholder="Beth harmon" <?php if(isset($prev_fullname)){echo 'value="'.$prev_fullname.'"';} ?>>
                             <label for="fullname">Member Name</label>
                         </div>
-                    </div>
+                    </div>    
 
                     <div class="mb-2">
                         <div class="form-floating mb-3">

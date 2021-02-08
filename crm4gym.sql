@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 06, 2021 at 07:59 AM
+-- Generation Time: Feb 08, 2021 at 07:54 AM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 7.3.26
 
@@ -20,8 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `crm4gym`
 --
-CREATE DATABASE IF NOT EXISTS `crm4gym` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `crm4gym`;
 
 -- --------------------------------------------------------
 
@@ -62,7 +60,8 @@ INSERT INTO `auth` (`auth_id`, `auth_email`, `auth_password`, `auth_token`, `aut
 (18, 'masusadmayesmin016@gmail.com', '$2y$10$BDtiqyHpZb1ruEpq8LtA1uqIr71WOpZkkaDgscWqQlZdEqIldSakC', '9af70773a5d4fce79888ea9d8ece6b04', 'member'),
 (19, 'min016@gmail.com', '$2y$10$rguT2sKEFK7Uf/Irjd.UWed/ZCTXoUajn7NXkAUIZr5qYzyEqv5bq', '7e9aa3befc80b200926bb113d728ba23', 'member'),
 (20, 'asfasf@dsgsdggsdsg.fgn', '$2y$10$vBY9i8EJ6yuHxeFEgG3IOOs8YT5zHl5p7WKao0kpJJs4yCNlGvTnS', '0ef242009b41d97e1012c7a606675eff', 'member'),
-(21, 'asfasasf@gsgsd.df', '$2y$10$2aLD40osDgqKbk0lnWPseu6jQbG4QWUuCFHsFIQBGXTmnyB3zwEI2', '165532f24636dff223aebd8b41d9dc5e', 'member');
+(21, 'asfasasf@gsgsd.df', '$2y$10$2aLD40osDgqKbk0lnWPseu6jQbG4QWUuCFHsFIQBGXTmnyB3zwEI2', '165532f24636dff223aebd8b41d9dc5e', 'member'),
+(22, 'araman666@gmail.com', '$2y$10$Cdu9R.8M/xWuWSznTm9iX.gRox5/gaCvOPMWzQYMO6dIShrSq/H52', '50e49ca14d74340722148f49e70d4d79', 'member');
 
 -- --------------------------------------------------------
 
@@ -84,17 +83,18 @@ CREATE TABLE `invoice` (
 --
 
 INSERT INTO `invoice` (`invoice_id`, `invoice_member_id`, `invoice_month`, `invoice_amount`, `invoice_status`, `invoice_created`) VALUES
-(1, 3, 'February, 2021', '1500', 'Unpaid', '2021-02-06 06:57:07'),
-(2, 8, 'February, 2021', '5200', 'Unpaid', '2021-02-06 06:57:07'),
-(3, 9, 'February, 2021', '2500', 'Unpaid', '2021-02-06 06:57:07'),
-(4, 10, 'February, 2021', '5200', 'Unpaid', '2021-02-06 06:57:08'),
-(5, 11, 'February, 2021', '2500', 'Unpaid', '2021-02-06 06:57:08'),
-(6, 12, 'February, 2021', '1500', 'Unpaid', '2021-02-06 06:57:08'),
-(7, 13, 'February, 2021', '1500', 'Unpaid', '2021-02-06 06:57:08'),
-(8, 14, 'February, 2021', '5200', 'Unpaid', '2021-02-06 06:57:08'),
-(9, 15, 'February, 2021', '2500', 'Unpaid', '2021-02-06 06:57:08'),
-(10, 16, 'February, 2021', '5200', 'Unpaid', '2021-02-06 06:57:08'),
-(11, 17, 'February, 2021', '2500', 'Unpaid', '2021-02-06 06:57:08');
+(1, 3, 'February, 2021', '1500', 'Unpaid', '2021-02-08 04:52:53'),
+(2, 8, 'February, 2021', '5200', 'Unpaid', '2021-02-08 04:52:53'),
+(3, 9, 'February, 2021', '2500', 'Unpaid', '2021-02-08 04:52:53'),
+(4, 10, 'February, 2021', '5200', 'Unpaid', '2021-02-08 04:52:53'),
+(5, 11, 'February, 2021', '2500', 'Unpaid', '2021-02-08 04:52:53'),
+(6, 12, 'February, 2021', '1500', 'Unpaid', '2021-02-08 04:52:53'),
+(7, 13, 'February, 2021', '1500', 'Unpaid', '2021-02-08 04:52:53'),
+(8, 14, 'February, 2021', '5200', 'Unpaid', '2021-02-08 04:52:53'),
+(9, 15, 'February, 2021', '2500', 'Unpaid', '2021-02-08 04:52:53'),
+(10, 16, 'February, 2021', '5200', 'Unpaid', '2021-02-08 04:52:53'),
+(11, 17, 'February, 2021', '2500', 'Unpaid', '2021-02-08 04:52:53'),
+(12, 18, 'February, 2021', '2500', 'Paid', '2021-02-08 04:52:53');
 
 -- --------------------------------------------------------
 
@@ -129,15 +129,16 @@ INSERT INTO `member` (`member_id`, `member_name`, `member_gender`, `member_dob`,
 (6, 'Bryan Terry', NULL, NULL, NULL, '', NULL, NULL, '2', 6, '2021-01-11 19:46:48'),
 (7, 'Sandy Maclver', NULL, NULL, NULL, '', NULL, NULL, '1', 7, '2021-01-11 19:47:55'),
 (8, 'Lucy Morgan', NULL, NULL, NULL, 'Silver', NULL, NULL, '2', 8, '2021-01-11 19:48:39'),
-(9, 'Keira Stainforth', NULL, NULL, NULL, 'Platinum', NULL, NULL, '0', 9, '2021-01-11 19:49:26'),
+(9, 'Keira Stainforth', NULL, NULL, NULL, 'Platinum', NULL, NULL, '1', 9, '2021-01-11 19:49:26'),
 (10, 'Georgia Walsh', NULL, NULL, NULL, 'Silver', NULL, NULL, '1', 10, '2021-01-11 19:50:25'),
 (11, 'Ellen  Bright', NULL, NULL, NULL, 'Platinum', NULL, NULL, '2', 11, '2021-01-11 19:51:32'),
 (12, 'Alessia Patten', NULL, NULL, NULL, 'Gold', NULL, NULL, '1', 12, '2021-01-11 19:52:02'),
 (13, 'Ashley Brimm', NULL, NULL, NULL, 'Gold', NULL, NULL, '0', 13, '2021-01-11 19:56:20'),
 (14, 'Rasha Bin Aziz', NULL, NULL, NULL, 'Silver', NULL, NULL, '0', 14, '2021-02-04 06:36:48'),
 (15, 'Sarah Yesmin', NULL, NULL, NULL, 'Platinum', NULL, NULL, '0', 16, '2021-02-06 04:56:47'),
-(16, 'sadasd', NULL, NULL, NULL, 'Silver', NULL, NULL, '0', 17, '2021-02-06 05:01:33'),
-(17, 'vv vv asfgasfafasf asf as', NULL, NULL, NULL, 'Platinum', NULL, NULL, '0', 21, '2021-02-06 05:04:35');
+(16, 'Joesef Jackson', NULL, NULL, NULL, 'Silver', NULL, NULL, '0', 17, '2021-02-06 05:01:33'),
+(17, 'Lauren Miller', NULL, NULL, NULL, 'Platinum', NULL, NULL, '0', 21, '2021-02-06 05:04:35'),
+(18, 'Amanur Rahman', NULL, NULL, NULL, 'Platinum', NULL, NULL, '0', 22, '2021-02-08 04:50:20');
 
 -- --------------------------------------------------------
 
@@ -162,7 +163,8 @@ INSERT INTO `notice` (`notice_id`, `notice_title`, `notice_body`, `notice_for`, 
 (2, 'Entry Time Violation', 'Maintain entry Time ', 13, '2021-01-12 03:51:59'),
 (3, 'Payment Notice', 'Please Pay the fee of December, 2020', 6, '2021-01-12 03:54:16'),
 (4, 'Happy New Year', '<p>Wish you all a very <strong>Happy New Year 2021</strong></p>', 0, '2021-01-12 04:00:24'),
-(5, 'Payment Notice', '<p>Payment Done for <strong>Billy Owen</strong></p>', 5, '2021-01-12 05:16:15');
+(5, 'Payment Notice', '<p>Payment Done for <strong>Billy Owen</strong></p>', 5, '2021-01-12 05:16:15'),
+(6, 'Pay Bill', '<p>Hey Peter,</p>\r\n<p>Please Pay the <strong>bill</strong></p>', 2, '2021-02-08 04:20:39');
 
 -- --------------------------------------------------------
 
@@ -196,8 +198,8 @@ INSERT INTO `package` (`package_id`, `package_name`, `package_details`, `package
 CREATE TABLE `payment` (
   `payment_id` int(11) NOT NULL,
   `payment_amount` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `payment_month` varchar(25) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `payment_member` varchar(25) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `payment_invoice` int(11) NOT NULL,
+  `payment_comments` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `payment_date` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -205,16 +207,8 @@ CREATE TABLE `payment` (
 -- Dumping data for table `payment`
 --
 
-INSERT INTO `payment` (`payment_id`, `payment_amount`, `payment_month`, `payment_member`, `payment_date`) VALUES
-(1, '500', '2021-01', '12', '2021-01-11 20:37:34'),
-(2, '655', '2021-01', '6', '2021-01-11 20:38:04'),
-(3, '900', '2020-08', '11', '2021-01-11 20:38:12'),
-(4, '666', '2020-04', '10', '2021-01-11 20:38:21'),
-(5, '1000', '2020-07', '2', '2021-01-12 03:14:29'),
-(6, '346', '2020-11', '10', '2021-01-12 03:19:49'),
-(7, '1500', '2020-11', '13', '2021-01-12 03:20:16'),
-(8, '1750', '2020-06', '8', '2021-01-12 05:13:45'),
-(9, '500', '2021-01', '12', '2021-01-14 06:35:12');
+INSERT INTO `payment` (`payment_id`, `payment_amount`, `payment_invoice`, `payment_comments`, `payment_date`) VALUES
+(1, '2500', 12, 'full paid!', '2021-02-08 04:54:08');
 
 -- --------------------------------------------------------
 
@@ -296,25 +290,25 @@ ALTER TABLE `report`
 -- AUTO_INCREMENT for table `auth`
 --
 ALTER TABLE `auth`
-  MODIFY `auth_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `auth_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `invoice`
 --
 ALTER TABLE `invoice`
-  MODIFY `invoice_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `invoice_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `member`
 --
 ALTER TABLE `member`
-  MODIFY `member_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `member_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `notice`
 --
 ALTER TABLE `notice`
-  MODIFY `notice_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `notice_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `package`
@@ -326,7 +320,7 @@ ALTER TABLE `package`
 -- AUTO_INCREMENT for table `payment`
 --
 ALTER TABLE `payment`
-  MODIFY `payment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `payment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `report`

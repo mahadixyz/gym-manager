@@ -48,6 +48,8 @@
 
                 <h2 class="display-5 mb-4">Payment History</h2>
 
+                <a href="add-payment.php" class="btn btn-success rounded-0 d-block float-end me-3">Add Payment</a>
+
                 <?php
                     if(isset($_SESSION['success']) && $_SESSION['success'] != '')
                     {
@@ -59,7 +61,18 @@
                     ?>
                 </div>
                 <?php
-                    }                    
+                    }   
+                    else if(isset($_SESSION['error']) && $_SESSION['error'] != '')
+                    {
+                ?>
+                <div class="alert alert-danger py-3">
+                    <?php
+                        echo $_SESSION['error'];
+                        unset($_SESSION['error']);
+                    ?>
+                </div>
+                <?php
+                    }                  
                 ?>
                 
 
@@ -67,9 +80,9 @@
                     <thead>
                         <tr>
                             <th scope="col">#</th>
-                            <th scope="col">Month</th>
+                            <th scope="col">Invoice</th>
                             <th scope="col">Amount</th>
-                            <th scope="col">Member</th>
+                            <th scope="col">Description</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -83,15 +96,15 @@
                             {
                                 foreach($result as $data)
                                 { 
-                                    $pay_month = date("M, Y", strtotime($data->payment_month));   
+                                    // $pay_month = date("M, Y", strtotime($data->payment_month));   
                                     $amount = "<span class='bdt'>&#2547; </span>".number_format($data->payment_amount, 2);     
                                     
                         ?>
                             <tr>
                                 <th scope="row"><?=$data->payment_id?></th>
-                                <td><?=$pay_month?></td>
+                                <td><?="#".$data->payment_invoice?></td>
                                 <td><?=$amount?></td>
-                                <td><?=$data->member_name?></td>                               
+                                <td><?=$data->payment_comments?></td>                               
                             </tr>
                         <?php                                                            
                                 }

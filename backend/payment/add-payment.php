@@ -20,7 +20,7 @@
 
     $payment = new Dashboard;
     $result = $payment->getMember();    
-
+    $invoice = $payment->viewInvoice(); 
 ?>
 
 <div class="container-fluid overflow-hidden">
@@ -56,35 +56,30 @@
                 <h2 class="display-5">Add Payment</h2>
 
                 <form action="../process/be-payment.php" method="POST">
-
+                   
                     <div class="mb-3">
-                        <label for="month" class="form-label">Payment Month</label>
-                        <input type="month" class="form-control rounded-0" id="month" name="month">                        
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="amount" class="form-label">Amount</label>
-                        <input type="number" step="0.10" class="form-control rounded-0" id="amount" name="amount">
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="member" class="form-label">Member</label>
-                        <select class="form-select rounded-0" id="member" name="member">
-                            <option value="" selected>Select Member</option>
+                        <label for="invoice" class="form-label">Pay Invoice</label>
+                        <select class="form-select rounded-0" id="invoice" name="invoice">
+                            <option value="" selected>Select Invoice</option>
 
                         <?php
                             if($result != false)
                             {
-                                foreach($result as $data)
+                                foreach($invoice as $data)
                                 {                             
                         ?>
-                                    <option value="<?=$data->member_id?>"><?=$data->member_name?></option>
+                                    <option value="<?=$data->invoice_id?>"><?="#".$data->invoice_id." - ".$data->member_name." - ".$data->invoice_amount."/-"?></option>
                         <?php
                                 }
                             }
                         ?>
 
                         </select>
+                    </div>
+
+                    <div class="mb-3 form-floating">                        
+                        <textarea class="form-control rounded-0" style="height: 100px" id="comments" name="comments"></textarea>
+                        <label for="comments">Comments</label>
                     </div>
                 
                     <button type="submit" name="payment-form" class="btn btn-primary rounded-0">Submit</button>

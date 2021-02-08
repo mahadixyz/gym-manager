@@ -5,6 +5,10 @@
     $dbdata = new Dashboard;
     $raw = $dbdata->countMember();
 
+    $totalRevenue = "BDT ".number_format($dbdata->totalRevenue()->total, 2);
+    $totalUnpaid = "BDT ".number_format($dbdata->totalUnpaid()->total, 2);
+  //   echo "TUP ".$totalUnpaid. " TR ".$totalRevenue;
+  // die();
     $pending = $dbdata->countStatus(0);
     $active = $dbdata->countStatus(1);
     $banned = $dbdata->countStatus(2);
@@ -179,14 +183,14 @@
         },
         colors: ['#DC143C'],
         title: {
-          text: 'BDT 23,50,312',
+          text: '<?=$totalUnpaid;?>',
           offsetX: 0,
           style: {
             fontSize: '24px',
           }
         },
         subtitle: {
-          text: 'Expenses',
+          text: 'Due Bill',
           offsetX: 0,
           style: {
             fontSize: '14px',
@@ -224,7 +228,7 @@
         },
         colors:['#60CC0F'],
         title: {
-          text: 'BDT 10,35,965',
+          text: '<?=$totalRevenue;?>',
           offsetX: -1,
           style: {
             fontSize: '24px',

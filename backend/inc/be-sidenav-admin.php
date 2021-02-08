@@ -34,13 +34,13 @@
                             <div class="accordion-body">
                                 
                                 <a class="dashNavItemSub no-border" href="../payment/view-invoices.php">
-                                    <i class="me-2" data-feather="dollar-sign"></i> view Unpaid Invoice
+                                    <i class="me-2" data-feather="file-text"></i> View unpaid Invoice
                                 </a>
                                 <a class="dashNavItemSub" href="../payment/add-payment.php">
-                                    <i class="me-2" data-feather="plus-circle"></i> add payment
+                                    <i class="me-2" data-feather="plus-circle"></i> Add payment
                                 </a>
                                 <a class="dashNavItemSub no-border" href="../payment/view-payment.php">
-                                    <i class="me-2" data-feather="dollar-sign"></i> view payment records
+                                    <i class="me-2" data-feather="dollar-sign"></i> View payment records
                                 </a>
 
                             </div>
@@ -58,10 +58,10 @@
                             <div class="accordion-body">
                                 
                                 <a class="dashNavItemSub" href="../package/add-package.php">
-                                    <i class="me-2" data-feather="plus"></i> add package
+                                    <i class="me-2" data-feather="plus"></i> Add package
                                 </a>
                                 <a class="dashNavItemSub no-border" href="../package/view-packages.php">
-                                    <i class="me-2" data-feather="package"></i> view packages
+                                    <i class="me-2" data-feather="package"></i> View packages
                                 </a>
                                
                             </div>
@@ -78,10 +78,10 @@
                         <div id="collapseReport" class="accordion-collapse collapse" aria-labelledby="report" data-bs-parent="#dashNav">
                             <div class="accordion-body">
                                 <a class="dashNavItemSub" href="../report/add-report.php">
-                                    <i class="me-2" data-feather="file-plus"></i> add report
+                                    <i class="me-2" data-feather="file-plus"></i> Add report
                                 </a>
                                 <a class="dashNavItemSub no-border" href="../report/view-reports-all.php">
-                                    <i class="me-2" data-feather="file-text"></i> view all reports
+                                    <i class="me-2" data-feather="file-text"></i> View all reports
                                 </a>
                             </div>
                         </div>
@@ -97,10 +97,10 @@
                         <div id="collapseNotice" class="accordion-collapse collapse" aria-labelledby="notice" data-bs-parent="#dashNav">
                             <div class="accordion-body">
                                 <a class="dashNavItemSub" href="../notice/add-notice.php">
-                                    <i class="me-2" data-feather="plus-circle"></i> add notice
+                                    <i class="me-2" data-feather="plus-circle"></i> Add notice
                                 </a>
                                 <a class="dashNavItemSub no-border" href="../notice/view-notice.php">
-                                    <i class="me-2" data-feather="bell"></i> view all notice
+                                    <i class="me-2" data-feather="bell"></i> View all notice
                                 </a>
                             </div>
                         </div>

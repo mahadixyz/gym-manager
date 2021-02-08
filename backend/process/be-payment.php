@@ -14,14 +14,11 @@
 
     $payment = new Dashboard;
 
-    $month = $_POST['month'];
-    $amount = $_POST['amount'];
-    $member = $_POST['member'];
+    $invoice = $_POST['invoice'];
+    $comments = $_POST['comments'];      
 
-    // echo $month." ".$amount." ". $member;
-    // die();
-
-    $status = $payment->addPayment($month, $amount, $member);
+    
+    $status = $payment->addPayment($invoice, $comments);
 
     if($status == true)
     {

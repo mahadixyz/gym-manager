@@ -1,0 +1,7 @@
+ErrorDocument 404 http://localhost/gym-manager/404/not_found.php
+
+RewriteEngine On
+RewriteBase /
+
+RewriteCond %{REQUEST_URI} ^/404/$
+RewriteRule ^(.*)$ ./not_found.php [L]

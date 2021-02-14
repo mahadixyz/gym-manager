@@ -5,7 +5,7 @@
         private $host = "localhost";
         private $user = "root";
         private $pass ="";
-        private $database = "crm4gym";
+        private $database = "gym_manager";
         
         protected $conn;
         protected $errmsg;

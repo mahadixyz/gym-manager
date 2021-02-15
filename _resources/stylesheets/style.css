@@ -148,6 +148,19 @@
     color: #d4d4d4;
 }
 
+.dashFeedback
+{
+    background-color: #210c2a !important;
+    font-size: 1.4rem;
+    color: #ecf0f5;
+    padding: 1rem 1.25rem;
+}
+
+.dashFeedback:hover
+{
+    background-color: #180116 !important;
+    color: #d4d4d4;
+}
 
 .dashNavItemSub
 {

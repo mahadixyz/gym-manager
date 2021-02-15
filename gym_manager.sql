@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Feb 14, 2021 at 11:09 AM
+-- Generation Time: Feb 15, 2021 at 05:25 PM
 -- Server version: 5.7.24
 -- PHP Version: 7.2.19
 
@@ -83,7 +83,9 @@ CREATE TABLE `feedback` (
 --
 
 INSERT INTO `feedback` (`feedback_id`, `feedback_name`, `feedback_mail`, `feedback_subject`, `feedback_text`, `feedback_time`) VALUES
-(1, 'John Mayer', 'jmay@google.com', 'Inquiry', 'hello world!', '2021-02-14 11:08:29');
+(1, 'John Mayer', 'jmay@google.com', 'Inquiry', 'hello world!', '2021-02-14 11:08:29'),
+(2, 'Dana Neer', 'dneer@foolbrot.com', 'Complain', 'Service need to upgrade\r\n', '2021-02-15 17:22:24'),
+(3, 'Dino Malhock', 'dinomalh@outbrot.com', 'General', 'Do i need to bring my own towel?', '2021-02-15 17:23:45');
 
 -- --------------------------------------------------------
 
@@ -324,7 +326,7 @@ ALTER TABLE `auth`
 -- AUTO_INCREMENT for table `feedback`
 --
 ALTER TABLE `feedback`
-  MODIFY `feedback_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `feedback_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `invoice`

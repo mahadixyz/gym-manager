@@ -106,6 +106,13 @@
                         </div>
                     </div>
 
+                    <!-- Feedback -->
+                    <div class="accordion-item">
+                        <a class="dashNavSingle dashFeedback"  href="../feedback/view-feedback.php">
+                            <i class="me-2" data-feather="message-square"></i> Feedback
+                        </a>                        
+                    </div>
+
                     <!-- Site Settings -->
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="site">

@@ -412,10 +412,9 @@
         
         public function viewReport()
         {   
-            $this->sql = $this->conn->prepare("SELECT report.*, member.member_name FROM report LEFT JOIN member ON report.report_member_id = member.member_id");
-            
             try
             {
+                $this->sql = $this->conn->prepare("SELECT report.*, member.member_name FROM report LEFT JOIN member ON report.report_member_id = member.member_id");
                 $this->sql->execute();
                 
                 if($this->sql->rowCount() > 0)
@@ -434,6 +433,36 @@
                 $_SESSION['error'] = "Unexpected Error Occured. Please try again Later.<br> Error: ".$this->errmsg;
                 return false;
             }  
+        }
+
+        /**
+         * viewFeedback function
+         * Fetch All feedback messages
+         * @return mixed
+         */
+        public function viewFeedback()
+        {
+            try
+            {
+                $this->sql = $this->conn->prepare("SELECT * FROM feedback ORDER BY feedback_id DESC");
+                $this->sql->execute();
+                
+                if($this->sql->rowCount() > 0)
+                {
+                    $data = $this->sql->fetchAll(PDO::FETCH_OBJ);
+                    return $data;
+                }
+                else
+                {
+                    return false;
+                }    
+            }
+            catch(PDOException $Exception)
+            {
+                $this->errmsg = $Exception->getMessage();
+                $_SESSION['error'] = "Unexpected Error Occured. Please try again Later.<br> Error: ".$this->errmsg;
+                return false;
+            } 
         }
         
         /*

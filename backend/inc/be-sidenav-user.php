@@ -36,6 +36,22 @@
                             </div>
                         </div>
                     </div>
+
+                    <!-- Profile -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="report">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseReport" aria-expanded="false" aria-controls="collapseReport">
+                                <i class="me-2" data-feather="file-text"></i>Health Report
+                            </button>
+                        </h2>
+                        <div id="collapseReport" class="accordion-collapse collapse" aria-labelledby="report" data-bs-parent="#dashNavUser">
+                            <div class="accordion-body">
+                                <a class="dashNavItemSub" href="../user/user-report.php">
+                                    <i class="me-2" data-feather="info"></i> View Report
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                     
 
                     <!-- Signout -->

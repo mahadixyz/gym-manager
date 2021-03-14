@@ -6,7 +6,7 @@
     }
     else
     {
-        $pageTitle = "CRM for Gym";
+        $pageTitle = "Gym Manager Application";
     }
 ?>
 <!DOCTYPE html>

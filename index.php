@@ -111,7 +111,7 @@
     <!-- Features End -->
 
     <!-- Package Start -->
-    <div class="container overflow-hidden">
+    <div class="container overflow-hidden" id="package">
         <div class="row g-4">
 
             <div class="col-12">
@@ -163,7 +163,7 @@
     <!-- Package End -->
 
     <!-- Register Start -->
-    <div class="container my-3">
+    <div class="container my-3" id="join">
         <div class="row register-block p-5">
             <div class="col-6 mt-3 me-auto">
                 <div class="reg-text text-white p-4">
@@ -180,7 +180,7 @@
     <!-- Register End -->
 
     <!-- Contact Start -->
-    <div class="container mb-3">
+    <div class="container mb-3" id="contact">
 
             <div class="col-12">
                 <div class="p-3 text-center">

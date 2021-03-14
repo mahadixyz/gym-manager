@@ -10,6 +10,15 @@
                     <a class="nav-link" href="index.php">Home</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="#package">Package</a>
+                </li>                
+                <li class="nav-item">
+                    <a class="nav-link" href="#join">Join</a>
+                </li>                
+                <li class="nav-item">
+                    <a class="nav-link" href="#contact">Contact</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="signin.php">Sign in</a>
                 </li>
                 <li class="nav-item">

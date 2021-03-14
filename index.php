@@ -111,7 +111,7 @@
     <!-- Features End -->
 
     <!-- Package Start -->
-    <div class="container overflow-hidden" id="package">
+    <div class="container overflow-hidden my-3 pt-5" id="package">
         <div class="row g-4">
 
             <div class="col-12">
@@ -126,8 +126,7 @@
 
             <div class="col-md-4 col-sm-12">
                 <div class="card mb-3">
-                    <img src="_resources/images/pkg-gold.png" class="card-img-top" alt="...">
-                    
+                    <img src="_resources/images/pkg-gold.png" class="card-img-top" alt="...">                    
                     <div class="card-body">
                         <h5 class="card-title">Gold Package</h5>
                         <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
@@ -163,7 +162,7 @@
     <!-- Package End -->
 
     <!-- Register Start -->
-    <div class="container my-3" id="join">
+    <div class="container my-3 pt-5" id="join">
         <div class="row register-block p-5">
             <div class="col-6 mt-3 me-auto">
                 <div class="reg-text text-white p-4">
@@ -180,7 +179,7 @@
     <!-- Register End -->
 
     <!-- Contact Start -->
-    <div class="container mb-3" id="contact">
+    <div class="container my-3 pt-5" id="contact">
 
             <div class="col-12">
                 <div class="p-3 text-center">

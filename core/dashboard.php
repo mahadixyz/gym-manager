@@ -535,7 +535,76 @@
                 return false;
             }  
         }
+
+         /*
+        * ------------------------------------------
+        * Methods for Site carousel
+        * ------------------------------------------
+        */
         
+        /**
+         * addSlider function
+         * Add a membership package
+         * @param [string] $name
+         * @param [string] $details
+         * @param [double] $fee
+         * @return void
+         */
+        public function addSlider($caption, $details, $photo)
+        {     
+            $this->uploadImg($photo);       
+            $this->query = $this->conn->prepare('INSERT INTO slider(slider_caption, slider_details, slider_image) VALUES(:scap, :sdetails, :simg)');
+            
+            $this->query->bindParam(':scap',$caption); 
+            $this->query->bindParam(':sdetails',$details);
+            $this->query->bindParam(':simg',$this->uploadedImg);
+            
+            try
+            {                
+                $this->query->execute();                
+                
+                $_SESSION['success']= "Slider Added";
+                return true;
+            }
+            catch(PDOException $Exception)
+            {
+                $this->errmsg = $Exception->getMessage();
+                $_SESSION['error'] = "Unexpected Error Occured. Please try again Later.<br> Error: ".$this->errmsg;
+                return false;
+            }           
+        }
+
+        /**
+         * viewSlider function
+         * Fetch al Slider data from DB
+         * @return data / false
+         */
+        public function viewSlider()
+        {           
+            $this->sql = $this->conn->prepare("SELECT * FROM slider ORDER BY slider_id DESC LIMIT 3");
+            
+            try
+            {
+                $this->sql->execute();
+                
+                if($this->sql->rowCount() > 0)
+                {
+                    $data = $this->sql->fetchAll(PDO::FETCH_OBJ);
+                    return $data;
+                }
+                else
+                {
+                    return false;
+                }    
+            }
+            catch(PDOException $Exception)
+            {
+                $this->errmsg = $Exception->getMessage();
+                $_SESSION['error'] = "Unexpected Error Occured. Please try again Later.<br> Error: ".$this->errmsg;
+                return false;
+            }  
+        }
+
         
         /*
         * ------------------------------------------

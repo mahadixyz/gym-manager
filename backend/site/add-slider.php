@@ -50,10 +50,21 @@
             </div>
             <?php
                 }
+                else if(isset($_SESSION['success']) && $_SESSION['success'] != '')
+                {
+            ?>
+            <div class="alert alert-success py-3">
+                <?php
+                    echo $_SESSION['success'];
+                    unset($_SESSION['success']);
+                ?>                
+            </div>
+            <?php
+                }                
             ?>
 
             <div class="border p-4">
-                <h2 class="display-5">Add Slider</h2>
+                <h2 class="display-5">Add a Slider Image</h2>
 
                 <form action="../process/be-slider.php" method="POST" enctype="multipart/form-data">
 

@@ -5,8 +5,10 @@
     require_once "inc/header.php";
     require_once "inc/nav.php";
 
-    $packages = new Dashboard;
-    $result = $packages->viewPackages();
+    $site = new Dashboard;
+    $package = $site->viewPackages();
+    $slider = $site->viewSlider();
+
 ?>
     <!-- Carousel Start -->
     <div class="container-fluid overflow-hidden sliderLanding">
@@ -19,27 +21,35 @@
                         <li data-bs-target="#sliderIndicators" data-bs-slide-to="2"></li>
                     </ol>
                     <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <img src="_resources/images/a.jpg" class="d-block w-100" alt="...">
+
+                        <?php
+                            if($slider != false)
+                            {
+                                $count = 0;
+                                foreach($slider as $data)
+                                {          
+                                    $count++;  
+                                    $sliderStats = null;
+                                    if($count === 1)
+                                    {
+                                        $sliderStats = 'active';
+                                    }
+                        ?>
+
+                        <div class="carousel-item <?=$sliderStats?>">
+                            <img src="_resources/images/<?=$data->slider_image?>" class="d-block w-100" alt="...">
                             <div class="carousel-caption d-none d-md-block p-4">
-                                <h5 class="display-5">First slide label</h5>
-                                <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                                <h5 class="display-5"><?=$data->slider_caption?></h5>
+                                <p><?=$data->slider_details?></p>
                             </div>
                         </div>
-                        <div class="carousel-item">
-                            <img src="_resources/images/e.jpg" class="d-block w-100" alt="...">
-                            <div class="carousel-caption d-none d-md-block p-4">
-                                <h5 class="display-5">First slide label</h5>
-                                <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <img src="_resources/images/b.jpg" class="d-block w-100" alt="...">
-                            <div class="carousel-caption d-none d-md-block p-4">
-                                <h5 class="display-5">First slide label</h5>
-                                <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-                            </div>
-                        </div>
+
+                        <?php
+                                }
+                            }
+                        ?>
+                       
+
                     </div>
                     <a class="carousel-control-prev" href="#sliderIndicators" role="button" data-bs-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -130,9 +140,9 @@
             </div>
 
             <?php
-                if($result != false)
+                if($package != false)
                 {
-                    foreach($result as $data)
+                    foreach($package as $data)
                     {
                         $fee = "<span class='bdt'>&#2547; </span>".number_format($data->package_fee, 2); 
             ?>

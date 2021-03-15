@@ -17,11 +17,12 @@
     $pName = $_POST['pName'];
     $pDetails = $_POST['pDetails'];
     $pFee = $_POST['pFee'];
+    $image = $_FILES['photo'];
 
     // echo $month." ".$amount." ". $member;
     // die();
 
-    $status = $package->addPackage($pName, $pDetails, $pFee);
+    $status = $package->addPackage($pName, $pDetails, $pFee, $image);
 
     if($status == true)
     {

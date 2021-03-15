@@ -5,6 +5,7 @@
         private $sql;
         private $query;
         private $perPage = 5;
+        private $uploadedImg = null;
         
         // Invoice Month
         public $invoiceMonth;
@@ -479,12 +480,14 @@
          * @param [double] $fee
          * @return void
          */
-        public function addPackage($name, $details, $fee)
-        {           
-            $this->query = $this->conn->prepare('INSERT INTO package(package_name, package_details, package_fee) VALUES(:pname, :pdetails, :pfee)');
+        public function addPackage($name, $details, $fee, $photo)
+        {     
+            $this->uploadImg($photo);       
+            $this->query = $this->conn->prepare('INSERT INTO package(package_name, package_details, package_image, package_fee) VALUES(:pname, :pdetails, :pimg, :pfee)');
             
             $this->query->bindParam(':pname',$name); 
             $this->query->bindParam(':pdetails',$details);
+            $this->query->bindParam(':pimg',$this->uploadedImg);
             $this->query->bindParam(':pfee',$fee);
             
             try
@@ -659,6 +662,62 @@
                 return false;
             }  
             
+        }
+
+        /**
+         * UploadImg Method
+         * Used for Uploading Image
+         * @param [file] $img
+         * @return boolean
+         */
+        private function uploadImg($img)
+        {
+            // Image Data
+            $pImage = $img['name'];
+            $tmp_location = $img['tmp_name'];
+            $imgSize = $img['size'];
+            
+            // Image Upload Directory
+            $upDir = '../../_resources/images/';
+            // echo '<img src="'.$upDir.$pImage.'">';
+            // die();
+    
+            // get image file type
+            $imgType = strtolower(pathinfo($pImage, PATHINFO_EXTENSION)); 
+    
+            // Accepted image types
+            $accFileTypes = array('jpeg', 'jpg', 'png', 'gif');
+    
+            // Change name of image
+            $this->uploadedImg = date('D')."-".rand(1000,9999).".".$imgType;
+                
+            // allow valid image file formats
+            if(in_array($imgType, $accFileTypes))
+            {           
+                // Check file size < '3MB'
+                if($imgSize < 3000000)              
+                {
+                    if(move_uploaded_file($tmp_location, $upDir.$this->uploadedImg))
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        $_SESSION['error'] = "Sorry, your file didn't upload.".$img['error'];
+                        return false;
+                    }
+                }
+                else
+                {
+                    $_SESSION['error'] = "Sorry, your file is too large.";
+                    return false;
+                }
+            }
+            else
+            {
+                $_SESSION['error'] = "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+                return false;   
+            }  
         }
         
         

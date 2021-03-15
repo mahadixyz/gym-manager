@@ -90,13 +90,21 @@
                             
                             <div class="col-4">
                                 <div class="card rounded-0 border border-info">
+                                    <?php
+                                        if(isset($data->package_image))
+                                        {
+                                            echo '<img src="../../_resources/images/'.$data->package_image.'" alt="" class="card-img-top w-75 d-flex mx-auto my-2">';
+                                        }
+                                        else
+                                        {
+                                            echo '<img src="../../_resources/images/default.jpg" alt="" class="card-img-top w-75 d-flex mx-auto my-2">';
+                                        }
+                                    ?> 
                                     <div class="card-body">
                                         <h5 class="card-title"><?=$data->package_name?></h5>
                                         <h6 class="card-subtitle mb-2 text-muted"><?=$data->package_created?></h6>
-                                        <p class="card-text"><?=substr(strip_tags($data->package_details), 0, 100)?></p>
-                                        <p class="card-text"><strong>Fee:</strong> <?=$fee?></p>
-                                        <a href="#" class="btn btn-primary rounded-0">View Details</a>
-                                        
+                                        <p class="card-text"><?=$data->package_details?></p>
+                                        <p class="card-text"><strong>Fee:</strong> <?=$fee?></p>                          
                                     </div>
                                 </div>
                             </div>                        

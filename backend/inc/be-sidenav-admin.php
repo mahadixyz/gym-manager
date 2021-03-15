@@ -117,25 +117,13 @@
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="site">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSite" aria-expanded="false" aria-controls="collapseSite">
-                                <i class="me-2" data-feather="sliders"></i> Site Settings
+                                <i class="me-2" data-feather="image"></i> Image Slider
                             </button>
                         </h2>
                         <div id="collapseSite" class="accordion-collapse collapse" aria-labelledby="site" data-bs-parent="#dashNav">
                             <div class="accordion-body">
-                                <a class="dashNavItemSub" href="#">
-                                    <i class="me-2" data-feather="image"></i> Slider
-                                </a>
-                                <a class="dashNavItemSub" href="#">
-                                    <i class="me-2" data-feather="navigation"></i> Menu  
-                                </a>
-                                <a class="dashNavItemSub" href="#">
-                                    <i class="me-2" data-feather="alert-circle"></i> Offer
-                                </a>
-                                <a class="dashNavItemSub" href="#">
-                                    <i class="me-2" data-feather="info"></i> Mission 
-                                </a>
-                                <a class="dashNavItemSub no-border" href="#">
-                                    <i class="me-2" data-feather="phone"></i> Contact
+                                <a class="dashNavItemSub" href="../site/add-slider.php">
+                                    <i class="me-2" data-feather="plus-circle"></i> Add Slider
                                 </a>
                             </div>
                         </div>

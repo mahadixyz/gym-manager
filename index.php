@@ -1,7 +1,12 @@
 <?php
-    session_start();
+    require_once "core/autoload.php";
+    require_once "core/dashboard.php";
+
     require_once "inc/header.php";
     require_once "inc/nav.php";
+
+    $packages = new Dashboard;
+    $result = $packages->viewPackages();
 ?>
     <!-- Carousel Start -->
     <div class="container-fluid overflow-hidden sliderLanding">
@@ -124,38 +129,44 @@
                 </div>
             </div>
 
+            <?php
+                if($result != false)
+                {
+                    foreach($result as $data)
+                    {
+                        $fee = "<span class='bdt'>&#2547; </span>".number_format($data->package_fee, 2); 
+            ?>
+
             <div class="col-md-4 col-sm-12">
                 <div class="card mb-3">
-                    <img src="_resources/images/pkg-gold.png" class="card-img-top" alt="...">                    
+
+                     <?php
+                        if(isset($data->package_image))
+                        {
+                            echo '<img src="_resources/images/'.$data->package_image.'" alt="" class="card-img-top w-75 d-flex mx-auto my-2">';
+                        }
+                        else
+                        {
+                            echo '<img src="_resources/images/default.jpg" alt="" class="card-img-top w-75 d-flex mx-auto my-2">';
+                        }
+                    ?>     
+
                     <div class="card-body">
-                        <h5 class="card-title">Gold Package</h5>
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                        <p class="card-text">$ 1500.00</p>
+                        <h5 class="card-title">
+                            Package Name:
+                            <strong class="text-danger"><?=$data->package_name?></strong> 
+                        </h5>
+                        <p class="card-text"><?=$data->package_details?></p>
+                        <p class="card-text"><strong>Fee:</strong> <?=$fee?></p>
                     </div>
                 </div>
             </div>
 
-            <div class="col-md-4 col-sm-12">
-                <div class="card mb-3">
-                    <img src="_resources/images/pkg-silver.png" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Silver Package</h5>
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                        <p class="card-text">$ 1000.00</p>
-                    </div>
-                </div>
-            </div>
+            <?php
+                    }
+                }
+            ?>
 
-            <div class="col-md-4 col-sm-12">
-                <div class="card mb-3">
-                    <img src="_resources/images/pkg-bronze.png" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Bronze Package</h5>
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                        <p class="card-text">$ 500.00</p>
-                    </div>
-                </div>
-            </div>
 
         </div>
     </div>

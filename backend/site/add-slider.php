@@ -6,7 +6,7 @@
         header("Location: ../../signin.php");
     }
 
-    $_SESSION['pageTitle'] = "Add new Package";
+    $_SESSION['pageTitle'] = "Add new Slider";
     require_once "../inc/be-header.php";
 
     if(isset( $_SESSION['role']) &&  $_SESSION['role'] == 'admin' )
@@ -53,32 +53,26 @@
             ?>
 
             <div class="border p-4">
-                <h2 class="display-5">Add Package</h2>
+                <h2 class="display-5">Add Slider</h2>
 
-                <form action="../process/be-package.php" method="POST" enctype="multipart/form-data">
+                <form action="../process/be-slider.php" method="POST" enctype="multipart/form-data">
 
                     <div class="mb-3">
-                        <label for="pName" class="form-label">Package Name</label>
-                        <input type="text" class="form-control rounded-0" id="pName" name="pName">                        
+                        <label for="caption" class="form-label">Caption</label>
+                        <input type="text" class="form-control rounded-0" id="caption" name="caption">                        
                     </div>
 
                     <div class="mb-3">
-                        <label for="photo" class="form-label">Package Image</label>
+                        <label for="photo" class="form-label">Slider Image</label>
                         <input type="file" class="form-control rounded-0" id="photo" name="photo">  
-                    </div>                    
-
-                    <div class="mb-3">
-                        <label for="pDetails" class="form-label">Package details</label>
-                        <textarea class="form-control rounded-0" id="pDetails" name="pDetails"></textarea>
                     </div>
 
                     <div class="mb-3">
-                        <label for="pFee" class="form-label">Package Fee</label>
-                        <input type="number" class="form-control rounded-0" id="pFee" name="pFee">                        
-                        
+                        <label for="details" class="form-label">Details</label>
+                        <textarea class="form-control rounded-0" id="details" name="details"></textarea>
                     </div>
                 
-                    <button type="submit" name="package-form" class="btn btn-primary rounded-0">Submit</button>
+                    <button type="submit" name="slider-form" class="btn btn-primary rounded-0">Submit</button>
 
                 </form>
 
@@ -90,7 +84,7 @@
 <script src="../../_resources/tinymce/js/tinymce/tinymce.min.js"></script>
 <script type="text/javascript">
 	tinymce.init({
-	    selector: '#pDetails'
+	    selector: '#details'
 	});
 </script>
 

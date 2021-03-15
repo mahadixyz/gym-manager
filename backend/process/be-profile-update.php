@@ -19,11 +19,12 @@
     $gender = $_POST['gender'];
     $dob = $_POST['dob'];
     $image = $_FILES['picture'];
+    $package = $_POST['package'];    
     $address = $_POST['address'];
 
     
 
-    $status = $member->updateUserData($id, $contact, $gender, $dob, $image, $address);
+    $status = $member->updateUserData($id, $contact, $gender, $dob, $image, $address, $package);
 
     if($status == true)
     {

@@ -30,7 +30,7 @@
                         </h2>
                         <div id="collapseNotice" class="accordion-collapse collapse" aria-labelledby="notice" data-bs-parent="#dashNavUser">
                             <div class="accordion-body">                                
-                                <a class="dashNavItemSub no-border" href="view-usr-notice.php">
+                                <a class="dashNavItemSub no-border" href="user-notice.php">
                                     <i class="me-2" data-feather="bell"></i> view my notice
                                 </a>
                             </div>

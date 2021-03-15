@@ -357,6 +357,34 @@
                 return false;
             }  
         }
+
+        public function viewUserNotice($id)
+        {           
+            // $this->sql = $this->conn->prepare("SELECT * FROM payment");
+            $this->sql = $this->conn->prepare("SELECT * FROM notice WHERE notice_for IN (0, $id) ");
+            // $this->sql = $this->conn->prepare("SELECT * FROM notice");
+            
+            try
+            {
+                $this->sql->execute();
+                
+                if($this->sql->rowCount() > 0)
+                {
+                    $data = $this->sql->fetchAll(PDO::FETCH_OBJ);
+                    return $data;
+                }
+                else
+                {
+                    return false;
+                }    
+            }
+            catch(PDOException $Exception)
+            {
+                $this->errmsg = $Exception->getMessage();
+                $_SESSION['error'] = "Unexpected Error Occured. Please try again Later.<br> Error: ".$this->errmsg;
+                return false;
+            }  
+        }
         
         public function getMemberInfo($id)
         {

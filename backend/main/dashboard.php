@@ -30,7 +30,7 @@
     }
     else
     {
-      require_once "../inc/be-nav-user.php";
+      header("Location: ../user/user-profile.php");
     }
     
 ?>

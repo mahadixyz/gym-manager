@@ -34,7 +34,8 @@
             $mobile = ($data->member_mobile)?$data->member_mobile:null;
             $email = ($data->auth_email)?$data->auth_email:null;
             $joined_at = date("d M, Y", strtotime($data->member_joined_at)); 
-            $pic = $data->member_photo;    
+            $pic = $data->member_photo;  
+            $mypackage = $data->member_package;    
         }
     }
 
@@ -90,7 +91,7 @@
 
                 <div class="border my-2 p-5">
 
-                    <form action="../process/be-user-update.php" method="POST" enctype="multipart/form-data">
+                    <form action="../process/be-profile-update.php" method="POST" enctype="multipart/form-data">
                         <div class="form-floating mb-3">
                             <input type="email" class="form-control rounded-0" id="email" value="<?=$email?>" disabled>
                             <label for="email">Email address</label>
@@ -142,7 +143,7 @@
                                         {                             
                                 ?>
 
-                                <option value="<?=$data->package_name?>"><?=$data->package_name?></option>
+                                <option value="<?=$data->package_name?>" <?php if($data->package_name == $mypackage){echo 'selected';}?> ><?=$data->package_name?></option>
 
                                 <?php
                                         }

@@ -249,18 +249,19 @@
             }           
         }
 
-        public function updateUserData($id, $contact, $gender, $dob, $image, $address)
+        public function updateUserData($id, $contact, $gender, $dob, $image, $address, $package)
         {            
             try
             {  
                 $this->uploadImg($image);    
-                $memberQuery = $this->conn->prepare('UPDATE member SET member_mobile = :mobile, member_gender = :gender, member_dob = :dob, member_address = :mem_address, member_photo = :mem_photo WHERE member_user_id = :mem_id');	
+                $memberQuery = $this->conn->prepare('UPDATE member SET member_mobile = :mobile, member_gender = :gender, member_dob = :dob, member_address = :mem_address, member_photo = :mem_photo, member_package = :mem_package WHERE member_user_id = :mem_id');	
                 $memberQuery->bindParam(':mobile', $contact); 
                 $memberQuery->bindParam(':gender', $gender); 
                 $memberQuery->bindParam(':dob', $dob);
                 $memberQuery->bindParam(':mem_photo', $this->uploadedImg); 
                 $memberQuery->bindParam(':mem_address', $address); 
-                $memberQuery->bindParam(':mem_id', $id);          
+                $memberQuery->bindParam(':mem_id', $id);       
+                $memberQuery->bindParam(':mem_package', $package);     
                
                 $memberQuery->execute();
 

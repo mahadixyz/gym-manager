@@ -47,7 +47,7 @@
       require_once "../inc/be-nav-user.php";
     }
 ?>
-<div class="container-fluid overflow-hidden mb-5 p-3">
+<div class="container-fluid overflow-hidden mb-5 pb-3">
     <div class="row gx-2 mt-3">
     <?php
         if(isset( $_SESSION['role']) &&  $_SESSION['role'] == 'admin' )
@@ -65,8 +65,24 @@
             <div class="border p-4">
                 <h2 class="display-5">View Member Data</h2>
 
-                <img src="../../_resources/images/<?=$data->member_photo?>" alt="" class="img-thumbnail d-flex mx-auto" style="max-height: 200px; max-width: 200px;">
+                <?php
+                    if(isset($data->package_image))
+                    {
+                    ?>
 
+                    <img src="../../_resources/images/<?=$data->member_photo?>" alt="" class="img-thumbnail d-flex mx-auto" style="max-height: 200px; max-width: 200px;">
+
+                    <?php
+                    }
+                    else
+                    {
+                    ?>
+
+                    <img src="../../_resources/images/default.jpg" alt="" class="img-thumbnail d-flex mx-auto" style="max-height: 200px; max-width: 200px;">
+                    
+                    <?php
+                    }
+                ?> 
 
                 <p class="lead">
                     <strong>Name: </strong> <?=$data->member_name?>

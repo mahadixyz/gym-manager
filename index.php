@@ -142,8 +142,14 @@
             <?php
                 if($package != false)
                 {
+                    $flag = 0;
                     foreach($package as $data)
                     {
+                        $flag++;
+                        if($flag == 4)
+                        {
+                            break;
+                        }
                         $fee = "<span class='bdt'>&#2547; </span>".number_format($data->package_fee, 2); 
             ?>
 

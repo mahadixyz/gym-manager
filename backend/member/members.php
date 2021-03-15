@@ -101,8 +101,8 @@
                                 <td><?=$auth_email?></td>
                                 <td><?=$status?></td>
                                 <td>
-                                    <a href="view-member.php?id=<?=$member_id?>" class="text-primary me-2"> <span data-feather="eye"></span></a>
-                                    <a href="update-member.php?id=<?=$member_id?>" class="text-success"> <span data-feather="edit"></span></a>
+                                    <a href="view-member.php?id=<?=$member_user_id?>" class="text-primary me-2"> <span data-feather="eye"></span></a>
+                                    <a href="update-member.php?id=<?=$member_user_id?>" class="text-success"> <span data-feather="edit"></span></a>
                                 </td>
                             </tr>
                         <?php                                                            

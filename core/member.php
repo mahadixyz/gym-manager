@@ -219,6 +219,36 @@
 
         }
 
+        public function updateMemberbyAdmin($name, $email, $package, $status, $id)
+        {            
+            try
+            {    
+                $Query = $this->conn->prepare('UPDATE member SET member_name = :name, member_package = :package, member_status = :status WHERE member_user_id = :id');  
+
+                $Query2 = $this->conn->prepare('UPDATE auth SET auth_email = :email WHERE auth_id = :aid'); 
+
+                $Query->bindParam(':id', $id); 
+                $Query->bindParam(':name', $name); 
+                $Query->bindParam(':package', $package); 
+                $Query->bindParam(':status', $status);
+
+                $Query2->bindParam(':aid', $id); 
+                $Query2->bindParam(':email', $email);
+
+                $Query->execute();
+                $Query2->execute();
+
+                $_SESSION['success']= "Member Information Updated.";
+                return 1;
+            }
+            catch(PDOException $Exception)
+            {
+                $this->errmsg = $Exception->getMessage();
+                $_SESSION['error'] = "Unexpected Error Occured. Please try again Later.<br> Error: ".$this->errmsg;
+                return 0;
+            }           
+        }
+
         public function updateUserData($id, $contact, $gender, $dob, $image, $address)
         {            
             try

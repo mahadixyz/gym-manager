@@ -23,7 +23,7 @@
 
 ?>
 
-<div class="container-fluid overflow-hidden">
+<div class="container-fluid overflow-hidden mb-5 pb-3">
     <div class="row gx-2 mt-3">
     <?php
         if(isset( $_SESSION['role']) &&  $_SESSION['role'] == 'admin' )

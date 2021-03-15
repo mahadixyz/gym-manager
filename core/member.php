@@ -9,7 +9,56 @@
         public function __construct()
         {
             parent::__construct();          
-        }        
+        } 
+
+        /**
+         * signIn Method
+         *
+         * @param [string] $em
+         * @param [string] $pw
+         * @return int (1/0)
+         */
+        public function signin($em, $pw)
+        {
+            $this->sql = $this->conn->prepare('SELECT * FROM member INNER JOIN auth ON auth.auth_id=member.member_user_id WHERE member_user_id = :member_u_id');
+            $Query = $this->conn->prepare('SELECT * FROM auth INNER JOIN member ON member.member_user_id = auth.auth_id WHERE auth_email = :email LIMIT 1');
+            $Query->bindParam(':email', $em); 
+            $Query->execute();
+
+            if($Query->rowCount() > 0)
+            {
+                $data = $Query->fetch(PDO::FETCH_OBJ);
+                                
+                if(password_verify($pw, $data->auth_password))
+                {
+                    if ($data->member_status == 0) {
+                        $_SESSION['error'] = "Login Failed. Your Acount is Pending";
+                        return 0;
+                    }
+                    else if ($data->member_status == 1) 
+                    {
+                        $_SESSION['user_id'] = $data->auth_id;
+                        $_SESSION['role'] = $data->auth_role; 
+                        return 1;
+                    }
+                    else
+                    {
+                        $_SESSION['error'] = "Login Failed. Your Acount is Banned";
+                        return 0;
+                    }
+                }
+                else
+                {
+                    $_SESSION['error'] = "Login Failed. Incorrect Username / Password";
+                    return 0;
+                }
+            }
+            else
+            {
+                $_SESSION['error'] = "Account does not exist.";
+                return 0;
+            }            
+        }       
 
         /**
          * SignUp Method
@@ -130,42 +179,7 @@
             }           
         }
 
-        /**
-         * signIn Method
-         *
-         * @param [string] $em
-         * @param [string] $pw
-         * @return int (1/0)
-         */
-        public function signin($em, $pw)
-        {
-            $Query = $this->conn->prepare('SELECT * FROM auth WHERE auth_email = :email LIMIT 1');
-            $Query->bindParam(':email', $em); 
-            $Query->execute();
-
-            if($Query->rowCount() > 0)
-            {
-                $data = $Query->fetch(PDO::FETCH_OBJ);
-                                
-                if(password_verify($pw, $data->auth_password))
-                {
-                    $_SESSION['user_id'] = $data->auth_id;
-                    $_SESSION['role'] = $data->auth_role; 
-                    return 1;
-                }
-                else
-                {
-                    $_SESSION['error'] = "Login Failed. Incorrect Username / Password";
-                    return 0;
-                }
-            }
-            else
-            {
-                $_SESSION['error'] = "Account does not exist.";
-                return 0;
-            }            
-        }
-
+        
         public function getProfileData($id)
         {
             try

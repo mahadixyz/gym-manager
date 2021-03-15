@@ -2,10 +2,10 @@
 -- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Feb 15, 2021 at 05:25 PM
--- Server version: 5.7.24
--- PHP Version: 7.2.19
+-- Host: 127.0.0.1
+-- Generation Time: Mar 15, 2021 at 12:05 PM
+-- Server version: 10.4.17-MariaDB
+-- PHP Version: 8.0.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -51,7 +51,7 @@ INSERT INTO `auth` (`auth_id`, `auth_email`, `auth_password`, `auth_token`, `aut
 (9, 'user9@gmail.com', '$2y$10$ynk2r0jd0Subuqi1XrNomOMcQ67Emi2RVN.xJS14kGBkpAyiG6Zoe', '48065a54dd2404db419d01686c40bad0', 'member'),
 (10, 'user10@gmail.com', '$2y$10$E/cRaLuQcsDGDgrZfj1Xd.pOSI07KqkYxgeO2ZsSQigyuM5SSSntq', '8a10bc0d657ed06d08c7cf9e8cb1eae4', 'member'),
 (11, 'user11@gmail.com', '$2y$10$aIS373oRG/.JNnXOqy23TeZcCbHDaFOUhU7DPx9ZNtKaegB6lbgh6', '90d63d65b6342e9ff410eaf1c7e6439d', 'member'),
-(12, 'admin@crm.com', '$2y$10$.wZ1nUAHjjJpIbIGVCubk.4p8jtGSdqwQOG4/5M8ZnQF0WQY2wVTi', 'bc3d6b0f5f3d536706fa704cf2e4a18c', 'admin'),
+(12, 'admin@gym.com', '$2y$10$.wZ1nUAHjjJpIbIGVCubk.4p8jtGSdqwQOG4/5M8ZnQF0WQY2wVTi', 'bc3d6b0f5f3d536706fa704cf2e4a18c', 'admin'),
 (13, 'user12@gmail.com', '$2y$10$jnJcjqXinCdQayfxXnwgI.D7q0wWepZfA9TwmnbomGtAr3EnfDk96', '2aeb383f0a2d0724aeaeff0b92f102f4', 'member'),
 (14, 'user55@gmail.com', '$2y$10$jhXroJHzTkGVe74VWQWdUOCQGX5Yfu8G82MXwupbGLJJWUtyEWcNS', '4499550f553f04606843d06e3144bfb0', 'member'),
 (15, 'user23@gmail.com', '$2y$10$6dRdAWx.uD48eajNMdJs4.EzuPZMRPFZWWYpJHGlav6SJHlHDPKTm', '0630a09ae9286028a0c4ac27d0e798c0', 'member'),
@@ -61,7 +61,8 @@ INSERT INTO `auth` (`auth_id`, `auth_email`, `auth_password`, `auth_token`, `aut
 (19, 'min016@gmail.com', '$2y$10$rguT2sKEFK7Uf/Irjd.UWed/ZCTXoUajn7NXkAUIZr5qYzyEqv5bq', '7e9aa3befc80b200926bb113d728ba23', 'member'),
 (20, 'asfasf@dsgsdggsdsg.fgn', '$2y$10$vBY9i8EJ6yuHxeFEgG3IOOs8YT5zHl5p7WKao0kpJJs4yCNlGvTnS', '0ef242009b41d97e1012c7a606675eff', 'member'),
 (21, 'asfasasf@gsgsd.df', '$2y$10$2aLD40osDgqKbk0lnWPseu6jQbG4QWUuCFHsFIQBGXTmnyB3zwEI2', '165532f24636dff223aebd8b41d9dc5e', 'member'),
-(22, 'araman666@gmail.com', '$2y$10$Cdu9R.8M/xWuWSznTm9iX.gRox5/gaCvOPMWzQYMO6dIShrSq/H52', '50e49ca14d74340722148f49e70d4d79', 'member');
+(22, 'araman666@gmail.com', '$2y$10$Cdu9R.8M/xWuWSznTm9iX.gRox5/gaCvOPMWzQYMO6dIShrSq/H52', '50e49ca14d74340722148f49e70d4d79', 'member'),
+(23, 'harsh@ssr.com', '$2y$10$IwFs2YhSZ0uKK2lFT5ddNOKWnRG.ZdPl/sHziXrIjY9vAX3daB9rG', '5d34b9c37ac40a5faf3396223b23ed53', 'member');
 
 -- --------------------------------------------------------
 
@@ -75,7 +76,7 @@ CREATE TABLE `feedback` (
   `feedback_mail` varchar(120) NOT NULL,
   `feedback_subject` varchar(255) NOT NULL,
   `feedback_text` text NOT NULL,
-  `feedback_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `feedback_time` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -83,9 +84,10 @@ CREATE TABLE `feedback` (
 --
 
 INSERT INTO `feedback` (`feedback_id`, `feedback_name`, `feedback_mail`, `feedback_subject`, `feedback_text`, `feedback_time`) VALUES
-(1, 'John Mayer', 'jmay@google.com', 'Inquiry', 'hello world!', '2021-02-14 11:08:29'),
-(2, 'Dana Neer', 'dneer@foolbrot.com', 'Complain', 'Service need to upgrade\r\n', '2021-02-15 17:22:24'),
-(3, 'Dino Malhock', 'dinomalh@outbrot.com', 'General', 'Do i need to bring my own towel?', '2021-02-15 17:23:45');
+(1, 'John Mayer', 'jmay@google.com', 'Inquiry', 'hello world!', '2021-02-14 05:08:29'),
+(2, 'Dana Neer', 'dneer@foolbrot.com', 'Complain', 'Service need to upgrade\r\n', '2021-02-15 11:22:24'),
+(3, 'Dino Malhock', 'dinomalh@outbrot.com', 'General', 'Do i need to bring my own towel?', '2021-02-15 11:23:45'),
+(4, 'Mufasa', 'mufasa@afsa.com', 'Complain', 'jfk gskg skgksd gksdvsd', '2021-03-15 06:16:22');
 
 -- --------------------------------------------------------
 
@@ -99,7 +101,7 @@ CREATE TABLE `invoice` (
   `invoice_month` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `invoice_amount` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `invoice_status` varchar(6) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `invoice_created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `invoice_created` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -107,18 +109,18 @@ CREATE TABLE `invoice` (
 --
 
 INSERT INTO `invoice` (`invoice_id`, `invoice_member_id`, `invoice_month`, `invoice_amount`, `invoice_status`, `invoice_created`) VALUES
-(1, 3, 'February, 2021', '1500', 'Unpaid', '2021-02-08 04:52:53'),
-(2, 8, 'February, 2021', '5200', 'Unpaid', '2021-02-08 04:52:53'),
-(3, 9, 'February, 2021', '2500', 'Unpaid', '2021-02-08 04:52:53'),
-(4, 10, 'February, 2021', '5200', 'Unpaid', '2021-02-08 04:52:53'),
-(5, 11, 'February, 2021', '2500', 'Unpaid', '2021-02-08 04:52:53'),
-(6, 12, 'February, 2021', '1500', 'Unpaid', '2021-02-08 04:52:53'),
-(7, 13, 'February, 2021', '1500', 'Unpaid', '2021-02-08 04:52:53'),
-(8, 14, 'February, 2021', '5200', 'Unpaid', '2021-02-08 04:52:53'),
-(9, 15, 'February, 2021', '2500', 'Unpaid', '2021-02-08 04:52:53'),
-(10, 16, 'February, 2021', '5200', 'Unpaid', '2021-02-08 04:52:53'),
-(11, 17, 'February, 2021', '2500', 'Unpaid', '2021-02-08 04:52:53'),
-(12, 18, 'February, 2021', '2500', 'Paid', '2021-02-08 04:52:53');
+(1, 3, 'February, 2021', '1500', 'Unpaid', '2021-02-07 22:52:53'),
+(2, 8, 'February, 2021', '5200', 'Unpaid', '2021-02-07 22:52:53'),
+(3, 9, 'February, 2021', '2500', 'Paid', '2021-02-07 22:52:53'),
+(4, 10, 'February, 2021', '5200', 'Unpaid', '2021-02-07 22:52:53'),
+(5, 11, 'February, 2021', '2500', 'Unpaid', '2021-02-07 22:52:53'),
+(6, 12, 'February, 2021', '1500', 'Unpaid', '2021-02-07 22:52:53'),
+(7, 13, 'February, 2021', '1500', 'Unpaid', '2021-02-07 22:52:53'),
+(8, 14, 'February, 2021', '5200', 'Unpaid', '2021-02-07 22:52:53'),
+(9, 15, 'February, 2021', '2500', 'Unpaid', '2021-02-07 22:52:53'),
+(10, 16, 'February, 2021', '5200', 'Unpaid', '2021-02-07 22:52:53'),
+(11, 17, 'February, 2021', '2500', 'Unpaid', '2021-02-07 22:52:53'),
+(12, 18, 'February, 2021', '2500', 'Paid', '2021-02-07 22:52:53');
 
 -- --------------------------------------------------------
 
@@ -137,7 +139,7 @@ CREATE TABLE `member` (
   `member_photo` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `member_status` enum('0','1','2') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0' COMMENT '0 = pending, 1 = Active, 2 = banned',
   `member_user_id` int(11) NOT NULL,
-  `member_joined_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `member_joined_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -145,24 +147,25 @@ CREATE TABLE `member` (
 --
 
 INSERT INTO `member` (`member_id`, `member_name`, `member_gender`, `member_dob`, `member_address`, `member_package`, `member_mobile`, `member_photo`, `member_status`, `member_user_id`, `member_joined_at`) VALUES
-(1, 'Charlene Cochran', 'female', '2021-01-12', 'asff afasf', '', '0125555', NULL, '1', 1, '2021-01-11 19:42:43'),
-(2, 'Peter Shilton', 'others', '1990-01-01', 'House: 11/B, C Wing, 12/C East Birmingham Street, London. UK', '', '01555898989', 'peter.jpg', '1', 2, '2021-01-11 19:44:13'),
-(3, 'Ashley Cole', NULL, NULL, NULL, 'Gold', NULL, NULL, '2', 3, '2021-01-11 19:44:45'),
-(4, 'Frank Moore', NULL, NULL, NULL, '', NULL, NULL, '1', 4, '2021-01-11 19:45:25'),
-(5, 'Billy Owen', NULL, NULL, NULL, '', NULL, NULL, '1', 5, '2021-01-11 19:46:19'),
-(6, 'Bryan Terry', NULL, NULL, NULL, '', NULL, NULL, '2', 6, '2021-01-11 19:46:48'),
-(7, 'Sandy Maclver', NULL, NULL, NULL, '', NULL, NULL, '1', 7, '2021-01-11 19:47:55'),
-(8, 'Lucy Morgan', NULL, NULL, NULL, 'Silver', NULL, NULL, '2', 8, '2021-01-11 19:48:39'),
-(9, 'Keira Stainforth', NULL, NULL, NULL, 'Platinum', NULL, NULL, '1', 9, '2021-01-11 19:49:26'),
-(10, 'Georgia Walsh', NULL, NULL, NULL, 'Silver', NULL, NULL, '1', 10, '2021-01-11 19:50:25'),
-(11, 'Ellen  Bright', NULL, NULL, NULL, 'Platinum', NULL, NULL, '2', 11, '2021-01-11 19:51:32'),
-(12, 'Alessia Patten', NULL, NULL, NULL, 'Gold', NULL, NULL, '1', 12, '2021-01-11 19:52:02'),
-(13, 'Ashley Brimm', NULL, NULL, NULL, 'Gold', NULL, NULL, '0', 13, '2021-01-11 19:56:20'),
-(14, 'Rasha Bin Aziz', NULL, NULL, NULL, 'Silver', NULL, NULL, '0', 14, '2021-02-04 06:36:48'),
-(15, 'Sarah Yesmin', NULL, NULL, NULL, 'Platinum', NULL, NULL, '0', 16, '2021-02-06 04:56:47'),
-(16, 'Joesef Jackson', NULL, NULL, NULL, 'Silver', NULL, NULL, '0', 17, '2021-02-06 05:01:33'),
-(17, 'Lauren Miller', NULL, NULL, NULL, 'Platinum', NULL, NULL, '0', 21, '2021-02-06 05:04:35'),
-(18, 'Amanur Rahman', NULL, NULL, NULL, 'Platinum', NULL, NULL, '0', 22, '2021-02-08 04:50:20');
+(1, 'Charlene Cochran', 'female', '2018-01-04', 'london street', 'Gold', '01877452454', 'Mon-1308.jpeg', '1', 1, '2021-01-11 13:42:43'),
+(2, 'Peter Shilton', 'others', '1990-01-01', 'House: 11/B, C Wing, 12/C East Birmingham Street, London. UK', 'Gold', '01555898989', 'peter.jpg', '1', 2, '2021-01-11 13:44:13'),
+(3, 'Ashley Cole', NULL, NULL, NULL, 'Gold', NULL, NULL, '2', 3, '2021-01-11 13:44:45'),
+(4, 'Frank Moore', NULL, NULL, NULL, '', NULL, NULL, '1', 4, '2021-01-11 13:45:25'),
+(5, 'Billy Owen', 'male', '1992-12-28', '32/A, Halfway Road, Paris', 'Platinum', '01632105548', 'Mon-6581.jpg', '1', 5, '2021-01-11 13:46:19'),
+(6, 'Bryan Terry', NULL, NULL, NULL, '', NULL, NULL, '2', 6, '2021-01-11 13:46:48'),
+(7, 'Sandy Maclver', NULL, NULL, NULL, '', NULL, NULL, '1', 7, '2021-01-11 13:47:55'),
+(8, 'Lucy Morgan', NULL, NULL, NULL, 'Silver', NULL, NULL, '2', 8, '2021-01-11 13:48:39'),
+(9, 'Keira Stainforth', NULL, NULL, NULL, 'Platinum', NULL, NULL, '1', 9, '2021-01-11 13:49:26'),
+(10, 'Georgia Walsh', NULL, NULL, NULL, 'Silver', NULL, NULL, '1', 10, '2021-01-11 13:50:25'),
+(11, 'Ellen  Bright', NULL, NULL, NULL, 'Platinum', NULL, NULL, '2', 11, '2021-01-11 13:51:32'),
+(12, 'Alessia Patten', NULL, NULL, NULL, 'Gold', NULL, NULL, '1', 12, '2021-01-11 13:52:02'),
+(13, 'Ashley Brimm', NULL, NULL, NULL, 'Gold', NULL, NULL, '0', 13, '2021-01-11 13:56:20'),
+(14, 'Rasha Bin Aziz', NULL, NULL, NULL, 'Silver', NULL, NULL, '0', 14, '2021-02-04 00:36:48'),
+(15, 'Sarah Yesmin', NULL, NULL, NULL, 'Platinum', NULL, NULL, '0', 16, '2021-02-05 22:56:47'),
+(16, 'Joesef Jackson', NULL, NULL, NULL, 'Silver', NULL, NULL, '0', 17, '2021-02-05 23:01:33'),
+(17, 'Lauren Miller', NULL, NULL, NULL, 'Platinum', NULL, NULL, '0', 21, '2021-02-05 23:04:35'),
+(18, 'Amanur Rahman', NULL, NULL, NULL, 'Platinum', NULL, NULL, '0', 22, '2021-02-07 22:50:20'),
+(19, 'Harshad Mehta', NULL, NULL, NULL, 'Silver', NULL, NULL, '1', 23, '2021-03-15 06:17:36');
 
 -- --------------------------------------------------------
 
@@ -174,21 +177,22 @@ CREATE TABLE `notice` (
   `notice_id` int(11) NOT NULL,
   `notice_title` varchar(100) NOT NULL,
   `notice_body` text NOT NULL,
-  `notice_for` int(11) NOT NULL DEFAULT '0',
-  `notice_isuued_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `notice_for` int(11) NOT NULL DEFAULT 0,
+  `notice_issued_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `notice`
 --
 
-INSERT INTO `notice` (`notice_id`, `notice_title`, `notice_body`, `notice_for`, `notice_isuued_at`) VALUES
-(1, 'Covid-19 Safety', 'Wear Mask, Use Hand Sanitizer, Maintain Social Distance', 0, '2021-01-12 03:48:58'),
-(2, 'Entry Time Violation', 'Maintain entry Time ', 13, '2021-01-12 03:51:59'),
-(3, 'Payment Notice', 'Please Pay the fee of December, 2020', 6, '2021-01-12 03:54:16'),
-(4, 'Happy New Year', '<p>Wish you all a very <strong>Happy New Year 2021</strong></p>', 0, '2021-01-12 04:00:24'),
-(5, 'Payment Notice', '<p>Payment Done for <strong>Billy Owen</strong></p>', 5, '2021-01-12 05:16:15'),
-(6, 'Pay Bill', '<p>Hey Peter,</p>\r\n<p>Please Pay the <strong>bill</strong></p>', 2, '2021-02-08 04:20:39');
+INSERT INTO `notice` (`notice_id`, `notice_title`, `notice_body`, `notice_for`, `notice_issued_at`) VALUES
+(1, 'Covid-19 Safety', 'Wear Mask, Use Hand Sanitizer, Maintain Social Distance', 0, '2021-01-11 21:48:58'),
+(2, 'Entry Time Violation', 'Maintain entry Time ', 13, '2021-01-11 21:51:59'),
+(3, 'Payment Notice', 'Please Pay the fee of December, 2020', 6, '2021-01-11 21:54:16'),
+(4, 'Happy New Year', '<p>Wish you all a very <strong>Happy New Year 2021</strong></p>', 0, '2021-01-11 22:00:24'),
+(5, 'Payment Notice', '<p>Payment Done for <strong>Billy Owen</strong></p>', 5, '2021-01-11 23:16:15'),
+(6, 'Pay Bill', '<p>Hey Peter,</p>\r\n<p>Please Pay the <strong>bill</strong></p>', 2, '2021-02-07 22:20:39'),
+(7, 'Molestias nihil delectus animi facilis 9465', '<p>fshdjfgjfgj</p>', 1, '2021-03-15 10:23:06');
 
 -- --------------------------------------------------------
 
@@ -200,18 +204,20 @@ CREATE TABLE `package` (
   `package_id` int(11) NOT NULL,
   `package_name` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `package_details` text NOT NULL,
+  `package_image` varchar(255) NOT NULL,
   `package_fee` float NOT NULL,
-  `package_created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `package_created` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `package`
 --
 
-INSERT INTO `package` (`package_id`, `package_name`, `package_details`, `package_fee`, `package_created`) VALUES
-(1, 'Gold', '<p>1. Diet Plan</p>\r\n<p>2. Gym facilites</p>\r\n<p>3. Protien Shacke</p>', 1500, '2021-01-17 05:31:52'),
-(2, 'Platinum', '<p>1. Diet Plan</p>\r\n<p>2. Breckfast</p>\r\n<p>3. Hot Yoga</p>\r\n<p>4. Cardio</p>\r\n<p>5. Weight Lifting</p>', 2500, '2021-01-17 05:32:47'),
-(3, 'Silver', '<p>asfsdag shh</p>', 5200, '2021-02-03 05:14:56');
+INSERT INTO `package` (`package_id`, `package_name`, `package_details`, `package_image`, `package_fee`, `package_created`) VALUES
+(1, 'Silver', '<p><strong>This Package Includes:</strong></p>\r\n<p>1. Cardio</p>\r\n<p>2. Diet Plan</p>\r\n<p>3. Weigh Lifting</p>\r\n<p>4. Mentorship</p>', 'Mon-4916.png', 3500, '2021-03-15 05:24:31'),
+(2, 'Gold', '<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1rem; color: #212529; font-family: system-ui, -apple-system, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, \'Noto Sans\', \'Liberation Sans\', sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\', \'Noto Color Emoji\'; font-size: 16px;\"><span style=\"box-sizing: border-box; font-weight: bolder;\">This Package Includes:</span></p>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1rem; color: #212529; font-family: system-ui, -apple-system, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, \'Noto Sans\', \'Liberation Sans\', sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\', \'Noto Color Emoji\'; font-size: 16px;\">1. Cardio &amp; Yoga</p>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1rem; color: #212529; font-family: system-ui, -apple-system, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, \'Noto Sans\', \'Liberation Sans\', sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\', \'Noto Color Emoji\'; font-size: 16px;\">2. Diet Plan and Protein Bar</p>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1rem; color: #212529; font-family: system-ui, -apple-system, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, \'Noto Sans\', \'Liberation Sans\', sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\', \'Noto Color Emoji\'; font-size: 16px;\">3. Weigh Lifting</p>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1rem; color: #212529; font-family: system-ui, -apple-system, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, \'Noto Sans\', \'Liberation Sans\', sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\', \'Noto Color Emoji\'; font-size: 16px;\">4. Mentorship</p>', 'Mon-1808.png', 5000, '2021-03-15 05:27:58'),
+(3, 'Platinum', '<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1rem; color: #212529; font-family: system-ui, -apple-system, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, \'Noto Sans\', \'Liberation Sans\', sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\', \'Noto Color Emoji\'; font-size: 16px;\"><span style=\"box-sizing: border-box; font-weight: bolder;\">This Package Includes:</span></p>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1rem; color: #212529; font-family: system-ui, -apple-system, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, \'Noto Sans\', \'Liberation Sans\', sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\', \'Noto Color Emoji\'; font-size: 16px;\">1. Cardio, Yoga and Muai Thai</p>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1rem; color: #212529; font-family: system-ui, -apple-system, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, \'Noto Sans\', \'Liberation Sans\', sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\', \'Noto Color Emoji\'; font-size: 16px;\">2. Exclusive Diet Plan</p>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1rem; color: #212529; font-family: system-ui, -apple-system, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, \'Noto Sans\', \'Liberation Sans\', sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\', \'Noto Color Emoji\'; font-size: 16px;\">3. Weigh Lifting, Boxing</p>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1rem; color: #212529; font-family: system-ui, -apple-system, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, \'Noto Sans\', \'Liberation Sans\', sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\', \'Noto Color Emoji\'; font-size: 16px;\">4. Exclusive Mentorship</p>', 'Mon-5835.png', 10000, '2021-03-15 05:29:53'),
+(4, 'Demo 98989', '<p>gfhjfgjh</p>', 'Mon-7874.jpg', 545, '2021-03-15 09:58:26');
 
 -- --------------------------------------------------------
 
@@ -224,7 +230,7 @@ CREATE TABLE `payment` (
   `payment_amount` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
   `payment_invoice` int(11) NOT NULL,
   `payment_comments` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `payment_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `payment_date` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -232,7 +238,8 @@ CREATE TABLE `payment` (
 --
 
 INSERT INTO `payment` (`payment_id`, `payment_amount`, `payment_invoice`, `payment_comments`, `payment_date`) VALUES
-(1, '2500', 12, 'full paid!', '2021-02-08 04:54:08');
+(1, '2500', 12, 'full paid!', '2021-02-07 22:54:08'),
+(2, '2500', 3, 'done', '2021-03-15 05:32:59');
 
 -- --------------------------------------------------------
 
@@ -248,7 +255,7 @@ CREATE TABLE `report` (
   `report_waist` float NOT NULL,
   `report_bmi` float NOT NULL,
   `report_body_fat` float NOT NULL,
-  `report_generated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `report_generated` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -256,8 +263,34 @@ CREATE TABLE `report` (
 --
 
 INSERT INTO `report` (`report_id`, `report_member_id`, `report_height`, `report_weight`, `report_waist`, `report_bmi`, `report_body_fat`, `report_generated`) VALUES
-(1, 2, 1.65, 85, 45, 31.22, 28.39, '2021-01-16 06:13:01'),
-(2, 9, 1.65, 90, 55, 33.06, 35.2, '2021-01-16 06:13:23');
+(1, 2, 1.65, 85, 45, 31.22, 28.39, '2021-01-16 00:13:01'),
+(2, 9, 1.65, 90, 55, 33.06, 35.2, '2021-01-16 00:13:23'),
+(3, 9, 1.68, 78, 35, 27.64, 28.7, '2021-02-23 14:43:50'),
+(4, 5, 1.96, 81, 37, 21.08, 20.83, '2021-02-24 12:10:21'),
+(5, 5, 1.98, 89, 40, 22.7, 22.77, '2021-02-24 12:11:53'),
+(6, 1, 1.75, 88, 48, 28.73, 29.77, '2021-03-15 10:23:28');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `slider`
+--
+
+CREATE TABLE `slider` (
+  `slider_id` int(11) NOT NULL,
+  `slider_caption` varchar(128) NOT NULL,
+  `slider_details` varchar(500) NOT NULL,
+  `slider_image` varchar(255) NOT NULL,
+  `slider_created` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `slider`
+--
+
+INSERT INTO `slider` (`slider_id`, `slider_caption`, `slider_details`, `slider_image`, `slider_created`) VALUES
+(1, 'The Best Gym in the town', '<p>We are awarded best gym title</p>', 'Mon-8403.jpg', '2021-03-15 05:45:20'),
+(2, 'Our Equipments are A1 Class', '<p>We have the latest equipments</p>', 'Mon-8342.jpg', '2021-03-15 05:46:51');
 
 --
 -- Indexes for dumped tables
@@ -313,6 +346,12 @@ ALTER TABLE `report`
   ADD PRIMARY KEY (`report_id`);
 
 --
+-- Indexes for table `slider`
+--
+ALTER TABLE `slider`
+  ADD PRIMARY KEY (`slider_id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -320,13 +359,13 @@ ALTER TABLE `report`
 -- AUTO_INCREMENT for table `auth`
 --
 ALTER TABLE `auth`
-  MODIFY `auth_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `auth_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `feedback`
 --
 ALTER TABLE `feedback`
-  MODIFY `feedback_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `feedback_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `invoice`
@@ -338,31 +377,37 @@ ALTER TABLE `invoice`
 -- AUTO_INCREMENT for table `member`
 --
 ALTER TABLE `member`
-  MODIFY `member_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `member_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `notice`
 --
 ALTER TABLE `notice`
-  MODIFY `notice_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `notice_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `package`
 --
 ALTER TABLE `package`
-  MODIFY `package_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `package_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `payment`
 --
 ALTER TABLE `payment`
-  MODIFY `payment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `payment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `report`
 --
 ALTER TABLE `report`
-  MODIFY `report_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `report_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `slider`
+--
+ALTER TABLE `slider`
+  MODIFY `slider_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables

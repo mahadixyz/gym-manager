@@ -11,7 +11,7 @@
 
 ?>
     <!-- Carousel Start -->
-    <div class="container-fluid overflow-hidden sliderLanding">
+    <div class="container-fluid overflow-hidden sliderLanding" id="home-sec">
         <div class="row">
             <div class="col-12">
                 <div id="sliderIndicators" class="carousel slide" data-bs-ride="carousel">

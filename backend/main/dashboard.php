@@ -74,8 +74,8 @@
 
                     <div class="col-6">
                         <div class="border p-3">
-                            <h3 class="h3 text-primary">Earning</h2>
-                            <div id="earningChart"></div>
+                            <h3 class="h3 text-primary">Packages</h2>
+                            <div id="packageChart"></div>
                         </div>
                     </div>
 
@@ -271,22 +271,69 @@
     var chartUser = new ApexCharts(document.querySelector("#userChart"), options);
     chartUser.render();
 
-    // Earning
+    // Package
+   
     var options = {
-        chart: {
-            type: 'line'
+      series: [45, 72, 93],
+      chart: {
+      height: 300,
+      type: 'radialBar',
+    },
+    plotOptions: {
+      radialBar: {
+        offsetY: 0,
+        startAngle: 0,
+        endAngle: 270,
+        hollow: {
+          margin: 5,
+          size: '30%',
+          background: 'transparent',
+          image: undefined,
         },
-        series: [{
-            name: 'Payment',
-            data: [30000,40000,35000,50000,49000,60000]
-        }],
-        xaxis: {
-            categories: ["January","February","March","April","June","July"]
+        dataLabels: {
+          name: {
+            show: false,
+          },
+          value: {
+            show: false,
+          }
         }
-    }
+      }
+    },
+    colors: ['#ff7171', '#9b3675', '#dc143c'],
+    labels: ['Silver', 'Gold', 'Platinam'],
+    legend: {
+      show: true,
+      floating: true,
+      fontSize: '12px',
+      position: 'right',
+      offsetX: 160,
+      offsetY: 15,
+      labels: {
+        useSeriesColors: true,
+      },
+      markers: {
+        size: 0
+      },
+      formatter: function(seriesName, opts) {
+        return seriesName + ":  " + opts.w.globals.series[opts.seriesIndex]
+      },
+      itemMargin: {
+        vertical: 3
+      }
+    },
+    responsive: [{
+      breakpoint: 480,
+      options: {
+        legend: {
+            show: false
+        }
+      }
+    }]
+    };
 
-    var chartEarning = new ApexCharts(document.querySelector("#earningChart"), options);    
-    chartEarning.render();
+    var chart = new ApexCharts(document.querySelector("#packageChart"), options);
+    chart.render();
 </script>
 
 <?php
